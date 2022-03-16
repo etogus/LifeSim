@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">Drawing my Life</string>
+    <string name="mood">Настроение</string>
+    <string name="health">Здоровье</string>
+    <string name="intellect">Интеллект</string>
+    <string name="looks">Внешность</string>
+    <string name="age">Age</string>
+    <string name="start_game">Start Game</string>
+    <string name="work_on_mp">Work on MP</string>
+    <string name="spend_time_with_friends">Spend time with Friends</string>
+    <string name="do_prairielearn">Do PrairieLearn</string>
+    <string name="go_to_a_party">Go to a party</string>
+    <string name="new_life_header">Новая жизнь</string>
+    <string name="enter_name">Имя:</string>
+    <string name="enter_last_name">Фамилия:</string>
+    <string name="enterGender_male">Мужчина</string>
+    <string name="enterGender_female">Женщина</string>
+    <string name="enter_gender">Пол:</string>
+    <string name="enter_country">Страна:</string>
+    <string name="actions">Действия</string>
+    <string name="inventory">Инвентарь</string>
+    <string name="relationships">Отношения</string>
+    <string name="activities">Активности</string>
+    <string name="nextYear">Прожить год</string>
+    <string name="endGame">Конец</string>
+    <string name="startNewGame">Начать новую игру</string>
+    <string name="walk">Погулять</string>
+    <string name="read_book">Прочитать книгу</string>
+</resources>
