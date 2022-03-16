@@ -1,6 +1,7 @@
 package com.mamedovga.lifesim.models;
 
 public class Country {
+
     private String name;
 
     public Country(String name) {
@@ -13,10 +14,5 @@ public class Country {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    @Override
-    public String toString() {
-        return getName();
     }
 }

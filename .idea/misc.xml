@@ -3,10 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Projects/Android/LifeSim/app/src/main/res/drawable/bg_gradient.xml" value="0.1785" />
+        <entry key="..\:/Projects/Android/LifeSim/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1785" />
+        <entry key="..\:/Projects/Android/LifeSim/app/src/main/res/drawable/splash_background.xml" value="0.1785" />
         <entry key="..\:/Projects/Android/LifeSim/app/src/main/res/layout/activity_end_game.xml" value="0.14130434782608695" />
         <entry key="..\:/Projects/Android/LifeSim/app/src/main/res/layout/activity_game.xml" value="0.14130434782608695" />
         <entry key="..\:/Projects/Android/LifeSim/app/src/main/res/layout/activity_main.xml" value="0.14130434782608695" />
         <entry key="..\:/Projects/Android/LifeSim/app/src/main/res/layout/activity_new_game.xml" value="0.14130434782608695" />
+        <entry key="..\:/Projects/Android/LifeSim/app/src/main/res/layout/splash_background.xml" value="0.14130434782608695" />
       </map>
     </option>
   </component>
