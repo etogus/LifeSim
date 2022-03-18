@@ -8,7 +8,6 @@
     <string name="start_game">Start Game</string>
     <string name="work_on_mp">Work on MP</string>
     <string name="spend_time_with_friends">Spend time with Friends</string>
-    <string name="do_prairielearn">Do PrairieLearn</string>
     <string name="go_to_a_party">Go to a party</string>
     <string name="new_life_header">Новая жизнь</string>
     <string name="enter_name">Имя:</string>
@@ -26,6 +25,9 @@
     <string name="startNewGame">Начать новую игру</string>
     <string name="walk">Погулять</string>
     <string name="read_book">Прочитать книгу</string>
-    <string name="start_game_button">Start</string>
-    <string name="load_game_button">Load</string>
+    <string name="start_game_button">Начать новую игру</string>
+    <string name="load_game_button">Загрузить сохранение</string>
+    <string name="version">Версия: 0.1</string>
+    <string name="app_logo">Логотип приложения</string>
+    <string name="or">или</string>
 </resources>
