@@ -116,41 +116,58 @@
         android:id="@+id/energyBar"
         android:layout_width="243dp"
         android:layout_height="24dp"
-        tools:layout_editor_absoluteX="146dp"
-        tools:layout_editor_absoluteY="456dp" />
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/energyPic"
+        app:layout_constraintTop_toBottomOf="@+id/activityLog" />
 
     <com.mackhartley.roundedprogressbar.RoundedProgressBar
         android:id="@+id/moodBar"
         android:layout_width="243dp"
         android:layout_height="24dp"
-        tools:layout_editor_absoluteX="146dp"
-        tools:layout_editor_absoluteY="497dp" />
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/moodPic"
+        app:layout_constraintTop_toBottomOf="@+id/energyBar" />
 
     <com.mackhartley.roundedprogressbar.RoundedProgressBar
         android:id="@+id/healthBar"
         android:layout_width="243dp"
         android:layout_height="24dp"
-        tools:layout_editor_absoluteX="146dp"
-        tools:layout_editor_absoluteY="538dp" />
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/healthPic"
+        app:layout_constraintTop_toBottomOf="@+id/moodBar" />
 
     <com.mackhartley.roundedprogressbar.RoundedProgressBar
         android:id="@+id/smartsBar"
         android:layout_width="243dp"
         android:layout_height="24dp"
-        tools:layout_editor_absoluteX="146dp"
-        tools:layout_editor_absoluteY="579dp" />
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/smartsPic"
+        app:layout_constraintTop_toBottomOf="@+id/healthBar" />
 
     <com.mackhartley.roundedprogressbar.RoundedProgressBar
         android:id="@+id/looksBar"
         android:layout_width="243dp"
         android:layout_height="24dp"
-        tools:layout_editor_absoluteX="146dp"
-        tools:layout_editor_absoluteY="619dp" />
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/looksPic"
+        app:layout_constraintTop_toBottomOf="@+id/smartsBar" />
 
     <TextView
         android:id="@+id/energyText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
         android:text="@string/energy_text"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/activityLog" />
@@ -159,73 +176,83 @@
         android:id="@+id/moodText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:text="@string/mood_text"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="500dp" />
+        app:layout_constraintTop_toBottomOf="@+id/energyText"
+        tools:layout_editor_absoluteX="8dp" />
 
     <ImageView
         android:id="@+id/energyPic"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        app:srcCompat="@drawable/ic_baseline_bolt_24"
-        tools:layout_editor_absoluteX="102dp"
-        tools:layout_editor_absoluteY="445dp" />
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="25dp"
+        app:layout_constraintStart_toEndOf="@+id/energyText"
+        app:layout_constraintTop_toBottomOf="@+id/activityLog"
+        app:srcCompat="@drawable/ic_baseline_bolt_24" />
 
     <ImageView
         android:id="@+id/moodPic"
         android:layout_width="30dp"
         android:layout_height="30dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/energyPic"
         app:srcCompat="@drawable/ic_baseline_mood_24"
-        tools:layout_editor_absoluteX="102dp"
-        tools:layout_editor_absoluteY="494dp" />
+        tools:layout_editor_absoluteX="99dp" />
 
     <TextView
         android:id="@+id/healthText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:text="@string/health_text"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="543dp" />
+        app:layout_constraintTop_toBottomOf="@+id/moodText"
+        tools:layout_editor_absoluteX="23dp" />
 
     <ImageView
         android:id="@+id/healthPic"
         android:layout_width="30dp"
         android:layout_height="30dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/moodPic"
         app:srcCompat="@drawable/ic_baseline_health_24"
-        tools:layout_editor_absoluteX="102dp"
-        tools:layout_editor_absoluteY="532dp" />
+        tools:layout_editor_absoluteX="99dp" />
 
     <TextView
         android:id="@+id/smartsText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:text="@string/smarts_text"
-        tools:layout_editor_absoluteX="18dp"
-        tools:layout_editor_absoluteY="584dp" />
+        app:layout_constraintTop_toBottomOf="@+id/healthText"
+        tools:layout_editor_absoluteX="17dp" />
 
     <ImageView
         android:id="@+id/smartsPic"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/healthPic"
         app:srcCompat="@drawable/ic_baseline_smarts_24"
-        tools:layout_editor_absoluteX="106dp"
-        tools:layout_editor_absoluteY="579dp" />
+        tools:layout_editor_absoluteX="99dp" />
 
     <TextView
         android:id="@+id/looksText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:text="@string/looks_text"
-        tools:layout_editor_absoluteX="18dp"
-        tools:layout_editor_absoluteY="619dp" />
+        app:layout_constraintTop_toBottomOf="@+id/smartsText"
+        tools:layout_editor_absoluteX="13dp" />
 
     <ImageView
         android:id="@+id/looksPic"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/smartsPic"
         app:srcCompat="@drawable/ic_baseline_looks_24"
-        tools:layout_editor_absoluteX="100dp"
-        tools:layout_editor_absoluteY="619dp" />
+        tools:layout_editor_absoluteX="99dp" />
 
     <com.google.android.material.button.MaterialButton
         android:layout_width="80dp"
