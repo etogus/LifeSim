@@ -30,4 +30,15 @@
     <string name="version">Версия: 0.1</string>
     <string name="app_logo">Логотип приложения</string>
     <string name="or">или</string>
+    <string name="player_avatar">Player avatar</string>
+    <string name="country_flag">Country flag</string>
+    <string name="player_name">Player name</string>
+    <string name="player_status">Player status</string>
+    <string name="player_stat_modifiers">Player Stat Modifiers</string>
+    <string name="dollar_sign">$</string>
+    <string name="player_money">0</string>
+    <string name="activity_log">ActivityLog</string>
+    <string name="mood_text">Настроение</string>
+    <string name="energy_text">Энергия</string>
+    <string name="health_text">Здоровье</string>
 </resources>
