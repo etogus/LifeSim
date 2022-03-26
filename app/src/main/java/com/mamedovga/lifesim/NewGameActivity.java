@@ -31,20 +31,16 @@ public class NewGameActivity extends AppCompatActivity {
         View view = binding.getRoot();
         setContentView(view);
 
-        Country[] countries = CountryUtils.getCountries();
-        ArrayAdapter<Country> arrayAdapter = new ArrayAdapter(this, R.layout.dropdown_item, countries);
+        String[] countries = CountryUtils.getCountries();
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, countries);
+        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         binding.spinnerCountryTextView.setAdapter(arrayAdapter);
 
         binding.startGameButton.setOnClickListener(unused -> createGameClicked());
-        binding.spinnerCountryTextView.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        binding.spinnerCountryTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                country =  adapterView.getItemAtPosition(i).toString();
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                country = adapterView.getItemAtPosition(i).toString();
             }
         });
     }

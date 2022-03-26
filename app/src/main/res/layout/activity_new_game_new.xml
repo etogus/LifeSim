@@ -41,7 +41,6 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/inputFirstNameField"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="295dp"
         android:layout_height="84dp"
         android:layout_marginTop="20dp"
@@ -119,6 +118,7 @@
     </RadioGroup>
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
         android:layout_width="288dp"
         android:layout_height="68dp"

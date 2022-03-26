@@ -57,7 +57,7 @@ public class GameActivity extends AppCompatActivity {
         if(mainChar.getAge() == 0) {
             PersonUtils.randomizeStats(mainChar);
             binding.playerStatus.setText("Новорожденный");
-            binding.playerStatModifiers.setText("Ничего");
+            binding.playerStatModifiers.setText(playerCountry);
         }
 
         binding.moodBar.setProgressPercentage(mainChar.getMood(), true);
@@ -153,14 +153,17 @@ public class GameActivity extends AppCompatActivity {
                 mainChar.setAge(mainChar.getAge() + 1);
                 endGame();
                 String randomEvent = EventUtils.generateEvent(mainChar);
-                activityLogText.append("Возраст: ").append(mainChar.getAge()).append("\n").append(randomEvent);
+                activityLogText.append("Возраст: ").append(mainChar.getAge());
+                binding.activityDisplay.setText(activityLogText);
+                binding.activityDisplay.setTextColor(Color.BLUE);
+                activityLogText.append("\n").append(randomEvent);
                 binding.activityLog.post(new Runnable() {
                     @Override
                     public void run() {
                         binding.activityLog.fullScroll(View.FOCUS_DOWN);
                     }
                 });
-                EventUtils.generateEvent(mainChar);
+                //EventUtils.generateEvent(mainChar);
                 activityCheck[0] = false;
             }
         });
