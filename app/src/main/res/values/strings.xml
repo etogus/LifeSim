@@ -53,4 +53,8 @@
     <string name="helper_input_first_name_text">Введите имя</string>
     <string name="input_last_name_field">Фамилия</string>
     <string name="helper_input_last_name_text">Введите фамилию</string>
+    <string name="choose_gender_field">Пол:</string>
+    <string name="radiobutton_male">Мужчина</string>
+    <string name="radiobutton_Female">Женщина</string>
+    <string name="country_picker">Страна</string>
 </resources>

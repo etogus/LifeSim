@@ -9,65 +9,73 @@
         android:id="@+id/playerAvatar"
         android:layout_width="100dp"
         android:layout_height="100dp"
+        android:contentDescription="@string/player_avatar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/avatars"
-        android:contentDescription="@string/player_avatar" />
+        tools:srcCompat="@tools:sample/avatars" />
 
     <ImageView
         android:id="@+id/countryFlag"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="5dp"
         android:layout_marginTop="10dp"
+        android:contentDescription="@string/country_flag"
         app:layout_constraintStart_toEndOf="@+id/playerAvatar"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/alert_dark_frame"
-        android:contentDescription="@string/country_flag" />
+        app:srcCompat="@drawable/russian_flag_icon_32" />
 
     <TextView
         android:id="@+id/playerName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="2dp"
+        android:layout_marginStart="5dp"
         android:layout_marginTop="14dp"
-        android:text="@string/player_name"
+        android:text="sadasds"
+        app:layout_constraintBottom_toBottomOf="@+id/countryFlag"
         app:layout_constraintStart_toEndOf="@+id/countryFlag"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/playerStatusImage"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="10dp"
         app:layout_constraintStart_toEndOf="@+id/playerAvatar"
         app:layout_constraintTop_toBottomOf="@+id/countryFlag"
-        app:srcCompat="@android:drawable/alert_dark_frame" />
+        app:srcCompat="@drawable/ic_baseline_baby_36" />
 
     <TextView
         android:id="@+id/playerStatus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
         android:layout_marginTop="11dp"
-        android:text="@string/player_status"
+        android:text="sadasds"
+        app:layout_constraintBottom_toBottomOf="@+id/playerStatusImage"
         app:layout_constraintStart_toEndOf="@+id/playerStatusImage"
         app:layout_constraintTop_toBottomOf="@+id/playerName" />
 
     <ImageView
-        android:id="@+id/playerStatModifiers"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        app:layout_constraintBottom_toTopOf="@+id/activityLog"
-        app:layout_constraintStart_toEndOf="@+id/playerAvatar"
+        android:id="@+id/playerStatModifiersIcon"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="10dp"
+        android:contentDescription="@string/player_stat_modifiers"
+        app:layout_constraintStart_toStartOf="@+id/playerStatusImage"
         app:layout_constraintTop_toBottomOf="@+id/playerStatusImage"
-        app:srcCompat="@android:drawable/alert_dark_frame"
-        android:contentDescription="@string/player_stat_modifiers" />
+        app:srcCompat="@drawable/ic_baseline_modifiers_36" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/playerStatModifiers"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
         android:layout_marginTop="11dp"
-        android:text="@string/player_stat_modifiers"
-        app:layout_constraintStart_toEndOf="@+id/playerStatModifiers"
+        android:text="dasdas"
+        app:layout_constraintBottom_toBottomOf="@+id/playerStatModifiersIcon"
+        app:layout_constraintStart_toEndOf="@+id/playerStatModifiersIcon"
         app:layout_constraintTop_toBottomOf="@+id/playerStatus" />
 
     <TextView
@@ -91,13 +99,15 @@
 
     <ScrollView
         android:id="@+id/activityLog"
-        android:layout_width="413dp"
-        android:layout_height="324dp"
+        android:layout_width="378dp"
+        android:layout_height="276dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/scrollview_border"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/playerAvatar">
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
@@ -106,10 +116,15 @@
                 android:id="@+id/activityDisplay"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="@string/activity_log"
-                android:textSize="16sp" />
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>
 
@@ -118,7 +133,10 @@
         android:layout_width="243dp"
         android:layout_height="24dp"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/energyPic"
+        app:layout_constraintTop_toBottomOf="@+id/activityLog"
         app:rpbBackgroundColor="#F28969"
         app:rpbBackgroundTextColor="#070600"
         app:rpbCornerRadiusBottomLeft="6dp"
@@ -128,10 +146,7 @@
         app:rpbIsRadiusRestricted="false"
         app:rpbProgressColor="#070600"
         app:rpbProgressTextColor="#F28969"
-        app:rpbTextPadding="12dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/energyPic"
-        app:layout_constraintTop_toBottomOf="@+id/activityLog" />
+        app:rpbTextPadding="12dp" />
 
     <com.mackhartley.roundedprogressbar.RoundedProgressBar
         android:id="@+id/moodBar"
@@ -139,6 +154,9 @@
         android:layout_height="24dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/moodPic"
+        app:layout_constraintTop_toBottomOf="@+id/energyBar"
         app:rpbBackgroundColor="#F28969"
         app:rpbBackgroundTextColor="#070600"
         app:rpbCornerRadiusBottomLeft="6dp"
@@ -148,10 +166,7 @@
         app:rpbIsRadiusRestricted="false"
         app:rpbProgressColor="#070600"
         app:rpbProgressTextColor="#F28969"
-        app:rpbTextPadding="12dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/moodPic"
-        app:layout_constraintTop_toBottomOf="@+id/energyBar" />
+        app:rpbTextPadding="12dp" />
 
     <com.mackhartley.roundedprogressbar.RoundedProgressBar
         android:id="@+id/healthBar"
@@ -159,6 +174,9 @@
         android:layout_height="24dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/healthPic"
+        app:layout_constraintTop_toBottomOf="@+id/moodBar"
         app:rpbBackgroundColor="#F28969"
         app:rpbBackgroundTextColor="#070600"
         app:rpbCornerRadiusBottomLeft="6dp"
@@ -168,10 +186,7 @@
         app:rpbIsRadiusRestricted="false"
         app:rpbProgressColor="#070600"
         app:rpbProgressTextColor="#F28969"
-        app:rpbTextPadding="12dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/healthPic"
-        app:layout_constraintTop_toBottomOf="@+id/moodBar" />
+        app:rpbTextPadding="12dp" />
 
     <com.mackhartley.roundedprogressbar.RoundedProgressBar
         android:id="@+id/smartsBar"
@@ -179,6 +194,9 @@
         android:layout_height="24dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/smartsPic"
+        app:layout_constraintTop_toBottomOf="@+id/healthBar"
         app:rpbBackgroundColor="#F28969"
         app:rpbBackgroundTextColor="#070600"
         app:rpbCornerRadiusBottomLeft="6dp"
@@ -188,10 +206,7 @@
         app:rpbIsRadiusRestricted="false"
         app:rpbProgressColor="#070600"
         app:rpbProgressTextColor="#F28969"
-        app:rpbTextPadding="12dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/smartsPic"
-        app:layout_constraintTop_toBottomOf="@+id/healthBar" />
+        app:rpbTextPadding="12dp" />
 
     <com.mackhartley.roundedprogressbar.RoundedProgressBar
         android:id="@+id/looksBar"
@@ -199,6 +214,9 @@
         android:layout_height="24dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/looksPic"
+        app:layout_constraintTop_toBottomOf="@+id/smartsBar"
         app:rpbBackgroundColor="#F28969"
         app:rpbBackgroundTextColor="#070600"
         app:rpbCornerRadiusBottomLeft="6dp"
@@ -208,17 +226,14 @@
         app:rpbIsRadiusRestricted="false"
         app:rpbProgressColor="#070600"
         app:rpbProgressTextColor="#F28969"
-        app:rpbTextPadding="12dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/looksPic"
-        app:layout_constraintTop_toBottomOf="@+id/smartsBar" />
+        app:rpbTextPadding="12dp" />
 
     <TextView
         android:id="@+id/energyText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
         android:text="@string/energy_text"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/activityLog" />
@@ -237,7 +252,7 @@
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_marginStart="12dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="10dp"
         app:layout_constraintStart_toEndOf="@+id/energyText"
         app:layout_constraintTop_toBottomOf="@+id/activityLog"
         app:srcCompat="@drawable/ic_baseline_bolt_24" />
@@ -306,21 +321,23 @@
         app:srcCompat="@drawable/ic_baseline_looks_24" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/materialButton2"
+        android:id="@+id/statusActions"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_marginTop="25dp"
+        android:layout_marginBottom="1dp"
         android:backgroundTint="#5E5EAD"
         android:text="@string/status_actions_button"
         android:textSize="6sp"
         app:icon="@drawable/ic_baseline_account_circle_36"
         app:iconGravity="top"
         app:iconTint="#ff0000"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/looksText" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/materialButton"
+        android:id="@+id/assetsButton"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:backgroundTint="#5E5EAD"
@@ -329,14 +346,18 @@
         app:icon="@drawable/ic_baseline_business_center_36"
         app:iconGravity="top"
         app:iconTint="#D4713B"
-        app:layout_constraintStart_toEndOf="@+id/materialButton2"
-        app:layout_constraintTop_toTopOf="@+id/materialButton2" />
+        app:layout_constraintBottom_toBottomOf="@+id/statusActions"
+        app:layout_constraintStart_toEndOf="@+id/statusActions"
+        app:layout_constraintTop_toTopOf="@+id/statusActions" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/nextYearButton"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        app:iconSize="48dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="1dp"
         android:backgroundTint="#18B500"
         android:insetLeft="0dp"
         android:insetTop="0dp"
@@ -347,14 +368,15 @@
         app:icon="@drawable/ic_baseline_play_arrow_36"
         app:iconGravity="textStart"
         app:iconPadding="0dp"
+        app:iconSize="48dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/materialButton2"
+        app:layout_constraintStart_toStartOf="@+id/statusActions"
         app:layout_constraintTop_toBottomOf="@+id/looksBar"
         app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MyApp.Button.Circle" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/materialButton4"
+        android:id="@+id/relationshipsButton"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:backgroundTint="#5E5EAD"
@@ -363,11 +385,12 @@
         app:icon="@drawable/ic_baseline_people_36"
         app:iconGravity="top"
         app:iconTint="#A44D70"
-        app:layout_constraintEnd_toStartOf="@+id/materialButton3"
-        app:layout_constraintTop_toTopOf="@+id/materialButton" />
+        app:layout_constraintBottom_toBottomOf="@+id/assetsButton"
+        app:layout_constraintEnd_toStartOf="@+id/actionsButton"
+        app:layout_constraintTop_toTopOf="@+id/assetsButton" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/materialButton3"
+        android:id="@+id/actionsButton"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:backgroundTint="#5E5EAD"
@@ -376,8 +399,9 @@
         app:icon="@drawable/ic_baseline_list_alt_36"
         app:iconGravity="top"
         app:iconTint="#4D93A4"
+        app:layout_constraintBottom_toBottomOf="@+id/assetsButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/materialButton4" />
+        app:layout_constraintTop_toTopOf="@+id/relationshipsButton" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

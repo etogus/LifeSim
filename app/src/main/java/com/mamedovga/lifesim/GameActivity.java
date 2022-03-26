@@ -3,6 +3,7 @@ package com.mamedovga.lifesim;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -10,7 +11,9 @@ import android.widget.ProgressBar;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import com.mamedovga.lifesim.databinding.ActivityGameNewBinding;
 import com.mamedovga.lifesim.models.Person;
+import com.mamedovga.lifesim.utils.CountryUtils;
 import com.mamedovga.lifesim.utils.EventUtils;
 import com.mamedovga.lifesim.utils.OtherUtils;
 import com.mamedovga.lifesim.utils.PersonUtils;
@@ -20,27 +23,18 @@ public class GameActivity extends AppCompatActivity {
 
     private final StringBuilder activityLogText = new StringBuilder();
     private Person mainChar;
+    private ActivityGameNewBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_game);
+        binding = ActivityGameNewBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
+        setContentView(view);
+
         Intent intent = getIntent();
 
-        TextView activityDisplay = findViewById(R.id.activityDisplay);
-        ScrollView scrollView = findViewById(R.id.activityLog);
-        Button actions = findViewById(R.id.actions);
-        Button inventory = findViewById(R.id.inventory);
-        Button relationships = findViewById(R.id.relationships);
-        Button activities = findViewById(R.id.activities);
-        Button nextYear = findViewById(R.id.nextYear);
-        ProgressBar moodBar = findViewById(R.id.moodBar);
-        ProgressBar healthBar = findViewById(R.id.healthBar);
-        ProgressBar intelligenceBar = findViewById(R.id.intellectBar);
-        ProgressBar looksBar = findViewById(R.id.looksBar);
-        final boolean[] activityCheck = {false};
-
-        String playerName = intent.getStringExtra("name");
+        String playerName = intent.getStringExtra("firstName");
         String playerLastName = intent.getStringExtra("lastName");
         String playerGender = intent.getStringExtra("gender");
         String playerCountry = intent.getStringExtra("country");
@@ -51,22 +45,27 @@ public class GameActivity extends AppCompatActivity {
         int playerLooks = intent.getIntExtra("looks", 0);
         int playerKarma = intent.getIntExtra("karma", 0);
 
+        final boolean[] activityCheck = {false};
+
         mainChar = new Person(playerName, playerLastName, playerGender, playerCountry, playerAge);
         mainChar.setPersonStats(playerMood, playerHealth, playerIntelligence, playerLooks);
         mainChar.setKarma(playerKarma);
 
-        TextView mainCharName = findViewById(R.id.playerName);
-        mainCharName.setText(mainChar.getFullName());
+        binding.playerName.setText(mainChar.getFullName());
+        binding.countryFlag.setImageResource(CountryUtils.getCountryFlag(playerCountry));
 
-        if(mainChar.getAge() == 0)
+        if(mainChar.getAge() == 0) {
             PersonUtils.randomizeStats(mainChar);
+            binding.playerStatus.setText("Новорожденный");
+            binding.playerStatModifiers.setText("Ничего");
+        }
 
-        moodBar.setProgress(mainChar.getMood());
-        healthBar.setProgress(mainChar.getHealth());
-        intelligenceBar.setProgress(mainChar.getIntelligence());
-        looksBar.setProgress(mainChar.getLooks());
+        binding.moodBar.setProgressPercentage(mainChar.getMood(), true);
+        binding.healthBar.setProgressPercentage(mainChar.getHealth(), true);
+        binding.smartsBar.setProgressPercentage(mainChar.getIntelligence(), true);
+        binding.looksBar.setProgressPercentage(mainChar.getLooks(), true);
 
-        actions.setOnClickListener(new View.OnClickListener() {
+        binding.statusActions.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -74,7 +73,7 @@ public class GameActivity extends AppCompatActivity {
         });
 
 
-        inventory.setOnClickListener(new View.OnClickListener() {
+        binding.assetsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -82,7 +81,7 @@ public class GameActivity extends AppCompatActivity {
         });
 
 
-        relationships.setOnClickListener(new View.OnClickListener() {
+        binding.relationshipsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -90,55 +89,55 @@ public class GameActivity extends AppCompatActivity {
         });
 
 
-        activities.setOnClickListener(new View.OnClickListener() {
+        binding.actionsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(!activityCheck[0]) {
                     int n = OtherUtils.getRandomNumber(1, 4);
                     if(n == 1) {
-                        ProgressBarUtils.updateMoodBar(mainChar, 1, moodBar);
+                        ProgressBarUtils.updateMoodBar(mainChar, 1, binding.moodBar);
                         activityLogText.append("Я посмотрел интересный фильм. \n \n");
-                        activityDisplay.setText(activityLogText);
-                        scrollView.post(new Runnable() {
+                        binding.activityDisplay.setText(activityLogText);
+                        binding.activityLog.post(new Runnable() {
                             @Override
                             public void run() {
-                                scrollView.fullScroll(View.FOCUS_DOWN);
+                                binding.activityLog.fullScroll(View.FOCUS_DOWN);
                             }
                         });
                     }
                     else if(n == 2) {
-                        ProgressBarUtils.updateHealthBar(mainChar, 1, healthBar);
-                        ProgressBarUtils.updateMoodBar(mainChar, 1, moodBar);
+                        ProgressBarUtils.updateHealthBar(mainChar, 1, binding.healthBar);
+                        ProgressBarUtils.updateMoodBar(mainChar, 1, binding.moodBar);
                         activityLogText.append("Я сходил на пробежку. Чувствую себя сильнее. \n \n");
-                        activityDisplay.setText(activityLogText);
-                        scrollView.post(new Runnable() {
+                        binding.activityDisplay.setText(activityLogText);
+                        binding.activityLog.post(new Runnable() {
                             @Override
                             public void run() {
-                                scrollView.fullScroll(View.FOCUS_DOWN);
+                                binding.activityLog.fullScroll(View.FOCUS_DOWN);
                             }
                         });
                     }
                     else if(n == 3) {
-                        ProgressBarUtils.updateIntellectBar(mainChar, 2, intelligenceBar);
-                        ProgressBarUtils.updateMoodBar(mainChar, 2, intelligenceBar);
+                        ProgressBarUtils.updateIntellectBar(mainChar, 2, binding.smartsBar);
+                        ProgressBarUtils.updateMoodBar(mainChar, 2, binding.moodBar);
                         activityLogText.append("Я прочитал захватывающую книгу. \n \n");
-                        activityDisplay.setText(activityLogText);
-                        scrollView.post(new Runnable() {
+                        binding.activityDisplay.setText(activityLogText);
+                        binding.activityLog.post(new Runnable() {
                             @Override
                             public void run() {
-                                scrollView.fullScroll(View.FOCUS_DOWN);
+                                binding.activityLog.fullScroll(View.FOCUS_DOWN);
                             }
                         });
                     }
                     else if(n == 4) {
-                        ProgressBarUtils.updateLooksBar(mainChar, 2, looksBar);
-                        ProgressBarUtils.updateMoodBar(mainChar, 1, intelligenceBar);
+                        ProgressBarUtils.updateLooksBar(mainChar, 2, binding.looksBar);
+                        ProgressBarUtils.updateMoodBar(mainChar, 1, binding.moodBar);
                         activityLogText.append("Я позанимался в спортзале. \n \n");
-                        activityDisplay.setText(activityLogText);
-                        scrollView.post(new Runnable() {
+                        binding.activityDisplay.setText(activityLogText);
+                        binding.activityLog.post(new Runnable() {
                             @Override
                             public void run() {
-                                scrollView.fullScroll(View.FOCUS_DOWN);
+                                binding.activityLog.fullScroll(View.FOCUS_DOWN);
                             }
                         });
                     }
@@ -148,18 +147,17 @@ public class GameActivity extends AppCompatActivity {
         });
 
 
-        nextYear.setOnClickListener(new View.OnClickListener() {
+        binding.nextYearButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 mainChar.setAge(mainChar.getAge() + 1);
                 endGame();
                 String randomEvent = EventUtils.generateEvent(mainChar);
-                activityLogText.append("Возраст: " + mainChar.getAge() + "\n" + randomEvent);
-                activityDisplay.setText(activityLogText);
-                scrollView.post(new Runnable() {
+                activityLogText.append("Возраст: ").append(mainChar.getAge()).append("\n").append(randomEvent);
+                binding.activityLog.post(new Runnable() {
                     @Override
                     public void run() {
-                        scrollView.fullScroll(View.FOCUS_DOWN);
+                        binding.activityLog.fullScroll(View.FOCUS_DOWN);
                     }
                 });
                 EventUtils.generateEvent(mainChar);
