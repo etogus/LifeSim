@@ -133,6 +133,20 @@
         tools:layout_editor_absoluteX="146dp"
         tools:layout_editor_absoluteY="538dp" />
 
+    <com.mackhartley.roundedprogressbar.RoundedProgressBar
+        android:id="@+id/smartsBar"
+        android:layout_width="243dp"
+        android:layout_height="24dp"
+        tools:layout_editor_absoluteX="146dp"
+        tools:layout_editor_absoluteY="579dp" />
+
+    <com.mackhartley.roundedprogressbar.RoundedProgressBar
+        android:id="@+id/looksBar"
+        android:layout_width="243dp"
+        android:layout_height="24dp"
+        tools:layout_editor_absoluteX="146dp"
+        tools:layout_editor_absoluteY="619dp" />
+
     <TextView
         android:id="@+id/energyText"
         android:layout_width="wrap_content"
@@ -174,11 +188,109 @@
         tools:layout_editor_absoluteY="543dp" />
 
     <ImageView
-        android:id="@+id/imageView7"
+        android:id="@+id/healthPic"
         android:layout_width="30dp"
         android:layout_height="30dp"
         app:srcCompat="@android:drawable/btn_star_big_on"
         tools:layout_editor_absoluteX="102dp"
         tools:layout_editor_absoluteY="532dp" />
+
+    <TextView
+        android:id="@+id/smartsText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/smarts_text"
+        tools:layout_editor_absoluteX="18dp"
+        tools:layout_editor_absoluteY="584dp" />
+
+    <ImageView
+        android:id="@+id/smartsPic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@android:drawable/btn_star_big_on"
+        tools:layout_editor_absoluteX="100dp"
+        tools:layout_editor_absoluteY="571dp" />
+
+    <TextView
+        android:id="@+id/looksText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/looks_text"
+        tools:layout_editor_absoluteX="18dp"
+        tools:layout_editor_absoluteY="619dp" />
+
+    <ImageView
+        android:id="@+id/looksPic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@android:drawable/btn_star_big_on"
+        tools:layout_editor_absoluteX="100dp"
+        tools:layout_editor_absoluteY="619dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:text="@string/status_actions_button"
+        android:textSize="6sp"
+        app:icon="@drawable/ic_baseline_account_circle_36"
+        app:iconGravity="top"
+        app:iconTint="#ff0000"
+        android:backgroundTint="#5E5EAD"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="651dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:text="@string/assets_button"
+        android:textSize="6sp"
+        app:icon="@drawable/ic_baseline_business_center_36"
+        app:iconGravity="top"
+        app:iconTint="#D4713B"
+        android:backgroundTint="#5E5EAD"
+        tools:layout_editor_absoluteX="80dp"
+        tools:layout_editor_absoluteY="651dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:backgroundTint="#18B500"
+        android:insetLeft="0dp"
+        android:insetTop="0dp"
+        android:insetRight="0dp"
+        android:insetBottom="0dp"
+        android:padding="0dp"
+        app:iconGravity="textStart"
+        app:iconPadding="0dp"
+        android:textSize="12sp"
+        app:icon="@drawable/ic_baseline_play_arrow_36"
+        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MyApp.Button.Circle"
+        tools:layout_editor_absoluteX="166dp"
+        tools:layout_editor_absoluteY="651dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:text="@string/relationships_button"
+        android:textSize="6sp"
+        app:icon="@drawable/ic_baseline_people_36"
+        app:iconGravity="top"
+        app:iconTint="#A44D70"
+        android:backgroundTint="#5E5EAD"
+        tools:layout_editor_absoluteX="246dp"
+        tools:layout_editor_absoluteY="651dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:text="@string/actions_button"
+        android:textSize="6sp"
+        app:icon="@drawable/ic_baseline_list_alt_36"
+        app:iconGravity="top"
+        app:iconTint="#4D93A4"
+        android:backgroundTint="#5E5EAD"
+        tools:layout_editor_absoluteX="326dp"
+        tools:layout_editor_absoluteY="651dp" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

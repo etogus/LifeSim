@@ -41,4 +41,11 @@
     <string name="mood_text">Настроение</string>
     <string name="energy_text">Энергия</string>
     <string name="health_text">Здоровье</string>
+    <string name="smarts_text">Интеллект</string>
+    <string name="looks_text">Внешность</string>
+    <string name="status_actions_button">Статус</string>
+    <string name="assets_button">Владения</string>
+    <string name="next_year_buttom">Год</string>
+    <string name="relationships_button">Отношения</string>
+    <string name="actions_button">Действия</string>
 </resources>
