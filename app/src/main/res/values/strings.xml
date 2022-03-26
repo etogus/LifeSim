@@ -1,11 +1,11 @@
 <resources>
-    <string name="app_name">Drawing my Life</string>
+    <string name="app_name">LifeSim</string>
     <string name="mood">Настроение</string>
     <string name="health">Здоровье</string>
     <string name="intellect">Интеллект</string>
     <string name="looks">Внешность</string>
     <string name="age">Age</string>
-    <string name="start_game">Start Game</string>
+    <string name="start_game">Начать игру</string>
     <string name="work_on_mp">Work on MP</string>
     <string name="spend_time_with_friends">Spend time with Friends</string>
     <string name="go_to_a_party">Go to a party</string>
@@ -48,4 +48,5 @@
     <string name="next_year_buttom">Год</string>
     <string name="relationships_button">Отношения</string>
     <string name="actions_button">Действия</string>
+    <string name="create_new_life_header">Создание нового персонажа</string>
 </resources>
