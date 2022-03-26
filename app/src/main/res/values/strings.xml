@@ -49,4 +49,8 @@
     <string name="relationships_button">Отношения</string>
     <string name="actions_button">Действия</string>
     <string name="create_new_life_header">Создание нового персонажа</string>
+    <string name="input_first_name_field">Имя</string>
+    <string name="helper_input_first_name_text">Введите имя</string>
+    <string name="input_last_name_field">Фамилия</string>
+    <string name="helper_input_last_name_text">Введите фамилию</string>
 </resources>
