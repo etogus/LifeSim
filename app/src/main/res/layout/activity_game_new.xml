@@ -178,8 +178,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="@string/mood_text"
-        app:layout_constraintTop_toBottomOf="@+id/energyText"
-        tools:layout_editor_absoluteX="8dp" />
+        app:layout_constraintEnd_toEndOf="@+id/energyText"
+        app:layout_constraintTop_toBottomOf="@+id/energyText" />
 
     <ImageView
         android:id="@+id/energyPic"
@@ -196,9 +196,9 @@
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="@+id/energyPic"
         app:layout_constraintTop_toBottomOf="@+id/energyPic"
-        app:srcCompat="@drawable/ic_baseline_mood_24"
-        tools:layout_editor_absoluteX="99dp" />
+        app:srcCompat="@drawable/ic_baseline_mood_24" />
 
     <TextView
         android:id="@+id/healthText"
@@ -206,17 +206,17 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="@string/health_text"
-        app:layout_constraintTop_toBottomOf="@+id/moodText"
-        tools:layout_editor_absoluteX="23dp" />
+        app:layout_constraintEnd_toEndOf="@+id/moodText"
+        app:layout_constraintTop_toBottomOf="@+id/moodText" />
 
     <ImageView
         android:id="@+id/healthPic"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="@+id/moodPic"
         app:layout_constraintTop_toBottomOf="@+id/moodPic"
-        app:srcCompat="@drawable/ic_baseline_health_24"
-        tools:layout_editor_absoluteX="99dp" />
+        app:srcCompat="@drawable/ic_baseline_health_24" />
 
     <TextView
         android:id="@+id/smartsText"
@@ -224,17 +224,17 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="@string/smarts_text"
-        app:layout_constraintTop_toBottomOf="@+id/healthText"
-        tools:layout_editor_absoluteX="17dp" />
+        app:layout_constraintEnd_toEndOf="@+id/healthText"
+        app:layout_constraintTop_toBottomOf="@+id/healthText" />
 
     <ImageView
         android:id="@+id/smartsPic"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="@+id/healthPic"
         app:layout_constraintTop_toBottomOf="@+id/healthPic"
-        app:srcCompat="@drawable/ic_baseline_smarts_24"
-        tools:layout_editor_absoluteX="99dp" />
+        app:srcCompat="@drawable/ic_baseline_smarts_24" />
 
     <TextView
         android:id="@+id/looksText"
@@ -242,83 +242,90 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="@string/looks_text"
-        app:layout_constraintTop_toBottomOf="@+id/smartsText"
-        tools:layout_editor_absoluteX="13dp" />
+        app:layout_constraintEnd_toEndOf="@+id/smartsText"
+        app:layout_constraintTop_toBottomOf="@+id/smartsText" />
 
     <ImageView
         android:id="@+id/looksPic"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="@+id/smartsPic"
         app:layout_constraintTop_toBottomOf="@+id/smartsPic"
-        app:srcCompat="@drawable/ic_baseline_looks_24"
-        tools:layout_editor_absoluteX="99dp" />
+        app:srcCompat="@drawable/ic_baseline_looks_24" />
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/materialButton2"
         android:layout_width="80dp"
         android:layout_height="80dp"
+        android:layout_marginTop="25dp"
+        android:backgroundTint="#5E5EAD"
         android:text="@string/status_actions_button"
         android:textSize="6sp"
         app:icon="@drawable/ic_baseline_account_circle_36"
         app:iconGravity="top"
         app:iconTint="#ff0000"
-        android:backgroundTint="#5E5EAD"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="651dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/looksText" />
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/materialButton"
         android:layout_width="80dp"
         android:layout_height="80dp"
+        android:backgroundTint="#5E5EAD"
         android:text="@string/assets_button"
         android:textSize="6sp"
         app:icon="@drawable/ic_baseline_business_center_36"
         app:iconGravity="top"
         app:iconTint="#D4713B"
-        android:backgroundTint="#5E5EAD"
-        tools:layout_editor_absoluteX="80dp"
-        tools:layout_editor_absoluteY="651dp" />
+        app:layout_constraintStart_toEndOf="@+id/materialButton2"
+        app:layout_constraintTop_toTopOf="@+id/materialButton2" />
 
     <com.google.android.material.button.MaterialButton
         android:layout_width="80dp"
         android:layout_height="80dp"
+        app:iconSize="48dp"
         android:backgroundTint="#18B500"
-        android:layout_marginLeft="-20dp"
         android:insetLeft="0dp"
         android:insetTop="0dp"
         android:insetRight="0dp"
         android:insetBottom="0dp"
         android:padding="0dp"
-        app:iconGravity="textStart"
-        app:iconPadding="0dp"
         android:textSize="12sp"
         app:icon="@drawable/ic_baseline_play_arrow_36"
-        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MyApp.Button.Circle"
-        tools:layout_editor_absoluteX="166dp"
-        tools:layout_editor_absoluteY="651dp" />
+        app:iconGravity="textStart"
+        app:iconPadding="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/materialButton2"
+        app:layout_constraintTop_toBottomOf="@+id/looksBar"
+        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MyApp.Button.Circle" />
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/materialButton4"
         android:layout_width="80dp"
         android:layout_height="80dp"
+        android:backgroundTint="#5E5EAD"
         android:text="@string/relationships_button"
         android:textSize="6sp"
         app:icon="@drawable/ic_baseline_people_36"
         app:iconGravity="top"
         app:iconTint="#A44D70"
-        android:backgroundTint="#5E5EAD"
-        tools:layout_editor_absoluteX="246dp"
-        tools:layout_editor_absoluteY="651dp" />
+        app:layout_constraintEnd_toStartOf="@+id/materialButton3"
+        app:layout_constraintTop_toTopOf="@+id/materialButton" />
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/materialButton3"
         android:layout_width="80dp"
         android:layout_height="80dp"
+        android:backgroundTint="#5E5EAD"
         android:text="@string/actions_button"
         android:textSize="6sp"
         app:icon="@drawable/ic_baseline_list_alt_36"
         app:iconGravity="top"
         app:iconTint="#4D93A4"
-        android:backgroundTint="#5E5EAD"
-        tools:layout_editor_absoluteX="326dp"
-        tools:layout_editor_absoluteY="651dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/materialButton4" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
