@@ -152,8 +152,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/energy_text"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="467dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activityLog" />
 
     <TextView
         android:id="@+id/moodText"
@@ -167,15 +167,15 @@
         android:id="@+id/energyPic"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        app:srcCompat="@android:drawable/btn_star_big_on"
+        app:srcCompat="@drawable/ic_baseline_bolt_24"
         tools:layout_editor_absoluteX="102dp"
-        tools:layout_editor_absoluteY="456dp" />
+        tools:layout_editor_absoluteY="445dp" />
 
     <ImageView
         android:id="@+id/moodPic"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        app:srcCompat="@android:drawable/btn_star_big_on"
+        app:srcCompat="@drawable/ic_baseline_mood_24"
         tools:layout_editor_absoluteX="102dp"
         tools:layout_editor_absoluteY="494dp" />
 
@@ -191,7 +191,7 @@
         android:id="@+id/healthPic"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        app:srcCompat="@android:drawable/btn_star_big_on"
+        app:srcCompat="@drawable/ic_baseline_health_24"
         tools:layout_editor_absoluteX="102dp"
         tools:layout_editor_absoluteY="532dp" />
 
@@ -207,9 +207,9 @@
         android:id="@+id/smartsPic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@android:drawable/btn_star_big_on"
-        tools:layout_editor_absoluteX="100dp"
-        tools:layout_editor_absoluteY="571dp" />
+        app:srcCompat="@drawable/ic_baseline_smarts_24"
+        tools:layout_editor_absoluteX="106dp"
+        tools:layout_editor_absoluteY="579dp" />
 
     <TextView
         android:id="@+id/looksText"
@@ -223,7 +223,7 @@
         android:id="@+id/looksPic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@android:drawable/btn_star_big_on"
+        app:srcCompat="@drawable/ic_baseline_looks_24"
         tools:layout_editor_absoluteX="100dp"
         tools:layout_editor_absoluteY="619dp" />
 
@@ -255,6 +255,7 @@
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:backgroundTint="#18B500"
+        android:layout_marginLeft="-20dp"
         android:insetLeft="0dp"
         android:insetTop="0dp"
         android:insetRight="0dp"
