@@ -7,18 +7,18 @@ public class PersonUtils {
         person.setKarma(randomizeKarma());
         int karma = person.getKarma();
         if(karma == 10)
-            person.setPersonStats(100, 100, 100, 100);
+            person.setPersonStats(100, 100, 100, 100, 100);
         else if(karma >= 8) {
-            person.setPersonStats(randomizeMood(80, 100), randomizeHealth(80, 100), randomizeIntelligence(80, 100), randomizeLooks(80, 100));
+            person.setPersonStats(randomizeMood(80, 100), randomizeHealth(80, 100), randomizeIntelligence(80, 100), randomizeLooks(80, 100), randomizeEnergy(80, 100));
         }
         else if(karma >= 6) {
-            person.setPersonStats(randomizeMood(60, 90), randomizeHealth(60, 90), randomizeIntelligence(60, 100), randomizeLooks(60, 90));
+            person.setPersonStats(randomizeMood(60, 90), randomizeHealth(60, 90), randomizeIntelligence(60, 100), randomizeLooks(60, 90), randomizeEnergy(60, 90));
         }
         else if(karma >= 4) {
-            person.setPersonStats(randomizeMood(40, 80), randomizeHealth(40, 80), randomizeIntelligence(40, 80), randomizeLooks(40, 80));
+            person.setPersonStats(randomizeMood(40, 80), randomizeHealth(40, 80), randomizeIntelligence(40, 80), randomizeLooks(40, 80), randomizeEnergy(40, 80));
         }
         else if(karma <= 2) {
-            person.setPersonStats(randomizeMood(0, 60), randomizeHealth(0, 60), randomizeIntelligence(0, 60), randomizeLooks(0, 60));
+            person.setPersonStats(randomizeMood(0, 60), randomizeHealth(0, 60), randomizeIntelligence(0, 60), randomizeLooks(0, 60), randomizeEnergy(0, 60));
         }
     }
 
@@ -39,6 +39,10 @@ public class PersonUtils {
     }
 
     private static int randomizeLooks(int min, int max) {
+        return OtherUtils.getRandomNumber(min, max);
+    }
+
+    private static int randomizeEnergy(int min, int max) {
         return OtherUtils.getRandomNumber(min, max);
     }
 }

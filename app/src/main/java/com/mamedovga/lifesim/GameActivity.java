@@ -43,12 +43,13 @@ public class GameActivity extends AppCompatActivity {
         int playerHealth = intent.getIntExtra("health", 0);
         int playerIntelligence = intent.getIntExtra("intelligence", 0);
         int playerLooks = intent.getIntExtra("looks", 0);
+        int playerEnergy = intent.getIntExtra("energy", 0);
         int playerKarma = intent.getIntExtra("karma", 0);
 
         final boolean[] activityCheck = {false};
 
-        mainChar = new Person(playerName, playerLastName, playerGender, playerCountry, playerAge);
-        mainChar.setPersonStats(playerMood, playerHealth, playerIntelligence, playerLooks);
+        mainChar = new Person(playerName, playerLastName, playerGender, playerCountry, playerAge, playerEnergy);
+        mainChar.setPersonStats(playerMood, playerHealth, playerIntelligence, playerLooks, playerEnergy);
         mainChar.setKarma(playerKarma);
 
         binding.playerName.setText(mainChar.getFullName());
@@ -57,13 +58,14 @@ public class GameActivity extends AppCompatActivity {
         if(mainChar.getAge() == 0) {
             PersonUtils.randomizeStats(mainChar);
             binding.playerStatus.setText("Новорожденный");
-            binding.playerStatModifiers.setText(playerCountry);
+            binding.playerStatModifiers.setText("Модификаторы отсутствуют");
         }
 
         binding.moodBar.setProgressPercentage(mainChar.getMood(), true);
         binding.healthBar.setProgressPercentage(mainChar.getHealth(), true);
         binding.smartsBar.setProgressPercentage(mainChar.getIntelligence(), true);
         binding.looksBar.setProgressPercentage(mainChar.getLooks(), true);
+        binding.energyBar.setProgressPercentage(mainChar.getEnergy(), true);
 
         binding.statusActions.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -151,7 +153,7 @@ public class GameActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 mainChar.setAge(mainChar.getAge() + 1);
-                endGame();
+                checkAge();
                 String randomEvent = EventUtils.generateEvent(mainChar);
                 activityLogText.append("Возраст: ").append(mainChar.getAge());
                 binding.activityDisplay.setText(activityLogText);
@@ -169,12 +171,21 @@ public class GameActivity extends AppCompatActivity {
         });
     }
 
-    public void endGame() {
+    public void checkAge() {
         if (mainChar.getAge() == 120) {
             Intent endIntent = new Intent(this, EndGameActivity.class);
-
             startActivity(endIntent);
             finish();
+        } else if(mainChar.getAge() == 2) {
+            binding.playerStatus.setText("Дитя");
+        } else if(mainChar.getAge() == 4) {
+            binding.playerStatus.setText("Ребёнок");
+        } else if(mainChar.getAge() == 7) {
+            binding.playerStatus.setText("Школьник");
+        } else if(mainChar.getAge() == 18) {
+            binding.playerStatus.setText("Студент");
+        } else if(mainChar.getAge() == 23) {
+            binding.playerStatus.setText("Молодой человек");
         }
     }
 }

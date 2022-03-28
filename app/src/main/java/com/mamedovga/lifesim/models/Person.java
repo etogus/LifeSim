@@ -11,14 +11,16 @@ public class Person {
     private int health;
     private int intelligence;
     private int looks;
+    private int energy;
     private int karma;
 
-    public Person(String name, String lastName, String gender, String country, int age) {
+    public Person(String name, String lastName, String gender, String country, int age, int energy) {
         this.name = name;
         this.lastName = lastName;
         this.gender = gender;
         this.country = country;
         this.age = age;
+        this.energy = energy;
     }
 
     public String getName() {
@@ -105,10 +107,19 @@ public class Person {
         this.karma = karma;
     }
 
-    public void setPersonStats (int mood, int health, int intelligence, int looks) {
+    public int getEnergy() {
+        return energy;
+    }
+
+    public void setEnergy(int energy) {
+        this.energy = energy;
+    }
+
+    public void setPersonStats (int mood, int health, int intelligence, int looks, int energy) {
         this.mood = mood;
         this.health = health;
         this.intelligence = intelligence;
         this.looks = looks;
+        this.energy = energy;
     }
 }
