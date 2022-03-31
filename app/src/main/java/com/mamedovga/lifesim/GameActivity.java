@@ -1,17 +1,13 @@
 package com.mamedovga.lifesim;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ProgressBar;
-import android.widget.ScrollView;
-import android.widget.TextView;
 
-import com.mamedovga.lifesim.databinding.ActivityGameNewBinding;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.mamedovga.lifesim.databinding.ActivityGameBinding;
 import com.mamedovga.lifesim.models.Person;
 import com.mamedovga.lifesim.utils.CountryUtils;
 import com.mamedovga.lifesim.utils.EventUtils;
@@ -23,12 +19,12 @@ public class GameActivity extends AppCompatActivity {
 
     private final StringBuilder activityLogText = new StringBuilder();
     private Person mainChar;
-    private ActivityGameNewBinding binding;
+    private ActivityGameBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityGameNewBinding.inflate(getLayoutInflater());
+        binding = ActivityGameBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
 

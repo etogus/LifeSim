@@ -1,33 +1,25 @@
 package com.mamedovga.lifesim;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.Spinner;
-import android.widget.TextView;
 
-import com.mamedovga.lifesim.databinding.ActivityNewGameNewBinding;
-import com.mamedovga.lifesim.models.Country;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.mamedovga.lifesim.databinding.ActivityNewGameBinding;
 import com.mamedovga.lifesim.utils.CountryUtils;
 
 public class NewGameActivity extends AppCompatActivity {
 
     private String country;
-    private ActivityNewGameNewBinding binding;
+    private ActivityNewGameBinding binding;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityNewGameNewBinding.inflate(getLayoutInflater());
+        binding = ActivityNewGameBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
 
