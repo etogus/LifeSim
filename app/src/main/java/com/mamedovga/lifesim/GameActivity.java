@@ -3,11 +3,15 @@ package com.mamedovga.lifesim;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.navigation.NavigationBarView;
 import com.mamedovga.lifesim.databinding.ActivityGameBinding;
+import com.mamedovga.lifesim.databinding.ActivityGameReworkBinding;
 import com.mamedovga.lifesim.models.Person;
 import com.mamedovga.lifesim.utils.CountryUtils;
 import com.mamedovga.lifesim.utils.EventUtils;
@@ -19,12 +23,13 @@ public class GameActivity extends AppCompatActivity {
 
     private final StringBuilder activityLogText = new StringBuilder();
     private Person mainChar;
-    private ActivityGameBinding binding;
+    private ActivityGameReworkBinding binding;
+    private boolean activityCheck = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityGameBinding.inflate(getLayoutInflater());
+        binding = ActivityGameReworkBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
 
@@ -41,8 +46,6 @@ public class GameActivity extends AppCompatActivity {
         int playerLooks = intent.getIntExtra("looks", 0);
         int playerEnergy = intent.getIntExtra("energy", 0);
         int playerKarma = intent.getIntExtra("karma", 0);
-
-        final boolean[] activityCheck = {false};
 
         mainChar = new Person(playerName, playerLastName, playerGender, playerCountry, playerAge, playerEnergy);
         mainChar.setPersonStats(playerMood, playerHealth, playerIntelligence, playerLooks, playerEnergy);
@@ -63,106 +66,21 @@ public class GameActivity extends AppCompatActivity {
         binding.looksBar.setProgressPercentage(mainChar.getLooks(), true);
         binding.energyBar.setProgressPercentage(mainChar.getEnergy(), true);
 
-        binding.statusActions.setOnClickListener(new View.OnClickListener() {
+        binding.bottomNavigation.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
-            public void onClick(View view) {
-
-            }
-        });
-
-
-        binding.assetsButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
-
-
-        binding.relationshipsButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
-
-
-        binding.actionsButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(!activityCheck[0]) {
-                    int n = OtherUtils.getRandomNumber(1, 4);
-                    if(n == 1) {
-                        ProgressBarUtils.updateMoodBar(mainChar, 1, binding.moodBar);
-                        activityLogText.append("Я посмотрел интересный фильм. \n \n");
-                        binding.activityDisplay.setText(activityLogText);
-                        binding.activityLog.post(new Runnable() {
-                            @Override
-                            public void run() {
-                                binding.activityLog.fullScroll(View.FOCUS_DOWN);
-                            }
-                        });
-                    }
-                    else if(n == 2) {
-                        ProgressBarUtils.updateHealthBar(mainChar, 1, binding.healthBar);
-                        ProgressBarUtils.updateMoodBar(mainChar, 1, binding.moodBar);
-                        activityLogText.append("Я сходил на пробежку. Чувствую себя сильнее. \n \n");
-                        binding.activityDisplay.setText(activityLogText);
-                        binding.activityLog.post(new Runnable() {
-                            @Override
-                            public void run() {
-                                binding.activityLog.fullScroll(View.FOCUS_DOWN);
-                            }
-                        });
-                    }
-                    else if(n == 3) {
-                        ProgressBarUtils.updateIntellectBar(mainChar, 2, binding.smartsBar);
-                        ProgressBarUtils.updateMoodBar(mainChar, 2, binding.moodBar);
-                        activityLogText.append("Я прочитал захватывающую книгу. \n \n");
-                        binding.activityDisplay.setText(activityLogText);
-                        binding.activityLog.post(new Runnable() {
-                            @Override
-                            public void run() {
-                                binding.activityLog.fullScroll(View.FOCUS_DOWN);
-                            }
-                        });
-                    }
-                    else if(n == 4) {
-                        ProgressBarUtils.updateLooksBar(mainChar, 2, binding.looksBar);
-                        ProgressBarUtils.updateMoodBar(mainChar, 1, binding.moodBar);
-                        activityLogText.append("Я позанимался в спортзале. \n \n");
-                        binding.activityDisplay.setText(activityLogText);
-                        binding.activityLog.post(new Runnable() {
-                            @Override
-                            public void run() {
-                                binding.activityLog.fullScroll(View.FOCUS_DOWN);
-                            }
-                        });
-                    }
-                    activityCheck[0] = true;
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.page_1:
+                        break;
+                    case R.id.page_2:
+                        break;
+                    case R.id.page_3:
+                        break;
+                    case R.id.page_4:
+                        actions();
+                        break;
                 }
-            }
-        });
-
-
-        binding.nextYearButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mainChar.setAge(mainChar.getAge() + 1);
-                checkAge();
-                String randomEvent = EventUtils.generateEvent(mainChar);
-                activityLogText.append("Возраст: ").append(mainChar.getAge());
-                binding.activityDisplay.setText(activityLogText);
-                binding.activityDisplay.setTextColor(Color.BLUE);
-                activityLogText.append("\n").append(randomEvent);
-                binding.activityLog.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        binding.activityLog.fullScroll(View.FOCUS_DOWN);
-                    }
-                });
-                //EventUtils.generateEvent(mainChar);
-                activityCheck[0] = false;
+                return true;
             }
         });
     }
@@ -182,6 +100,78 @@ public class GameActivity extends AppCompatActivity {
             binding.playerStatus.setText("Студент");
         } else if(mainChar.getAge() == 23) {
             binding.playerStatus.setText("Молодой человек");
+        }
+    }
+
+    public void nextYear() {
+        mainChar.setAge(mainChar.getAge() + 1);
+        checkAge();
+        String randomEvent = EventUtils.generateEvent(mainChar);
+        activityLogText.append("Возраст: ").append(mainChar.getAge());
+        binding.activityDisplay.setText(activityLogText);
+        binding.activityDisplay.setTextColor(Color.BLUE);
+        activityLogText.append("\n").append(randomEvent);
+        binding.activityLog.post(new Runnable() {
+            @Override
+            public void run() {
+                binding.activityLog.fullScroll(View.FOCUS_DOWN);
+            }
+        });
+        //EventUtils.generateEvent(mainChar);
+        activityCheck = false;
+    }
+
+    public void actions() {
+        if(!activityCheck) {
+            int n = OtherUtils.getRandomNumber(1, 4);
+            if(n == 1) {
+                ProgressBarUtils.updateMoodBar(mainChar, 1, binding.moodBar);
+                activityLogText.append("Я посмотрел интересный фильм. \n \n");
+                binding.activityDisplay.setText(activityLogText);
+                binding.activityLog.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        binding.activityLog.fullScroll(View.FOCUS_DOWN);
+                    }
+                });
+            }
+            else if(n == 2) {
+                ProgressBarUtils.updateHealthBar(mainChar, 1, binding.healthBar);
+                ProgressBarUtils.updateMoodBar(mainChar, 1, binding.moodBar);
+                activityLogText.append("Я сходил на пробежку. Чувствую себя сильнее. \n \n");
+                binding.activityDisplay.setText(activityLogText);
+                binding.activityLog.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        binding.activityLog.fullScroll(View.FOCUS_DOWN);
+                    }
+                });
+            }
+            else if(n == 3) {
+                ProgressBarUtils.updateIntellectBar(mainChar, 2, binding.smartsBar);
+                ProgressBarUtils.updateMoodBar(mainChar, 2, binding.moodBar);
+                activityLogText.append("Я прочитал захватывающую книгу. \n \n");
+                binding.activityDisplay.setText(activityLogText);
+                binding.activityLog.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        binding.activityLog.fullScroll(View.FOCUS_DOWN);
+                    }
+                });
+            }
+            else if(n == 4) {
+                ProgressBarUtils.updateLooksBar(mainChar, 2, binding.looksBar);
+                ProgressBarUtils.updateMoodBar(mainChar, 1, binding.moodBar);
+                activityLogText.append("Я позанимался в спортзале. \n \n");
+                binding.activityDisplay.setText(activityLogText);
+                binding.activityLog.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        binding.activityLog.fullScroll(View.FOCUS_DOWN);
+                    }
+                });
+            }
+            activityCheck = true;
         }
     }
 }

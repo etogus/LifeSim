@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/playerAvatar"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:contentDescription="@string/player_avatar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <ImageView
+        android:id="@+id/countryFlag"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="10dp"
+        android:contentDescription="@string/country_flag"
+        app:layout_constraintStart_toEndOf="@+id/playerAvatar"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/russian_flag_icon_32" />
+
+    <TextView
+        android:id="@+id/playerName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="14dp"
+        android:text="sadasds"
+        app:layout_constraintBottom_toBottomOf="@+id/countryFlag"
+        app:layout_constraintStart_toEndOf="@+id/countryFlag"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/playerStatusImage"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toEndOf="@+id/playerAvatar"
+        app:layout_constraintTop_toBottomOf="@+id/countryFlag"
+        app:srcCompat="@drawable/ic_baseline_baby_36" />
+
+    <TextView
+        android:id="@+id/playerStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="11dp"
+        android:text="sadasds"
+        app:layout_constraintBottom_toBottomOf="@+id/playerStatusImage"
+        app:layout_constraintStart_toEndOf="@+id/playerStatusImage"
+        app:layout_constraintTop_toBottomOf="@+id/playerName" />
+
+    <ImageView
+        android:id="@+id/playerStatModifiersIcon"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="10dp"
+        android:contentDescription="@string/player_stat_modifiers"
+        app:layout_constraintStart_toStartOf="@+id/playerStatusImage"
+        app:layout_constraintTop_toBottomOf="@+id/playerStatusImage"
+        app:srcCompat="@drawable/ic_baseline_modifiers_36" />
+
+    <TextView
+        android:id="@+id/playerStatModifiers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="11dp"
+        android:text="dasdas"
+        app:layout_constraintBottom_toBottomOf="@+id/playerStatModifiersIcon"
+        app:layout_constraintStart_toEndOf="@+id/playerStatModifiersIcon"
+        app:layout_constraintTop_toBottomOf="@+id/playerStatus" />
+
+    <TextView
+        android:id="@+id/dollarSign"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="5dp"
+        android:text="@string/dollar_sign"
+        android:textColor="#4FC476"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/playerName" />
+
+    <TextView
+        android:id="@+id/playerMoney"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="2dp"
+        android:text="@string/player_money"
+        app:layout_constraintEnd_toStartOf="@+id/dollarSign"
+        app:layout_constraintTop_toTopOf="@+id/playerName" />
+
+    <ScrollView
+        android:id="@+id/activityLog"
+        android:layout_width="378dp"
+        android:layout_height="276dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/scrollview_border"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/playerAvatar">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/activityDisplay"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+    <com.mackhartley.roundedprogressbar.RoundedProgressBar
+        android:id="@+id/energyBar"
+        android:layout_width="243dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/energyPic"
+        app:layout_constraintTop_toBottomOf="@+id/activityLog"
+        app:rpbBackgroundColor="#F28969"
+        app:rpbBackgroundTextColor="#070600"
+        app:rpbCornerRadiusBottomLeft="6dp"
+        app:rpbCornerRadiusBottomRight="20dp"
+        app:rpbCornerRadiusTopLeft="20dp"
+        app:rpbCornerRadiusTopRight="6dp"
+        app:rpbIsRadiusRestricted="false"
+        app:rpbProgressColor="#070600"
+        app:rpbProgressTextColor="#F28969"
+        app:rpbTextPadding="12dp" />
+
+    <com.mackhartley.roundedprogressbar.RoundedProgressBar
+        android:id="@+id/moodBar"
+        android:layout_width="243dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/moodPic"
+        app:layout_constraintTop_toBottomOf="@+id/energyBar"
+        app:rpbBackgroundColor="#F28969"
+        app:rpbBackgroundTextColor="#070600"
+        app:rpbCornerRadiusBottomLeft="6dp"
+        app:rpbCornerRadiusBottomRight="20dp"
+        app:rpbCornerRadiusTopLeft="20dp"
+        app:rpbCornerRadiusTopRight="6dp"
+        app:rpbIsRadiusRestricted="false"
+        app:rpbProgressColor="#070600"
+        app:rpbProgressTextColor="#F28969"
+        app:rpbTextPadding="12dp" />
+
+    <com.mackhartley.roundedprogressbar.RoundedProgressBar
+        android:id="@+id/healthBar"
+        android:layout_width="243dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/healthPic"
+        app:layout_constraintTop_toBottomOf="@+id/moodBar"
+        app:rpbBackgroundColor="#F28969"
+        app:rpbBackgroundTextColor="#070600"
+        app:rpbCornerRadiusBottomLeft="6dp"
+        app:rpbCornerRadiusBottomRight="20dp"
+        app:rpbCornerRadiusTopLeft="20dp"
+        app:rpbCornerRadiusTopRight="6dp"
+        app:rpbIsRadiusRestricted="false"
+        app:rpbProgressColor="#070600"
+        app:rpbProgressTextColor="#F28969"
+        app:rpbTextPadding="12dp" />
+
+    <com.mackhartley.roundedprogressbar.RoundedProgressBar
+        android:id="@+id/smartsBar"
+        android:layout_width="243dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/smartsPic"
+        app:layout_constraintTop_toBottomOf="@+id/healthBar"
+        app:rpbBackgroundColor="#F28969"
+        app:rpbBackgroundTextColor="#070600"
+        app:rpbCornerRadiusBottomLeft="6dp"
+        app:rpbCornerRadiusBottomRight="20dp"
+        app:rpbCornerRadiusTopLeft="20dp"
+        app:rpbCornerRadiusTopRight="6dp"
+        app:rpbIsRadiusRestricted="false"
+        app:rpbProgressColor="#070600"
+        app:rpbProgressTextColor="#F28969"
+        app:rpbTextPadding="12dp" />
+
+    <com.mackhartley.roundedprogressbar.RoundedProgressBar
+        android:id="@+id/looksBar"
+        android:layout_width="243dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/looksPic"
+        app:layout_constraintTop_toBottomOf="@+id/smartsBar"
+        app:rpbBackgroundColor="#F28969"
+        app:rpbBackgroundTextColor="#070600"
+        app:rpbCornerRadiusBottomLeft="6dp"
+        app:rpbCornerRadiusBottomRight="20dp"
+        app:rpbCornerRadiusTopLeft="20dp"
+        app:rpbCornerRadiusTopRight="6dp"
+        app:rpbIsRadiusRestricted="false"
+        app:rpbProgressColor="#070600"
+        app:rpbProgressTextColor="#F28969"
+        app:rpbTextPadding="12dp" />
+
+    <TextView
+        android:id="@+id/energyText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/energy_text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activityLog" />
+
+    <TextView
+        android:id="@+id/moodText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/mood_text"
+        app:layout_constraintEnd_toEndOf="@+id/energyText"
+        app:layout_constraintTop_toBottomOf="@+id/energyText" />
+
+    <ImageView
+        android:id="@+id/energyPic"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toEndOf="@+id/energyText"
+        app:layout_constraintTop_toBottomOf="@+id/activityLog"
+        app:srcCompat="@drawable/ic_baseline_bolt_24" />
+
+    <ImageView
+        android:id="@+id/moodPic"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="@+id/energyPic"
+        app:layout_constraintTop_toBottomOf="@+id/energyPic"
+        app:srcCompat="@drawable/ic_baseline_mood_24" />
+
+    <TextView
+        android:id="@+id/healthText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/health_text"
+        app:layout_constraintEnd_toEndOf="@+id/moodText"
+        app:layout_constraintTop_toBottomOf="@+id/moodText" />
+
+    <ImageView
+        android:id="@+id/healthPic"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="@+id/moodPic"
+        app:layout_constraintTop_toBottomOf="@+id/moodPic"
+        app:srcCompat="@drawable/ic_baseline_health_24" />
+
+    <TextView
+        android:id="@+id/smartsText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/smarts_text"
+        app:layout_constraintEnd_toEndOf="@+id/healthText"
+        app:layout_constraintTop_toBottomOf="@+id/healthText" />
+
+    <ImageView
+        android:id="@+id/smartsPic"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="@+id/healthPic"
+        app:layout_constraintTop_toBottomOf="@+id/healthPic"
+        app:srcCompat="@drawable/ic_baseline_smarts_24" />
+
+    <TextView
+        android:id="@+id/looksText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/looks_text"
+        app:layout_constraintEnd_toEndOf="@+id/smartsText"
+        app:layout_constraintTop_toBottomOf="@+id/smartsText" />
+
+    <ImageView
+        android:id="@+id/looksPic"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="@+id/smartsPic"
+        app:layout_constraintTop_toBottomOf="@+id/smartsPic"
+        app:srcCompat="@drawable/ic_baseline_looks_24" />
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.bottomappbar.BottomAppBar
+            android:id="@+id/bottomAppBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            app:fabCradleMargin="10dp"
+            app:fabCradleRoundedCornerRadius="10dp"
+            app:fabCradleVerticalOffset="10dp">
+
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/bottom_navigation"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="16dp"
+                android:background="@android:color/transparent"
+                app:menu="@menu/bottom_navigation_menu" />
+
+        </com.google.android.material.bottomappbar.BottomAppBar>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floating_action_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/nextYear"
+            app:srcCompat="@drawable/ic_baseline_play_arrow_36"
+            app:layout_anchor="@id/bottomAppBar" />
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
