@@ -7,6 +7,8 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -17,6 +19,7 @@ import com.mamedovga.lifesim.utils.StringUtils;
 
 public class NewGameActivity extends AppCompatActivity {
 
+    private String gender = "male";
     private String country = "Россия";
     private ActivityNewGameBinding binding;
 
@@ -32,6 +35,20 @@ public class NewGameActivity extends AppCompatActivity {
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         binding.spinnerCountryTextView.setAdapter(arrayAdapter);
         binding.spinnerCountryTextView.setText(countries[0], false);
+
+        binding.randomizeFirstName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                binding.inputFirstNameFieldEditText.setText(PersonUtils.getRandomName(gender, country));
+            }
+        });
+
+        binding.randomizeLastName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                binding.inputLastNameFieldEditText.setText(PersonUtils.getRandomName(gender, country));
+            }
+        });
 
         binding.startGameButton.setOnClickListener(unused -> createGameClicked());
 
@@ -99,6 +116,15 @@ public class NewGameActivity extends AppCompatActivity {
                 }
             }
         });
+
+        binding.radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                RadioButton radioButtonMale = binding.radioGroup.findViewById(R.id.radioButtonMale);
+                if(radioButtonMale.isChecked()) gender = "male";
+                else gender = "female";
+            }
+        });
     }
 
     private void createGameClicked() {
@@ -106,18 +132,16 @@ public class NewGameActivity extends AppCompatActivity {
         StringBuilder firstName = new StringBuilder();
         StringBuilder lastName = new StringBuilder();
 
-        String gender;
-        if(binding.radioGroup.getCheckedRadioButtonId() == 0) {
-            gender = "male";
-        } else gender = "female";
-
         if(binding.inputFirstNameFieldEditText.getText().toString().equals("")) {
             firstName.append(PersonUtils.getRandomName(gender, country));
+        } else {
+            firstName.append(binding.inputFirstNameFieldEditText.getText().toString());
         }
-
 
         if(binding.inputLastNameFieldEditText.getText().toString().equals("")) {
             lastName.append(PersonUtils.getRandomName(gender, country));
+        } else {
+            lastName.append(binding.inputLastNameFieldEditText.getText().toString());
         }
 
         intent.putExtra("firstName", firstName.toString());
