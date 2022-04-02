@@ -11,7 +11,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.navigation.NavigationBarView;
 import com.mamedovga.lifesim.databinding.ActivityGameBinding;
-import com.mamedovga.lifesim.databinding.ActivityGameReworkBinding;
 import com.mamedovga.lifesim.models.Person;
 import com.mamedovga.lifesim.utils.CountryUtils;
 import com.mamedovga.lifesim.utils.EventUtils;
@@ -23,13 +22,13 @@ public class GameActivity extends AppCompatActivity {
 
     private final StringBuilder activityLogText = new StringBuilder();
     private Person mainChar;
-    private ActivityGameReworkBinding binding;
+    private ActivityGameBinding binding;
     private boolean activityCheck = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityGameReworkBinding.inflate(getLayoutInflater());
+        binding = ActivityGameBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
 
