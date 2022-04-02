@@ -12,11 +12,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.mamedovga.lifesim.databinding.ActivityNewGameBinding;
 import com.mamedovga.lifesim.utils.CountryUtils;
+import com.mamedovga.lifesim.utils.PersonUtils;
 import com.mamedovga.lifesim.utils.StringUtils;
 
 public class NewGameActivity extends AppCompatActivity {
 
-    private String country;
+    private String country = "Россия";
     private ActivityNewGameBinding binding;
 
     @Override
@@ -33,6 +34,7 @@ public class NewGameActivity extends AppCompatActivity {
         binding.spinnerCountryTextView.setText(countries[0], false);
 
         binding.startGameButton.setOnClickListener(unused -> createGameClicked());
+
         binding.spinnerCountryTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -109,16 +111,13 @@ public class NewGameActivity extends AppCompatActivity {
             gender = "male";
         } else gender = "female";
 
-        try {
-            firstName.append(binding.inputLastNameFieldEditText.getText().toString());
-        } catch (NullPointerException e) {
-
+        if(binding.inputFirstNameFieldEditText.getText().toString().equals("")) {
+            firstName.append(PersonUtils.getRandomName(gender, country));
         }
 
-        try {
-            lastName.append(binding.inputLastNameFieldEditText.getText().toString());
-        } catch (NullPointerException e) {
 
+        if(binding.inputLastNameFieldEditText.getText().toString().equals("")) {
+            lastName.append(PersonUtils.getRandomName(gender, country));
         }
 
         intent.putExtra("firstName", firstName.toString());
