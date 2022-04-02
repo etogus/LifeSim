@@ -24,7 +24,7 @@ public class NewGameActivity extends AppCompatActivity {
         setContentView(view);
 
         String[] countries = CountryUtils.getCountries();
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, countries);
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, R.layout.dropdown_item, countries);
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         binding.spinnerCountryTextView.setAdapter(arrayAdapter);
 
