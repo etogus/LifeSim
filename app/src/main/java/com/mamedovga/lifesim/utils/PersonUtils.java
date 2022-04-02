@@ -181,8 +181,10 @@ public class PersonUtils {
         return names[randomNumber];
     }
 
-    public static String getRandomLastName(String country) {
-        String[] names = getLastNames(country);
+    public static String getRandomLastName(String gender, String country) {
+        String[] names;
+        if(gender.equals("female") && country.equals("Россия")) names = getWomanFirstNamesRussian();
+        else names = getLastNames(country);
         int randomNumber = NumberUtils.getRandomNumber(0, names.length - 1);
         return names[randomNumber];
     }
@@ -232,35 +234,48 @@ public class PersonUtils {
                         "Ibarra", "Juarez", "Lopez", "Lorenzo", "Lozano", "Molina", "Montero",
                         "Moralez", "Navarro", "Ochoa", "Ortega", "Paredes", "Perez", "Ramos"};
             case "Италия":
-                return new String[]{"Alessandro", "Angelo", "Antonio", "Cesare", "Dante", "Domenico",
-                        "Emilio", "Enzo", "Fabio", "Franko", "Mario", "Marco",
-                        "Romano", "Romolo", "Sergio", "Silvio", "Tito", "Vitale",
-                        "Vito"};
+                return new String[]{"Acerbi", "Agani", "Ansaldi", "Antonini", "Armani", "Baggio",
+                        "Bagnoli", "Baldini", "Bandini", "Belmonte", "Benini", "Berardi",
+                        "Berti", "Biagi", "Bianco", "Campana", "Capello", "Carbone",
+                        "Casale", "Cassano", "Cavallo", "Colombo", "Conti", "Crespo",
+                        "Cuoco", "Damiani", "De Vito", "Di Napoli", "Esposito", "Falco",
+                        "Ferri", "Franco", "Fusco", "Gaspari", "Lazzari", "Leone", "Lupo"};
             case "Франция":
-                return new String[]{"Ames", "Astor", "Berle ", "Boyce", "Butch", "Butler",
-                        "Calvin", "Chandler", "Chevy", "Corbett", "Corbin", "Darnell",
-                        "Delano", "Dorsey", "Durant", "Falcon", "Gaston", "Louis",
-                        "Mason", "Noel", "Pacey", "Percy", "Purcell", "Rich",
-                        "Rick", "Seymour", "Spencer", "Terrell", "Trey", "Tristan", "Vern"};
+                return new String[]{"Abel", "Allard", "Arnaud ", "Babin", "Bellamy", "Benoit",
+                        "Blaise", "Borde", "Boucher", "Brodeur", "Bureau", "Calvin",
+                        "Caron", "Charron", "Chauvin", "Clement", "Cloutier", "Colbert",
+                        "Courtois", "Daniau", "Daviau", "Dubois", "Dufour", "Dumont",
+                        "Fabre", "Fosse", "Gagne", "Germain", "Jean", "Lavigne", "Leclair"};
             case "Швеция":
-                return new String[]{"Alvar", "Arvid", "Casper", "Edvard", "Edvin",
-                        "Einar", "Erling", "Frans", "Fredrik", "Georg",
-                        "Harald", "Hasse", "Holger", "Klas", "Mats", "Niklas",
-                        "Olle", "Ruben", "Stefan", "Sten", "Ville"};
+                return new String[]{"Aberg", "Abramsson", "Adamsson", "Ahilberg", "Akerman",
+                        "Akesson", "Alfson", "Berg", "Bergman", "Bjork",
+                        "Blom", "Borg", "Bystrom", "Carlson", "Dahl", "Ek",
+                        "Eklund", "Engman", "Ericson", "Falk", "Feldt",
+                        "Fransson", "Grahn", "Hjort", "Holmberg", "Hult", "Isaksson"};
             case "Германия":
-                return new String[]{"Aart", "Abbe", "Adler", "Aldo", "Arne",
-                        "Bedrich", "Bach", "Berman", "Brant", "Brecht",
-                        "Dieter", "Dietz", "Dolph", "Eckhart", "Elmo", "Fitz",
-                        "Frank", "Fred", "Gaston", "Gert", "Gil", "Hahn", "Gustav",
-                        "Harman", "Harris", "Hein", "Heinz", "Heller", "Hendrick",
-                        "Hugh", "Hugo", "Kahn", "Karl", "Konrad", "Liam", "Luther"};
+                return new String[]{"Albrecht", "Bachman", "Backer", "Bayer", "Bahr",
+                        "Becker", "Blau", "Bocker", "Boehler", "Bohm",
+                        "Brandt", "Braun", "Denzel", "Dohman", "Dressler", "Dreyer",
+                        "Ebner", "Egger", "Engel", "Falk", "Faust", "Ferber", "Fiedler",
+                        "Fischer", "Franke", "Frei", "Freud", "Fuchs", "Geissler",
+                        "Gerber", "Graf", "Gunther", "Haase", "Habicht", "Halle", "Haumann"};
         }
 
-        return new String[] {"Александр", "Алексей", "Альберт", "Анатолий", "Андрей",
-                "Богдан", "Борис", "Валерий", "Василий", "Виталий",
-                "Георгий", "Дмитрий", "Евгений", "Егор", "Иван", "Игорь",
-                "Илья", "Константин", "Леонид", "Максим", "Михаил", "Никита",
-                "Олег", "Павел", "Петр", "Руслан", "Сергей", "Степан",
-                "Тимур", "Тимофей", "Федор"};
+        return new String[] {"Александров", "Алексеев", "Андреев", "Антонов", "Богданов",
+                "Богомолов", "Борисов", "Федоров", "Иванов", "Константинов",
+                "Козлов", "Кузнецов", "Лебедев", "Максимов", "Матвеев", "Мельников",
+                "Михайлов", "Николаев", "Новиков", "Орлов", "Павлов", "Попов",
+                "Романов", "Васильев", "Виноградов", "Волков", "Петров", "Яковлев",
+                "Соколов", "Тимофеев", "Смирнов"};
     }
+
+    public static String[] getWomanFirstNamesRussian() {
+        return new String[] {"Александрова", "Алексеева", "Андреева", "Антонова", "Богданова",
+                "Богомолова", "Борисова", "Федорова", "Иванова", "Константинова",
+                "Козлова", "Кузнецова", "Лебедева", "Максимова", "Матвеева", "Мельникова",
+                "Михайлова", "Николаева", "Новикова", "Орлова", "Павлова", "Попова",
+                "Романова", "Васильева", "Виноградова", "Волкова", "Петрова", "Яковлева",
+                "Соколова", "Тимофеева", "Смирнова"};
+    }
+
 }

@@ -46,7 +46,7 @@ public class NewGameActivity extends AppCompatActivity {
         binding.randomizeLastName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                binding.inputLastNameFieldEditText.setText(PersonUtils.getRandomLastName(country));
+                binding.inputLastNameFieldEditText.setText(PersonUtils.getRandomLastName(gender, country));
             }
         });
 
@@ -139,7 +139,7 @@ public class NewGameActivity extends AppCompatActivity {
         }
 
         if(binding.inputLastNameFieldEditText.getText().toString().equals("")) {
-            lastName.append(PersonUtils.getRandomLastName(country));
+            lastName.append(PersonUtils.getRandomLastName(gender, country));
         } else {
             lastName.append(binding.inputLastNameFieldEditText.getText().toString());
         }
