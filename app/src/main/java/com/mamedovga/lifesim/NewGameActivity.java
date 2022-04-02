@@ -2,6 +2,8 @@ package com.mamedovga.lifesim;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -10,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.mamedovga.lifesim.databinding.ActivityNewGameBinding;
 import com.mamedovga.lifesim.utils.CountryUtils;
+import com.mamedovga.lifesim.utils.StringUtils;
 
 public class NewGameActivity extends AppCompatActivity {
 
@@ -27,6 +30,7 @@ public class NewGameActivity extends AppCompatActivity {
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, R.layout.dropdown_item, countries);
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         binding.spinnerCountryTextView.setAdapter(arrayAdapter);
+        binding.spinnerCountryTextView.setText(countries[0], false);
 
         binding.startGameButton.setOnClickListener(unused -> createGameClicked());
         binding.spinnerCountryTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -35,20 +39,90 @@ public class NewGameActivity extends AppCompatActivity {
                 country = adapterView.getItemAtPosition(i).toString();
             }
         });
+
+        binding.inputFirstNameFieldEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                StringBuilder firstName = new StringBuilder();
+                try {
+                    binding.inputFirstNameFieldEditText.setError(null);
+                    firstName.append(binding.inputFirstNameFieldEditText.getText().toString());
+                } catch (NullPointerException e) {
+                    binding.inputFirstNameFieldEditText.setError(getString(R.string.error_empty));
+                }
+                if(!(StringUtils.isStringLetterOnly(firstName.toString()))) {
+                    binding.inputFirstNameFieldEditText.setError(getString(R.string.error_format));
+                }
+                if(firstName.length() > 10) {
+                    binding.inputFirstNameFieldEditText.setError(getString(R.string.error_length));
+                }
+            }
+        });
+
+        binding.inputLastNameFieldEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                StringBuilder lastName = new StringBuilder();
+                try {
+                    binding.inputFirstNameFieldEditText.setError(null);
+                    lastName.append(binding.inputFirstNameFieldEditText.getText().toString());
+                } catch (NullPointerException e) {
+                    binding.inputFirstNameFieldEditText.setError(getString(R.string.error_empty));
+                }
+                if(!(StringUtils.isStringLetterOnly(lastName.toString()))) {
+                    binding.inputFirstNameFieldEditText.setError(getString(R.string.error_format));
+                }
+                if(lastName.length() > 10) {
+                    binding.inputFirstNameFieldEditText.setError(getString(R.string.error_length));
+                }
+            }
+        });
     }
 
     private void createGameClicked() {
         Intent intent = new Intent(this, GameActivity.class);
+        StringBuilder firstName = new StringBuilder();
+        StringBuilder lastName = new StringBuilder();
 
-        String name = binding.inputFirstNameFieldEditText.getText().toString();
-        String lastName = binding.inputLastNameFieldEditText.getText().toString();
         String gender;
         if(binding.radioGroup.getCheckedRadioButtonId() == 0) {
             gender = "male";
         } else gender = "female";
 
-        intent.putExtra("firstName", name);
-        intent.putExtra("lastName", lastName);
+        try {
+            firstName.append(binding.inputLastNameFieldEditText.getText().toString());
+        } catch (NullPointerException e) {
+
+        }
+
+        try {
+            lastName.append(binding.inputLastNameFieldEditText.getText().toString());
+        } catch (NullPointerException e) {
+
+        }
+
+        intent.putExtra("firstName", firstName.toString());
+        intent.putExtra("lastName", lastName.toString());
         intent.putExtra("gender", gender);
         intent.putExtra("country", country);
 

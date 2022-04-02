@@ -57,4 +57,7 @@
     <string name="radiobutton_male">Мужчина</string>
     <string name="radiobutton_Female">Женщина</string>
     <string name="country_picker">Страна</string>
+    <string name="error_length">Слишком большое число символов</string>
+    <string name="error_format">Разрешены только буквы</string>
+    <string name="error_empty">Поле не может быть пустым</string>
 </resources>
