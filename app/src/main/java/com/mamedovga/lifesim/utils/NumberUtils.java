@@ -2,7 +2,7 @@ package com.mamedovga.lifesim.utils;
 
 import java.util.Random;
 
-public class OtherUtils {
+public class NumberUtils {
     public static int getRandomNumber(int min, int max) {
         int diff = max - min;
         Random random = new Random();

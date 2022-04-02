@@ -14,7 +14,7 @@ import com.mamedovga.lifesim.databinding.ActivityGameBinding;
 import com.mamedovga.lifesim.models.Person;
 import com.mamedovga.lifesim.utils.CountryUtils;
 import com.mamedovga.lifesim.utils.EventUtils;
-import com.mamedovga.lifesim.utils.OtherUtils;
+import com.mamedovga.lifesim.utils.NumberUtils;
 import com.mamedovga.lifesim.utils.PersonUtils;
 import com.mamedovga.lifesim.utils.ProgressBarUtils;
 
@@ -122,7 +122,7 @@ public class GameActivity extends AppCompatActivity {
 
     public void actions() {
         if(!activityCheck) {
-            int n = OtherUtils.getRandomNumber(1, 4);
+            int n = NumberUtils.getRandomNumber(1, 4);
             if(n == 1) {
                 ProgressBarUtils.updateMoodBar(mainChar, 1, binding.moodBar);
                 activityLogText.append("Я посмотрел интересный фильм. \n \n");
