@@ -128,28 +128,30 @@ public class NewGameActivity extends AppCompatActivity {
     }
 
     private void createGameClicked() {
-        Intent intent = new Intent(this, GameActivity.class);
-        StringBuilder firstName = new StringBuilder();
-        StringBuilder lastName = new StringBuilder();
+        if(binding.inputFirstNameFieldEditText.getError() == null && binding.inputLastNameFieldEditText.getError() == null) {
+            Intent intent = new Intent(this, GameActivity.class);
+            StringBuilder firstName = new StringBuilder();
+            StringBuilder lastName = new StringBuilder();
 
-        if(binding.inputFirstNameFieldEditText.getText().toString().equals("")) {
-            firstName.append(PersonUtils.getRandomFirstName(gender, country));
-        } else {
-            firstName.append(binding.inputFirstNameFieldEditText.getText().toString());
+            if(binding.inputFirstNameFieldEditText.getText().toString().equals("")) {
+                firstName.append(PersonUtils.getRandomFirstName(gender, country));
+            } else {
+                firstName.append(binding.inputFirstNameFieldEditText.getText().toString());
+            }
+
+            if(binding.inputLastNameFieldEditText.getText().toString().equals("")) {
+                lastName.append(PersonUtils.getRandomLastName(gender, country));
+            } else {
+                lastName.append(binding.inputLastNameFieldEditText.getText().toString());
+            }
+
+            intent.putExtra("firstName", firstName.toString());
+            intent.putExtra("lastName", lastName.toString());
+            intent.putExtra("gender", gender);
+            intent.putExtra("country", country);
+
+            startActivity(intent);
+            finish();
         }
-
-        if(binding.inputLastNameFieldEditText.getText().toString().equals("")) {
-            lastName.append(PersonUtils.getRandomLastName(gender, country));
-        } else {
-            lastName.append(binding.inputLastNameFieldEditText.getText().toString());
-        }
-
-        intent.putExtra("firstName", firstName.toString());
-        intent.putExtra("lastName", lastName.toString());
-        intent.putExtra("gender", gender);
-        intent.putExtra("country", country);
-
-        startActivity(intent);
-        finish();
     }
 }
