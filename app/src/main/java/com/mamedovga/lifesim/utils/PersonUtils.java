@@ -46,7 +46,7 @@ public class PersonUtils {
         return NumberUtils.getRandomNumber(min, max);
     }
 
-    public static String[] getMaleNames(String country)  {
+    public static String[] getMaleFirstNames(String country)  {
         switch (country) {
             case "США":
             case "Англия":
@@ -111,7 +111,7 @@ public class PersonUtils {
                             "Тимур", "Тимофей", "Федор"};
     }
 
-    public static String[] getFemaleNames(String country)  {
+    public static String[] getFemaleFirstNames(String country)  {
         switch (country) {
             case "США":
             case "Англия":
@@ -173,11 +173,94 @@ public class PersonUtils {
     }
 
 
-    public static String getRandomName(String gender, String country) {
+    public static String getRandomFirstName(String gender, String country) {
         String[] names;
-        if(gender.equals("male")) names = getMaleNames(country);
-        else names = getFemaleNames(country);
+        if(gender.equals("male")) names = getMaleFirstNames(country);
+        else names = getFemaleFirstNames(country);
         int randomNumber = NumberUtils.getRandomNumber(0, names.length - 1);
         return names[randomNumber];
+    }
+
+    public static String getRandomLastName(String country) {
+        String[] names = getLastNames(country);
+        int randomNumber = NumberUtils.getRandomNumber(0, names.length - 1);
+        return names[randomNumber];
+    }
+
+    public static String[] getLastNames(String country)  {
+        switch (country) {
+            case "США":
+            case "Англия":
+                return new String[]{"Aaron", "Abbot", "Abraham", "Ackerman", "Addison",
+                        "Adkins", "Armstrong", "Ashton", "Bailey", "Baker",
+                        "Barnes", "Barrett", "Barton", "Baxter", "Beck", "Bell",
+                        "Best", "Blake", "Blue", "Bonner", "Boyce", "Butler",
+                        "Carter", "Cash", "Castle", "Chambers", "Chapman", "Clark",
+                        "Clayton", "Clifford", "Cobb", "Cole", "Collins", "Colt",
+                        "Conner", "Cook", "Cooper", "Cross", "Dallas", "Daniels",
+                        "Davidson", "Dawson", "Delaney", "Eaton", "Elliot", "Elvis",
+                        "Everett", "Fay", "Finch", "Fisher", "Forester", "Fowler",
+                        "Gardner", "Gibbs", "Gill", "Grant", "Hanson", "Harlow",
+                        "Harris", "Hawkins", "Hill", "Irving", "Jackson", "Jacobs",
+                        "Johns", "Kirby", "Law", "Lowell", "Marlow", "Moon", "Palmer",
+                        "Parker", "Paxton", "Perkins", "Peterson", "Pierce", "Powers",
+                        "Rains", "Reeves", "Reynolds", "Rivers", "Robertson", "Rogers",
+                        "Ross", "Rowe", "Rush", "Samuelson", "Shaw", "Stark", "Stone",
+                        "Swanson", "Taylor", "Thompson", "Turner", "Underwood", "Vance",
+                        "Walters", "Ward", "Webster", "Williams", "Winchester", "Winter",
+                        "Wood", "Yates"};
+            case "Китай":
+                return new String[]{"Bai", "Chai", "Chan", "Chang", "Chen", "Cheung", "Chia",
+                        "Chong", "Chou", "Chow", "Chu", "Du", "Fan", "Feng",
+                        "Gao", "Guan", "Guo", "Han", "He", "Ho", "Hou",
+                        "Hsu", "Hu", "Huang", "Jin", "Ko", "Kuang", "Kwan",
+                        "Lam", "Lau", "Lee", "Li", "Lo", "Lu", "Lin", "Liu", "Luo",
+                        "Ma", "Pan", "Pei", "Song", "Sung", "Tsui", "Wang", "Wen",
+                        "Wong", "Wu", "Xie", "Xu", "Xun", "Yu", "Zhao"};
+            case "Финляндия":
+                return new String[]{"Aaltonen", "Heikki", "Heinonen", "Jokinen", "Korhonen",
+                        "Laakkonen", "Lahtinen", "Linna", "Makinen", "Nieminen", "Partanen",
+                        "Peltonen", "Rinne", "Saarinen", "Salminen", "Seppanen", "Toivonen",
+                        "Vanhanen"};
+            case "Испания":
+                return new String[]{"Aguilar", "Alonso", "Alvarez", "Araujo", "Banderas",
+                        "Barros", "Bautista", "Benitez", "Blanco", "Bolivar", "Bustos",
+                        "Caballero", "Campos", "Cardozo", "Carrasco", "Casales",
+                        "Castro", "Cortes", "Crespo", "Cruz", "Cuevas", "Delgado", "Espina",
+                        "Ferro", "Flores", "Franco", "Fuentes", "Gallo", "Garcia", "Gaspar",
+                        "Gil", "Gimenez", "Gomez", "Gonzales", "Guerra", "Guzman", "Herrera",
+                        "Ibarra", "Juarez", "Lopez", "Lorenzo", "Lozano", "Molina", "Montero",
+                        "Moralez", "Navarro", "Ochoa", "Ortega", "Paredes", "Perez", "Ramos"};
+            case "Италия":
+                return new String[]{"Alessandro", "Angelo", "Antonio", "Cesare", "Dante", "Domenico",
+                        "Emilio", "Enzo", "Fabio", "Franko", "Mario", "Marco",
+                        "Romano", "Romolo", "Sergio", "Silvio", "Tito", "Vitale",
+                        "Vito"};
+            case "Франция":
+                return new String[]{"Ames", "Astor", "Berle ", "Boyce", "Butch", "Butler",
+                        "Calvin", "Chandler", "Chevy", "Corbett", "Corbin", "Darnell",
+                        "Delano", "Dorsey", "Durant", "Falcon", "Gaston", "Louis",
+                        "Mason", "Noel", "Pacey", "Percy", "Purcell", "Rich",
+                        "Rick", "Seymour", "Spencer", "Terrell", "Trey", "Tristan", "Vern"};
+            case "Швеция":
+                return new String[]{"Alvar", "Arvid", "Casper", "Edvard", "Edvin",
+                        "Einar", "Erling", "Frans", "Fredrik", "Georg",
+                        "Harald", "Hasse", "Holger", "Klas", "Mats", "Niklas",
+                        "Olle", "Ruben", "Stefan", "Sten", "Ville"};
+            case "Германия":
+                return new String[]{"Aart", "Abbe", "Adler", "Aldo", "Arne",
+                        "Bedrich", "Bach", "Berman", "Brant", "Brecht",
+                        "Dieter", "Dietz", "Dolph", "Eckhart", "Elmo", "Fitz",
+                        "Frank", "Fred", "Gaston", "Gert", "Gil", "Hahn", "Gustav",
+                        "Harman", "Harris", "Hein", "Heinz", "Heller", "Hendrick",
+                        "Hugh", "Hugo", "Kahn", "Karl", "Konrad", "Liam", "Luther"};
+        }
+
+        return new String[] {"Александр", "Алексей", "Альберт", "Анатолий", "Андрей",
+                "Богдан", "Борис", "Валерий", "Василий", "Виталий",
+                "Георгий", "Дмитрий", "Евгений", "Егор", "Иван", "Игорь",
+                "Илья", "Константин", "Леонид", "Максим", "Михаил", "Никита",
+                "Олег", "Павел", "Петр", "Руслан", "Сергей", "Степан",
+                "Тимур", "Тимофей", "Федор"};
     }
 }

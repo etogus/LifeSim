@@ -39,14 +39,14 @@ public class NewGameActivity extends AppCompatActivity {
         binding.randomizeFirstName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                binding.inputFirstNameFieldEditText.setText(PersonUtils.getRandomName(gender, country));
+                binding.inputFirstNameFieldEditText.setText(PersonUtils.getRandomFirstName(gender, country));
             }
         });
 
         binding.randomizeLastName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                binding.inputLastNameFieldEditText.setText(PersonUtils.getRandomName(gender, country));
+                binding.inputLastNameFieldEditText.setText(PersonUtils.getRandomLastName(country));
             }
         });
 
@@ -103,16 +103,16 @@ public class NewGameActivity extends AppCompatActivity {
             public void afterTextChanged(Editable editable) {
                 StringBuilder lastName = new StringBuilder();
                 try {
-                    binding.inputFirstNameFieldEditText.setError(null);
-                    lastName.append(binding.inputFirstNameFieldEditText.getText().toString());
+                    binding.inputLastNameFieldEditText.setError(null);
+                    lastName.append(binding.inputLastNameFieldEditText.getText().toString());
                 } catch (NullPointerException e) {
-                    binding.inputFirstNameFieldEditText.setError(getString(R.string.error_empty));
+                    binding.inputLastNameFieldEditText.setError(getString(R.string.error_empty));
                 }
                 if(!(StringUtils.isStringLetterOnly(lastName.toString()))) {
-                    binding.inputFirstNameFieldEditText.setError(getString(R.string.error_format));
+                    binding.inputLastNameFieldEditText.setError(getString(R.string.error_format));
                 }
                 if(lastName.length() > 10) {
-                    binding.inputFirstNameFieldEditText.setError(getString(R.string.error_length));
+                    binding.inputLastNameFieldEditText.setError(getString(R.string.error_length));
                 }
             }
         });
@@ -133,13 +133,13 @@ public class NewGameActivity extends AppCompatActivity {
         StringBuilder lastName = new StringBuilder();
 
         if(binding.inputFirstNameFieldEditText.getText().toString().equals("")) {
-            firstName.append(PersonUtils.getRandomName(gender, country));
+            firstName.append(PersonUtils.getRandomFirstName(gender, country));
         } else {
             firstName.append(binding.inputFirstNameFieldEditText.getText().toString());
         }
 
         if(binding.inputLastNameFieldEditText.getText().toString().equals("")) {
-            lastName.append(PersonUtils.getRandomName(gender, country));
+            lastName.append(PersonUtils.getRandomLastName(country));
         } else {
             lastName.append(binding.inputLastNameFieldEditText.getText().toString());
         }
