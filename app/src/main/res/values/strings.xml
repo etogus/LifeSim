@@ -60,4 +60,5 @@
     <string name="error_length">Слишком большое число символов</string>
     <string name="error_format">Разрешены только буквы</string>
     <string name="error_empty">Поле не может быть пустым</string>
+    <string name="chat_hint">Введите сообщение</string>
 </resources>
