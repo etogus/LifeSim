@@ -1,17 +1,23 @@
 package com.mamedovga.lifesim;
 
 import android.os.Bundle;
-import android.os.Message;
 import android.view.View;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.view.ActionMode;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.mamedovga.lifesim.databinding.ChatBinding;
 import com.mamedovga.lifesim.models.Chat;
 import com.mamedovga.lifesim.models.Response;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -39,6 +45,7 @@ public class ChatActivity extends AppCompatActivity {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         binding.chatRecyclerView.setLayoutManager(linearLayoutManager);
         binding.chatRecyclerView.setAdapter(chatAdapter);
+
         binding.floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -46,7 +53,8 @@ public class ChatActivity extends AppCompatActivity {
                     Toast.makeText(ChatActivity.this, "Введите сообщение", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                getResp(binding.editText.getText().toString());
+                //getResp(binding.editText.getText().toString());
+                sendMessage(binding.editText.getText().toString());
                 binding.editText.setText("");
             }
         });
@@ -79,5 +87,53 @@ public class ChatActivity extends AppCompatActivity {
                 chatAdapter.notifyDataSetChanged();
             }
         });
+    }
+
+    private void sendMessage(String userMsg) {
+        // below line is to pass message to our
+        // array list which is entered by the user.
+        chatArrayList.add(new Chat(userMsg, USER_KEY));
+        chatAdapter.notifyDataSetChanged();
+
+        // url for our brain
+        // make sure to add mshape for uid.
+        // make sure to add your url.
+        String url = "http://api.brainshop.ai/get?bid=165288&key=kUfecpVDbDxJUmDV&uid=[uid]&msg=" + userMsg;
+
+        // creating a variable for our request queue.
+        RequestQueue queue = Volley.newRequestQueue(ChatActivity.this);
+
+        // on below line we are making a json object request for a get request and passing our url .
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new com.android.volley.Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                try {
+                    // in on response method we are extracting data
+                    // from json response and adding this response to our array list.
+                    String botResponse = response.getString("cnt");
+                    chatArrayList.add(new Chat(botResponse, BOT_KEY));
+
+                    // notifying our adapter as data changed.
+                    chatAdapter.notifyDataSetChanged();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+
+                    // handling error response from bot.
+                    chatArrayList.add(new Chat("No response", BOT_KEY));
+                    chatAdapter.notifyDataSetChanged();
+                }
+            }
+        }, new com.android.volley.Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                // error handling.
+                chatArrayList.add(new Chat("Sorry no response found", BOT_KEY));
+                Toast.makeText(ChatActivity.this, "No response from the bot..", Toast.LENGTH_SHORT).show();
+            }
+        });
+        // at last adding json object
+        // request to our queue.
+        queue.add(jsonObjectRequest);
     }
 }
