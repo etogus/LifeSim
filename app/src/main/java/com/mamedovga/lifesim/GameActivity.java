@@ -82,6 +82,8 @@ public class GameActivity extends AppCompatActivity {
                 return true;
             }
         });
+
+        binding.floatingActionButton.setOnClickListener(view1 -> nextYear());
     }
 
     public void checkAge() {
