@@ -17,6 +17,8 @@ import com.mamedovga.lifesim.utils.CountryUtils;
 import com.mamedovga.lifesim.utils.PersonUtils;
 import com.mamedovga.lifesim.utils.StringUtils;
 
+import java.util.Locale;
+
 public class NewGameActivity extends AppCompatActivity {
 
     private String gender = "male";
@@ -145,8 +147,11 @@ public class NewGameActivity extends AppCompatActivity {
                 lastName.append(binding.inputLastNameFieldEditText.getText().toString());
             }
 
-            intent.putExtra("firstName", firstName.toString());
-            intent.putExtra("lastName", lastName.toString());
+            String name = firstName.substring(0, 1).toUpperCase() + firstName.substring(1).toLowerCase();
+            String surname = lastName.substring(0, 1).toUpperCase() + lastName.substring(1).toLowerCase();
+
+            intent.putExtra("firstName", name);
+            intent.putExtra("lastName", surname);
             intent.putExtra("gender", gender);
             intent.putExtra("country", country);
 
