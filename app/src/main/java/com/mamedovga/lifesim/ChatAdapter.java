@@ -32,7 +32,7 @@ public class ChatAdapter extends RecyclerView.Adapter {
                 return new UserViewHolder(view);
             case 1:
                 view = LayoutInflater.from(parent.getContext()).inflate(R.layout.bot_response_item, parent, false);
-                return new UserViewHolder(view);
+                return new BotViewHolder(view);
         }
         return null;
     }

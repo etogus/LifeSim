@@ -74,6 +74,7 @@ public class GameActivity extends AppCompatActivity {
                     case R.id.page_2:
                         break;
                     case R.id.page_3:
+                        relationShipButton();
                         break;
                     case R.id.page_4:
                         actions();
@@ -84,6 +85,10 @@ public class GameActivity extends AppCompatActivity {
         });
 
         binding.floatingActionButton.setOnClickListener(view1 -> nextYear());
+    }
+
+    public void relationShipButton() {
+        startActivity(new Intent(this, ChatActivity.class));
     }
 
     public void checkAge() {
