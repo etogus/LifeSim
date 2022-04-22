@@ -1,17 +1,17 @@
 package com.mamedovga.lifesim.models;
 
 public class Response {
-    private String response;
+    private String chatBotReply;
 
-    public Response(String response) {
-        this.response = response;
+    public Response(String chatBotReply) {
+        this.chatBotReply = chatBotReply;
     }
 
     public String getResponse() {
-        return response;
+        return chatBotReply;
     }
 
     public void setResponse(String response) {
-        this.response = response;
+        this.chatBotReply = response;
     }
 }

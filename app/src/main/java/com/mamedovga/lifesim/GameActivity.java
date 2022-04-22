@@ -98,14 +98,21 @@ public class GameActivity extends AppCompatActivity {
             finish();
         } else if(mainChar.getAge() == 2) {
             binding.playerStatus.setText("Дитя");
+            binding.playerStatusImage.setImageResource(R.drawable.ic_baseline_child_36);
         } else if(mainChar.getAge() == 4) {
             binding.playerStatus.setText("Ребёнок");
+            if(mainChar.getGender().equals("male"))
+                binding.playerStatusImage.setImageResource(R.drawable.outline_boy_24);
+            else binding.playerStatusImage.setImageResource(R.drawable.outline_girl_24);
         } else if(mainChar.getAge() == 7) {
             binding.playerStatus.setText("Школьник");
         } else if(mainChar.getAge() == 18) {
             binding.playerStatus.setText("Студент");
         } else if(mainChar.getAge() == 23) {
             binding.playerStatus.setText("Молодой человек");
+            if(mainChar.getGender().equals("male"))
+                binding.playerStatusImage.setImageResource(R.drawable.outline_man_24);
+            else binding.playerStatusImage.setImageResource(R.drawable.outline_woman_24);
         }
     }
 

@@ -1,6 +1,7 @@
 package com.mamedovga.lifesim;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -10,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.VolleyError;
+import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.mamedovga.lifesim.databinding.ChatBinding;
@@ -28,6 +30,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ChatActivity extends AppCompatActivity {
     private ChatBinding binding;
+    private static final String TAG = "ChatActivity";
     private final String BOT_KEY = "bot";
     private final String USER_KEY = "user";
     private ArrayList<Chat> chatArrayList;
@@ -63,30 +66,50 @@ public class ChatActivity extends AppCompatActivity {
     private void getResp(String message) {
         chatArrayList.add(new Chat(message, USER_KEY));
         chatAdapter.notifyDataSetChanged();
-        //String url = "http://api.brainshop.ai/get?bid=165288&key=kUfecpVDbDxJUmDV&uid=[uid]&msg=" + message;
-        String BASE_URL = "http://127.0.0.1:5000/";
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-        RetrofitAPI retrofitAPI = retrofit.create(RetrofitAPI.class);
+        RetrofitAPI retrofitAPI = RetrofitClient.getRetrofitInstance().create(RetrofitAPI.class);
         Call<Response> call = retrofitAPI.sendMessage(message);
         call.enqueue(new Callback<Response>() {
             @Override
             public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
-                if(response.isSuccessful()) {
+                //if(response.isSuccessful()) {
                     Response response1 = response.body();
                     chatArrayList.add(new Chat(response1.getResponse(), BOT_KEY));
                     chatAdapter.notifyDataSetChanged();
-                }
+                    Log.e(TAG, "onResponse: " + response.body());
+                //}
             }
 
             @Override
             public void onFailure(Call<Response> call, Throwable t) {
+                Log.e(TAG, "onFailure: " + t.getMessage());
                 chatArrayList.add(new Chat("Повтори сообщение, до меня не дошло", BOT_KEY));
                 chatAdapter.notifyDataSetChanged();
             }
         });
+        //String url = "http://api.brainshop.ai/get?bid=165288&key=kUfecpVDbDxJUmDV&uid=[uid]&msg=" + message;
+//        String BASE_URL = "http://127.0.0.1:5000/";
+//        Retrofit retrofit = new Retrofit.Builder()
+//                .baseUrl(BASE_URL)
+//                .addConverterFactory(GsonConverterFactory.create())
+//                .build();
+//        RetrofitAPI retrofitAPI = retrofit.create(RetrofitAPI.class);
+//        Call<Response> call = retrofitAPI.sendMessage(message);
+//        call.enqueue(new Callback<Response>() {
+//            @Override
+//            public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
+//                if(response.isSuccessful()) {
+//                    Response response1 = response.body();
+//                    chatArrayList.add(new Chat(response1.getResponse(), BOT_KEY));
+//                    chatAdapter.notifyDataSetChanged();
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<Response> call, Throwable t) {
+//                chatArrayList.add(new Chat("Повтори сообщение, до меня не дошло", BOT_KEY));
+//                chatAdapter.notifyDataSetChanged();
+//            }
+//        });
     }
 
     private void sendMessage(String userMsg) {
@@ -98,19 +121,25 @@ public class ChatActivity extends AppCompatActivity {
         // url for our brain
         // make sure to add mshape for uid.
         // make sure to add your url.
-        String url = "http://api.brainshop.ai/get?bid=165288&key=kUfecpVDbDxJUmDV&uid=[uid]&msg=" + userMsg;
-
+        JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.put("chatInput", userMsg);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        //String url = "http://api.brainshop.ai/get?bid=165288&key=kUfecpVDbDxJUmDV&uid=[uid]&msg=" + userMsg;
+        String url = "http://192.168.1.55:5000/chat";
         // creating a variable for our request queue.
         RequestQueue queue = Volley.newRequestQueue(ChatActivity.this);
 
         // on below line we are making a json object request for a get request and passing our url .
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new com.android.volley.Response.Listener<JSONObject>() {
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, jsonObject, new com.android.volley.Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 try {
                     // in on response method we are extracting data
                     // from json response and adding this response to our array list.
-                    String botResponse = response.getString("cnt");
+                    String botResponse = response.getString("chatBotReply");
                     chatArrayList.add(new Chat(botResponse, BOT_KEY));
 
                     // notifying our adapter as data changed.
@@ -128,6 +157,7 @@ public class ChatActivity extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 // error handling.
+                VolleyLog.d("Error", "Error: " + error.getMessage());
                 chatArrayList.add(new Chat("Sorry no response found", BOT_KEY));
                 Toast.makeText(ChatActivity.this, "No response from the bot..", Toast.LENGTH_SHORT).show();
             }
