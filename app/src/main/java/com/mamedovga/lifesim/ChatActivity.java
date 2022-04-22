@@ -53,8 +53,8 @@ public class ChatActivity extends AppCompatActivity {
                     Toast.makeText(ChatActivity.this, "Введите сообщение", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                //getResp(binding.editText.getText().toString());
-                sendMessage(binding.editText.getText().toString());
+                getResp(binding.editText.getText().toString());
+                //sendMessage(binding.editText.getText().toString());
                 binding.editText.setText("");
             }
         });
@@ -63,14 +63,14 @@ public class ChatActivity extends AppCompatActivity {
     private void getResp(String message) {
         chatArrayList.add(new Chat(message, USER_KEY));
         chatAdapter.notifyDataSetChanged();
-        String url = "http://api.brainshop.ai/get?bid=165288&key=kUfecpVDbDxJUmDV&uid=[uid]&msg=" + message;
-        String BASE_URL = "http://api.brainshop.ai/";
+        //String url = "http://api.brainshop.ai/get?bid=165288&key=kUfecpVDbDxJUmDV&uid=[uid]&msg=" + message;
+        String BASE_URL = "http://127.0.0.1:5000/";
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         RetrofitAPI retrofitAPI = retrofit.create(RetrofitAPI.class);
-        Call<Response> call = retrofitAPI.getMessage(url);
+        Call<Response> call = retrofitAPI.sendMessage(message);
         call.enqueue(new Callback<Response>() {
             @Override
             public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
