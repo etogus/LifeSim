@@ -61,4 +61,5 @@
     <string name="error_format">Разрешены только буквы</string>
     <string name="error_empty">Поле не может быть пустым</string>
     <string name="chat_hint">Введите сообщение</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
