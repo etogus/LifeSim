@@ -1,5 +1,9 @@
 package com.mamedovga.lifesim.models;
 
+import com.mamedovga.lifesim.R;
+
+import java.util.ArrayList;
+
 public class Person {
 
     private String name;
@@ -13,14 +17,17 @@ public class Person {
     private int looks;
     private int energy;
     private int karma;
+    private String[] maleStatus = {"Новорожденный", "Дитя", "Ребёнок", "Школьник", "Студент", "Молодой человек"};
+    private String[] femaleStatus = {"Новорожденная", "Дитя", "Ребёнок", "Школьница", "Студентка", "Девушка"};
 
-    public Person(String name, String lastName, String gender, String country, int age, int energy) {
+    public Person() {}
+
+    public Person(String name, String lastName, String gender, String country, int age) {
         this.name = name;
         this.lastName = lastName;
         this.gender = gender;
         this.country = country;
         this.age = age;
-        this.energy = energy;
     }
 
     public String getName() {
@@ -121,5 +128,37 @@ public class Person {
         this.intelligence = intelligence;
         this.looks = looks;
         this.energy = energy;
+    }
+
+    public String getMaleStatus(int age) {
+        if(age == 0) {
+            return maleStatus[0];
+        } else if(age > 0 && age < 3) {
+            return maleStatus[1];
+        } else if(age >= 3 && age < 5) {
+            return maleStatus[2];
+        } else if(age >= 5 && age < 7) {
+            return maleStatus[3];
+        } else if(age >= 7 && age < 19) {
+            return maleStatus[4];
+        } else if(age >= 23) {
+            return maleStatus[5];
+        } else return "Неопределённый статус";
+    }
+
+    public String getFemaleStatus(int age) {
+        if(age == 0) {
+            return femaleStatus[0];
+        } else if(age > 0 && age < 3) {
+            return femaleStatus[1];
+        } else if(age >= 3 && age < 5) {
+            return femaleStatus[2];
+        } else if(age >= 5 && age < 7) {
+            return femaleStatus[3];
+        } else if(age >= 7 && age < 19) {
+            return femaleStatus[4];
+        } else if(age >= 23) {
+            return femaleStatus[5];
+        } else return "Неопределённый статус";
     }
 }

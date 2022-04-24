@@ -1,29 +1,33 @@
 package com.mamedovga.lifesim;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProviders;
 
 import com.google.android.material.navigation.NavigationBarView;
 import com.mamedovga.lifesim.databinding.ActivityGameBinding;
+import com.mamedovga.lifesim.models.MainCharacterViewModel;
 import com.mamedovga.lifesim.models.Person;
-import com.mamedovga.lifesim.utils.CountryUtils;
-import com.mamedovga.lifesim.utils.EventUtils;
-import com.mamedovga.lifesim.utils.NumberUtils;
 import com.mamedovga.lifesim.utils.PersonUtils;
-import com.mamedovga.lifesim.utils.ProgressBarUtils;
 
 public class GameActivity extends AppCompatActivity {
 
-    private final StringBuilder activityLogText = new StringBuilder();
-    private Person mainChar;
     private ActivityGameBinding binding;
     private boolean activityCheck = false;
+
+    private MainCharacterViewModel mainCharacterViewModel;
+
+    private final StatusFragment statusFragment = new StatusFragment();
+    private final AssetsFragment assetsFragment = new AssetsFragment();
+    private final RelationshipsFragment relationshipsFragment = new RelationshipsFragment();
+    private final ActionsFragment actionsFragment = new ActionsFragment();
+    private Fragment active = statusFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,51 +37,49 @@ public class GameActivity extends AppCompatActivity {
         setContentView(view);
 
         Intent intent = getIntent();
-
         String playerName = intent.getStringExtra("firstName");
         String playerLastName = intent.getStringExtra("lastName");
         String playerGender = intent.getStringExtra("gender");
         String playerCountry = intent.getStringExtra("country");
-        int playerAge = intent.getIntExtra("age", 0);
-        int playerMood = intent.getIntExtra("mood", 0);
-        int playerHealth = intent.getIntExtra("health", 0);
-        int playerIntelligence = intent.getIntExtra("intelligence", 0);
-        int playerLooks = intent.getIntExtra("looks", 0);
-        int playerEnergy = intent.getIntExtra("energy", 0);
-        int playerKarma = intent.getIntExtra("karma", 0);
+        int playerAge = 0;
+        Person samplePerson = new Person(playerName, playerLastName, playerGender, playerCountry, playerAge);
+        PersonUtils.randomizeStats(samplePerson);
 
-        mainChar = new Person(playerName, playerLastName, playerGender, playerCountry, playerAge, playerEnergy);
-        mainChar.setPersonStats(playerMood, playerHealth, playerIntelligence, playerLooks, playerEnergy);
-        mainChar.setKarma(playerKarma);
+        mainCharacterViewModel = ViewModelProviders.of(this).get(MainCharacterViewModel.class);
+        mainCharacterViewModel.setName(samplePerson.getName());
+        mainCharacterViewModel.setLastName(samplePerson.getLastName());
+        mainCharacterViewModel.setGender(samplePerson.getGender());
+        mainCharacterViewModel.setCountry(samplePerson.getCountry());
+        mainCharacterViewModel.setAge(samplePerson.getAge());
+        mainCharacterViewModel.setMood(samplePerson.getMood());
+        mainCharacterViewModel.setHealth(samplePerson.getHealth());
+        mainCharacterViewModel.setIntelligence(samplePerson.getIntelligence());
+        mainCharacterViewModel.setLooks(samplePerson.getLooks());
+        mainCharacterViewModel.setEnergy(samplePerson.getEnergy());
+        mainCharacterViewModel.setKarma(samplePerson.getKarma());
 
-        binding.playerName.setText(mainChar.getFullName());
-        binding.countryFlag.setImageResource(CountryUtils.getCountryFlag(playerCountry));
+        getSupportFragmentManager().beginTransaction().add(R.id.topAndMiddleContainer, actionsFragment, "4").hide(actionsFragment).commit();
+        getSupportFragmentManager().beginTransaction().add(R.id.topAndMiddleContainer, relationshipsFragment, "3").hide(relationshipsFragment).commit();
+        getSupportFragmentManager().beginTransaction().add(R.id.topAndMiddleContainer, assetsFragment, "2").hide(assetsFragment).commit();
+        getSupportFragmentManager().beginTransaction().add(R.id.topAndMiddleContainer, statusFragment, "1").commit();
 
-        if(mainChar.getAge() == 0) {
-            PersonUtils.randomizeStats(mainChar);
-            binding.playerStatus.setText("Новорожденный");
-            binding.playerStatModifiers.setText("Модификаторы отсутствуют");
-        }
-
-        binding.moodBar.setProgressPercentage(mainChar.getMood(), true);
-        binding.healthBar.setProgressPercentage(mainChar.getHealth(), true);
-        binding.smartsBar.setProgressPercentage(mainChar.getIntelligence(), true);
-        binding.looksBar.setProgressPercentage(mainChar.getLooks(), true);
-        binding.energyBar.setProgressPercentage(mainChar.getEnergy(), true);
+        //getSupportFragmentManager().beginTransaction().replace(R.id.topAndMiddleContainer, statusFragment).commit();
 
         binding.bottomNavigation.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.page_1:
+                        statusButton();
                         break;
                     case R.id.page_2:
+                        assetsButton();
                         break;
                     case R.id.page_3:
-                        relationShipButton();
+                        relationShipsButton();
                         break;
                     case R.id.page_4:
-                        actions();
+                        actionsButton();
                         break;
                 }
                 return true;
@@ -87,104 +89,89 @@ public class GameActivity extends AppCompatActivity {
         binding.floatingActionButton.setOnClickListener(view1 -> nextYear());
     }
 
-    public void relationShipButton() {
-        startActivity(new Intent(this, ChatActivity.class));
+    public void statusButton() {
+        getSupportFragmentManager().beginTransaction().hide(active).show(statusFragment).commit();
+        active = statusFragment;
+        //getSupportFragmentManager().beginTransaction().replace(R.id.topAndMiddleContainer, statusFragment).commit();
     }
 
-    public void checkAge() {
-        if (mainChar.getAge() == 120) {
-            Intent endIntent = new Intent(this, EndGameActivity.class);
-            startActivity(endIntent);
-            finish();
-        } else if(mainChar.getAge() == 2) {
-            binding.playerStatus.setText("Дитя");
-            binding.playerStatusImage.setImageResource(R.drawable.ic_baseline_child_36);
-        } else if(mainChar.getAge() == 4) {
-            binding.playerStatus.setText("Ребёнок");
-            if(mainChar.getGender().equals("male"))
-                binding.playerStatusImage.setImageResource(R.drawable.outline_boy_24);
-            else binding.playerStatusImage.setImageResource(R.drawable.outline_girl_24);
-        } else if(mainChar.getAge() == 7) {
-            binding.playerStatus.setText("Школьник");
-        } else if(mainChar.getAge() == 18) {
-            binding.playerStatus.setText("Студент");
-        } else if(mainChar.getAge() == 23) {
-            binding.playerStatus.setText("Молодой человек");
-            if(mainChar.getGender().equals("male"))
-                binding.playerStatusImage.setImageResource(R.drawable.outline_man_24);
-            else binding.playerStatusImage.setImageResource(R.drawable.outline_woman_24);
-        }
+    public void assetsButton() {
+        getSupportFragmentManager().beginTransaction().hide(active).show(assetsFragment).commit();
+        active = assetsFragment;
+        //getSupportFragmentManager().beginTransaction().replace(R.id.topAndMiddleContainer, assetsFragment).commit();
+    }
+
+    public void relationShipsButton() {
+        //startActivity(new Intent(this, ChatActivity.class));
+        getSupportFragmentManager().beginTransaction().hide(active).show(relationshipsFragment).commit();
+        active = relationshipsFragment;
+        //getSupportFragmentManager().beginTransaction().replace(R.id.topAndMiddleContainer, relationshipsFragment).commit();
+    }
+
+    public void actionsButton() {
+        //getSupportFragmentManager().beginTransaction().replace(binding.topAndMiddleContainer.getId(), actionsFragment).commit();
+        getSupportFragmentManager().beginTransaction().hide(active).show(actionsFragment).commit();
+        active = actionsFragment;
+//        if(!activityCheck) {
+//            int n = NumberUtils.getRandomNumber(1, 4);
+//            if(n == 1) {
+//                ProgressBarUtils.updateMoodBar(mainChar, 1, binding.moodBar);
+//                activityLogText.append("Я посмотрел интересный фильм. \n \n");
+//                binding.activityDisplay.setText(activityLogText);
+//                binding.activityLog.post(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        binding.activityLog.fullScroll(View.FOCUS_DOWN);
+//                    }
+//                });
+//            }
+//            else if(n == 2) {
+//                ProgressBarUtils.updateHealthBar(mainChar, 1, binding.healthBar);
+//                ProgressBarUtils.updateMoodBar(mainChar, 1, binding.moodBar);
+//                activityLogText.append("Я сходил на пробежку. Чувствую себя сильнее. \n \n");
+//                binding.activityDisplay.setText(activityLogText);
+//                binding.activityLog.post(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        binding.activityLog.fullScroll(View.FOCUS_DOWN);
+//                    }
+//                });
+//            }
+//            else if(n == 3) {
+//                ProgressBarUtils.updateIntellectBar(mainChar, 2, binding.smartsBar);
+//                ProgressBarUtils.updateMoodBar(mainChar, 2, binding.moodBar);
+//                activityLogText.append("Я прочитал захватывающую книгу. \n \n");
+//                binding.activityDisplay.setText(activityLogText);
+//                binding.activityLog.post(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        binding.activityLog.fullScroll(View.FOCUS_DOWN);
+//                    }
+//                });
+//            }
+//            else if(n == 4) {
+//                ProgressBarUtils.updateLooksBar(mainChar, 2, binding.looksBar);
+//                ProgressBarUtils.updateMoodBar(mainChar, 1, binding.moodBar);
+//                activityLogText.append("Я позанимался в спортзале. \n \n");
+//                binding.activityDisplay.setText(activityLogText);
+//                binding.activityLog.post(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        binding.activityLog.fullScroll(View.FOCUS_DOWN);
+//                    }
+//                });
+//            }
+//            activityCheck = true;
+//        }
     }
 
     public void nextYear() {
-        mainChar.setAge(mainChar.getAge() + 1);
-        checkAge();
-        String randomEvent = EventUtils.generateEvent(mainChar);
-        activityLogText.append("Возраст: ").append(mainChar.getAge());
-        binding.activityDisplay.setText(activityLogText);
-        binding.activityDisplay.setTextColor(Color.BLUE);
-        activityLogText.append("\n").append(randomEvent);
-        binding.activityLog.post(new Runnable() {
-            @Override
-            public void run() {
-                binding.activityLog.fullScroll(View.FOCUS_DOWN);
-            }
-        });
-        //EventUtils.generateEvent(mainChar);
-        activityCheck = false;
-    }
-
-    public void actions() {
-        if(!activityCheck) {
-            int n = NumberUtils.getRandomNumber(1, 4);
-            if(n == 1) {
-                ProgressBarUtils.updateMoodBar(mainChar, 1, binding.moodBar);
-                activityLogText.append("Я посмотрел интересный фильм. \n \n");
-                binding.activityDisplay.setText(activityLogText);
-                binding.activityLog.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        binding.activityLog.fullScroll(View.FOCUS_DOWN);
-                    }
-                });
-            }
-            else if(n == 2) {
-                ProgressBarUtils.updateHealthBar(mainChar, 1, binding.healthBar);
-                ProgressBarUtils.updateMoodBar(mainChar, 1, binding.moodBar);
-                activityLogText.append("Я сходил на пробежку. Чувствую себя сильнее. \n \n");
-                binding.activityDisplay.setText(activityLogText);
-                binding.activityLog.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        binding.activityLog.fullScroll(View.FOCUS_DOWN);
-                    }
-                });
-            }
-            else if(n == 3) {
-                ProgressBarUtils.updateIntellectBar(mainChar, 2, binding.smartsBar);
-                ProgressBarUtils.updateMoodBar(mainChar, 2, binding.moodBar);
-                activityLogText.append("Я прочитал захватывающую книгу. \n \n");
-                binding.activityDisplay.setText(activityLogText);
-                binding.activityLog.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        binding.activityLog.fullScroll(View.FOCUS_DOWN);
-                    }
-                });
-            }
-            else if(n == 4) {
-                ProgressBarUtils.updateLooksBar(mainChar, 2, binding.looksBar);
-                ProgressBarUtils.updateMoodBar(mainChar, 1, binding.moodBar);
-                activityLogText.append("Я позанимался в спортзале. \n \n");
-                binding.activityDisplay.setText(activityLogText);
-                binding.activityLog.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        binding.activityLog.fullScroll(View.FOCUS_DOWN);
-                    }
-                });
-            }
-            activityCheck = true;
+        if(statusFragment.isEndGame()) {
+            Intent endIntent = new Intent(this, EndGameActivity.class);
+            startActivity(endIntent);
+            finish();
         }
+        statusFragment.nextYear();
+        activityCheck = false;
     }
 }
