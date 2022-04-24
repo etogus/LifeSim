@@ -6,8 +6,6 @@
         <entry key="..\:/Projects/Android/LifeSim/app/src/main/res/drawable/bg_gradient.xml" value="0.1785" />
         <entry key="..\:/Projects/Android/LifeSim/app/src/main/res/drawable/button_shape.xml" value="0.12" />
         <entry key="..\:/Projects/Android/LifeSim/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1785" />
-        <entry key="..\:/Projects/Android/LifeSim/app/src/main/res/drawable/outline_boy_20.xml" value="0.12" />
-        <entry key="..\:/Projects/Android/LifeSim/app/src/main/res/drawable/outline_boy_24.xml" value="0.12" />
         <entry key="..\:/Projects/Android/LifeSim/app/src/main/res/drawable/round_shape.xml" value="0.1785" />
         <entry key="..\:/Projects/Android/LifeSim/app/src/main/res/drawable/splash_background.xml" value="0.1785" />
         <entry key="..\:/Projects/Android/LifeSim/app/src/main/res/layout/activity_end_game.xml" value="0.14130434782608695" />
@@ -21,12 +19,6 @@
         <entry key="..\:/Projects/Android/LifeSim/app/src/main/res/layout/activity_new_game_new.xml" value="0.1408514492753623" />
         <entry key="..\:/Projects/Android/LifeSim/app/src/main/res/layout/bot_response_item.xml" value="0.1" />
         <entry key="..\:/Projects/Android/LifeSim/app/src/main/res/layout/dropdown_item.xml" value="0.14130434782608695" />
-        <entry key="..\:/Projects/Android/LifeSim/app/src/main/res/layout/fragment_actions.xml" value="0.1" />
-        <entry key="..\:/Projects/Android/LifeSim/app/src/main/res/layout/fragment_assets.xml" value="0.1414324569356301" />
-        <entry key="..\:/Projects/Android/LifeSim/app/src/main/res/layout/fragment_bottom.xml" value="0.1414324569356301" />
-        <entry key="..\:/Projects/Android/LifeSim/app/src/main/res/layout/fragment_bottom_fab.xml" value="0.1414324569356301" />
-        <entry key="..\:/Projects/Android/LifeSim/app/src/main/res/layout/fragment_relationships.xml" value="0.1414324569356301" />
-        <entry key="..\:/Projects/Android/LifeSim/app/src/main/res/layout/fragment_status.xml" value="0.1414324569356301" />
         <entry key="..\:/Projects/Android/LifeSim/app/src/main/res/layout/splash_background.xml" value="0.14130434782608695" />
         <entry key="..\:/Projects/Android/LifeSim/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.2" />
         <entry key="..\:/projects/android/LifeSim/app/src/main/res/drawable/bg_gradient.xml" value="0.207" />
@@ -49,6 +41,7 @@
         <entry key="..\:/projects/android/LifeSim/app/src/main/res/layout/activity_new_game.xml" value="0.36666666666666664" />
         <entry key="..\:/projects/android/LifeSim/app/src/main/res/layout/activity_new_game_new.xml" value="0.33" />
         <entry key="..\:/projects/android/LifeSim/app/src/main/res/layout/dropdown_item.xml" value="0.36666666666666664" />
+        <entry key="..\:/projects/android/LifeSim/app/src/main/res/layout/fragment_actions.xml" value="0.36666666666666664" />
         <entry key="..\:/projects/android/LifeSim/app/src/main/res/mipmap-anydpi-v26/ic_baseline_account_circle.xml" value="0.207" />
         <entry key="..\:/projects/android/LifeSim/app/src/main/res/mipmap-anydpi-v26/ic_baseline_account_circle_round.xml" value="0.1" />
       </map>
