@@ -89,6 +89,7 @@
                         android:layout_gravity="center"
                         android:text="+"
                         android:textSize="20sp"
+                        android:textColor="#21C254"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/incomeAndOutcomeYearHeader" />
 
@@ -98,6 +99,7 @@
                         android:layout_height="wrap_content"
                         android:text="200"
                         android:textSize="20sp"
+                        android:textColor="#21C254"
                         app:layout_constraintStart_toEndOf="@+id/plusYearIncome"
                         app:layout_constraintTop_toBottomOf="@+id/incomeAndOutcomeYearHeader" />
 
@@ -107,6 +109,7 @@
                         android:layout_height="wrap_content"
                         android:text="$"
                         android:textSize="20sp"
+                        android:textColor="#21C254"
                         app:layout_constraintStart_toEndOf="@+id/YearIncome"
                         app:layout_constraintTop_toBottomOf="@+id/incomeAndOutcomeYearHeader" />
 
@@ -117,6 +120,7 @@
                         android:layout_gravity="center"
                         android:text="-"
                         android:textSize="20sp"
+                        android:textColor="#D11D3B"
                         app:layout_constraintEnd_toEndOf="@+id/plusYearIncome"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/plusYearIncome" />
@@ -127,6 +131,7 @@
                         android:layout_height="wrap_content"
                         android:text="300"
                         android:textSize="20sp"
+                        android:textColor="#D11D3B"
                         app:layout_constraintStart_toEndOf="@+id/plusYearIncome"
                         app:layout_constraintTop_toBottomOf="@+id/YearIncome" />
 
@@ -136,6 +141,7 @@
                         android:layout_height="wrap_content"
                         android:text="$"
                         android:textSize="20sp"
+                        android:textColor="#D11D3B"
                         app:layout_constraintStart_toEndOf="@+id/yearOutcome"
                         app:layout_constraintTop_toBottomOf="@+id/yearIncomeDollar" />
 
@@ -187,6 +193,7 @@
                         android:layout_height="wrap_content"
                         android:text="+"
                         android:textSize="20sp"
+                        android:textColor="#21C254"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/incomeAndOutcomeLifetimeHeader" />
 
@@ -196,6 +203,7 @@
                         android:layout_height="wrap_content"
                         android:text="500"
                         android:textSize="20sp"
+                        android:textColor="#21C254"
                         app:layout_constraintStart_toEndOf="@+id/plusLifetimeIncome"
                         app:layout_constraintTop_toBottomOf="@+id/incomeAndOutcomeLifetimeHeader" />
 
@@ -205,6 +213,7 @@
                         android:layout_height="wrap_content"
                         android:text="$"
                         android:textSize="20sp"
+                        android:textColor="#21C254"
                         app:layout_constraintStart_toEndOf="@+id/LifetimeIncome"
                         app:layout_constraintTop_toBottomOf="@+id/incomeAndOutcomeLifetimeHeader" />
 
@@ -214,6 +223,7 @@
                         android:layout_height="wrap_content"
                         android:text="-"
                         android:textSize="20sp"
+                        android:textColor="#D11D3B"
                         app:layout_constraintEnd_toEndOf="@+id/plusLifetimeIncome"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/plusLifetimeIncome" />
@@ -224,6 +234,7 @@
                         android:layout_height="wrap_content"
                         android:text="400"
                         android:textSize="20sp"
+                        android:textColor="#D11D3B"
                         app:layout_constraintStart_toEndOf="@+id/plusLifetimeIncome"
                         app:layout_constraintTop_toBottomOf="@+id/LifetimeIncome" />
 
@@ -233,6 +244,7 @@
                         android:layout_height="wrap_content"
                         android:text="$"
                         android:textSize="20sp"
+                        android:textColor="#D11D3B"
                         app:layout_constraintStart_toEndOf="@+id/lifetimeOutcome"
                         app:layout_constraintTop_toBottomOf="@+id/lifetimeIncomeDollar" />
 
