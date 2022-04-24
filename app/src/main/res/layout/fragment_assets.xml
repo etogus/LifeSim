@@ -1,13 +1,247 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".AssetsFragment">
 
-    <TextView
+    <FrameLayout
+        android:id="@+id/financeHeader"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Assets Fragment" />
+        android:layout_height="wrap_content"
+        android:background="@color/purple_500"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-</FrameLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+            android:text="Финансы"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/incomeAndOutcomeHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/financeHeader">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+            android:text="Доходы и расходы за"
+            tools:layout_editor_absoluteX="96dp"
+            tools:layout_editor_absoluteY="97dp" />
+
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/incomeAndOutcomeHeader">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <FrameLayout
+                android:id="@+id/incomeAndOutcomeYearFrameLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="50dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/incomeAndOutcomeYearHeader"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="последний год"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                    <TextView
+                        android:id="@+id/plusYearIncome"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="+"
+                        android:textSize="20sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/incomeAndOutcomeYearHeader" />
+
+                    <TextView
+                        android:id="@+id/YearIncome"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="200"
+                        android:textSize="20sp"
+                        app:layout_constraintStart_toEndOf="@+id/plusYearIncome"
+                        app:layout_constraintTop_toBottomOf="@+id/incomeAndOutcomeYearHeader" />
+
+                    <TextView
+                        android:id="@+id/yearIncomeDollar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="$"
+                        android:textSize="20sp"
+                        app:layout_constraintStart_toEndOf="@+id/YearIncome"
+                        app:layout_constraintTop_toBottomOf="@+id/incomeAndOutcomeYearHeader" />
+
+                    <TextView
+                        android:id="@+id/minusYearOutcome"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="-"
+                        android:textSize="20sp"
+                        app:layout_constraintEnd_toEndOf="@+id/plusYearIncome"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/plusYearIncome" />
+
+                    <TextView
+                        android:id="@+id/yearOutcome"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="300"
+                        android:textSize="20sp"
+                        app:layout_constraintStart_toEndOf="@+id/plusYearIncome"
+                        app:layout_constraintTop_toBottomOf="@+id/YearIncome" />
+
+                    <TextView
+                        android:id="@+id/yearOutcomeDollar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="$"
+                        android:textSize="20sp"
+                        app:layout_constraintStart_toEndOf="@+id/yearOutcome"
+                        app:layout_constraintTop_toBottomOf="@+id/yearIncomeDollar" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/incomeOutcomeFrameLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toStartOf="@+id/incomeAndOutcomeLifetimeFrameLayout"
+                app:layout_constraintStart_toEndOf="@+id/incomeAndOutcomeYearFrameLayout"
+                app:layout_constraintTop_toTopOf="parent">
+
+
+                <ImageView
+                    android:id="@+id/incomeOutcomeImage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/budget" />
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/incomeAndOutcomeLifetimeFrameLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="50dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/incomeAndOutcomeLifetimeHeader"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="всё время"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/plusLifetimeIncome"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="+"
+                        android:textSize="20sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/incomeAndOutcomeLifetimeHeader" />
+
+                    <TextView
+                        android:id="@+id/LifetimeIncome"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="500"
+                        android:textSize="20sp"
+                        app:layout_constraintStart_toEndOf="@+id/plusLifetimeIncome"
+                        app:layout_constraintTop_toBottomOf="@+id/incomeAndOutcomeLifetimeHeader" />
+
+                    <TextView
+                        android:id="@+id/lifetimeIncomeDollar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="$"
+                        android:textSize="20sp"
+                        app:layout_constraintStart_toEndOf="@+id/LifetimeIncome"
+                        app:layout_constraintTop_toBottomOf="@+id/incomeAndOutcomeLifetimeHeader" />
+
+                    <TextView
+                        android:id="@+id/minusLifetimeOutcome"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="-"
+                        android:textSize="20sp"
+                        app:layout_constraintEnd_toEndOf="@+id/plusLifetimeIncome"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/plusLifetimeIncome" />
+
+                    <TextView
+                        android:id="@+id/lifetimeOutcome"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="400"
+                        android:textSize="20sp"
+                        app:layout_constraintStart_toEndOf="@+id/plusLifetimeIncome"
+                        app:layout_constraintTop_toBottomOf="@+id/LifetimeIncome" />
+
+                    <TextView
+                        android:id="@+id/lifetimeOutcomeDollar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="$"
+                        android:textSize="20sp"
+                        app:layout_constraintStart_toEndOf="@+id/lifetimeOutcome"
+                        app:layout_constraintTop_toBottomOf="@+id/lifetimeIncomeDollar" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </FrameLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
