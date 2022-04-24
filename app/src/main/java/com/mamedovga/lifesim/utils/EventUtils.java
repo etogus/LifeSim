@@ -1,5 +1,6 @@
 package com.mamedovga.lifesim.utils;
 
+import com.mamedovga.lifesim.models.MainCharacterViewModel;
 import com.mamedovga.lifesim.models.Person;
 
 import java.util.Arrays;
@@ -90,6 +91,35 @@ public class EventUtils {
 
     public static String generateEvent(Person person) {
         int age = person.getAge();
+        if(age == 0) {
+            return getBornEvent();
+        }
+        else if(age < 3) {
+            return getBabyEvent();
+        }
+        else if(age < 7) {
+            return getChildEvent();
+        }
+        else if(age < 12) {
+            return getPrimarySchoolEvent();
+        }
+        else if(age < 16) {
+            return getPrimarySchoolEvent();
+        }
+        else if(age < 18) {
+            return getHighSchoolEvent();
+        }
+        else if(age < 23) {
+            return getUniEvent();
+        }
+        else if(age < 65) {
+            return getJobEvent();
+        }
+        return getOldEvent();
+    }
+
+    public static String generateEvent(MainCharacterViewModel viewModel) {
+        int age = viewModel.getAge().getValue();
         if(age == 0) {
             return getBornEvent();
         }
