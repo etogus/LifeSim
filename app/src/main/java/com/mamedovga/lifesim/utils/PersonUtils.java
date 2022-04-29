@@ -1,8 +1,13 @@
 package com.mamedovga.lifesim.utils;
 
+import com.mamedovga.lifesim.R;
 import com.mamedovga.lifesim.models.Person;
 
 public class PersonUtils {
+
+    public static int[] maleAvatars = {R.drawable.scott_21, R.drawable.shaun_21};
+    public static int[] femaleAvatars = {R.drawable.angel_21, R.drawable.chloe_21, R.drawable.daphne_21};
+
     public static void randomizeStats(Person person) {
         person.setKarma(randomizeKarma());
         int karma = person.getKarma();
