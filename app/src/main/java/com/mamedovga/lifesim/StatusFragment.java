@@ -9,21 +9,16 @@ import android.view.ViewGroup;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelProviders;
 
 import com.mamedovga.lifesim.databinding.FragmentStatusBinding;
 import com.mamedovga.lifesim.models.MainCharacterViewModel;
-import com.mamedovga.lifesim.models.Person;
-import com.mamedovga.lifesim.utils.CountryUtils;
 import com.mamedovga.lifesim.utils.EventUtils;
 import com.mamedovga.lifesim.utils.ImageUtils;
 
 public class StatusFragment extends Fragment {
 
     private FragmentStatusBinding binding;
-    //private Person mainChar = new Person();
     private final StringBuilder activityLogText = new StringBuilder();
     private MainCharacterViewModel mainCharacterViewModel;
 
@@ -39,6 +34,7 @@ public class StatusFragment extends Fragment {
         binding.looksBar.setProgressPercentage(mainCharacterViewModel.getLooks().getValue(), true);
         binding.energyBar.setProgressPercentage(mainCharacterViewModel.getEnergy().getValue(), true);
         binding.playerAvatar.setImageBitmap(ImageUtils.decodeSampledBitmapFromResource(getResources(), mainCharacterViewModel.getAvatar().getValue(), 100, 100));
+        checkAge();
         return binding.getRoot();
     }
 
@@ -54,84 +50,6 @@ public class StatusFragment extends Fragment {
 //                mainChar.setName(s);
 //            }
 //        });
-//
-//        ViewModelProviders.of(getActivity()).get(MainCharacterViewModel.class).getLastName().observe(this, new Observer<String>() {
-//            @Override
-//            public void onChanged(String s) {
-//                mainChar.setLastName(s);
-//                binding.playerName.setText(mainChar.getFullName());
-//            }
-//        });
-//
-//        ViewModelProviders.of(getActivity()).get(MainCharacterViewModel.class).getGender().observe(this, new Observer<String>() {
-//            @Override
-//            public void onChanged(String s) {
-//                mainChar.setGender(s);
-//            }
-//        });
-//
-//        ViewModelProviders.of(getActivity()).get(MainCharacterViewModel.class).getCountry().observe(this, new Observer<String>() {
-//            @Override
-//            public void onChanged(String s) {
-//                mainChar.setCountry(s);
-//                binding.countryFlag.setImageResource(CountryUtils.getCountryFlag(s));
-//            }
-//        });
-//
-//        ViewModelProviders.of(getActivity()).get(MainCharacterViewModel.class).getAge().observe(this, new Observer<Integer>() {
-//            @Override
-//            public void onChanged(Integer i) {
-//                mainChar.setAge(i);
-//                Log.e("onChanged", "Age = " + mainCharacterViewModel.getAge().getValue());
-//            }
-//        });
-//
-//        ViewModelProviders.of(getActivity()).get(MainCharacterViewModel.class).getMood().observe(this, new Observer<Integer>() {
-//            @Override
-//            public void onChanged(Integer i) {
-//                mainChar.setMood(i);
-//                binding.moodBar.setProgressPercentage(i, true);
-//            }
-//        });
-//
-//        ViewModelProviders.of(getActivity()).get(MainCharacterViewModel.class).getHealth().observe(this, new Observer<Integer>() {
-//            @Override
-//            public void onChanged(Integer i) {
-//                mainChar.setHealth(i);
-//                binding.healthBar.setProgressPercentage(i, true);
-//            }
-//        });
-//
-//        ViewModelProviders.of(getActivity()).get(MainCharacterViewModel.class).getIntelligence().observe(this, new Observer<Integer>() {
-//            @Override
-//            public void onChanged(Integer i) {
-//                mainChar.setIntelligence(i);
-//                binding.smartsBar.setProgressPercentage(i, true);
-//            }
-//        });
-//
-//        ViewModelProviders.of(getActivity()).get(MainCharacterViewModel.class).getLooks().observe(this, new Observer<Integer>() {
-//            @Override
-//            public void onChanged(Integer i) {
-//                mainChar.setLooks(i);
-//                binding.looksBar.setProgressPercentage(i, true);
-//            }
-//        });
-//
-//        ViewModelProviders.of(getActivity()).get(MainCharacterViewModel.class).getEnergy().observe(this, new Observer<Integer>() {
-//            @Override
-//            public void onChanged(Integer i) {
-//                mainChar.setEnergy(i);
-//                binding.energyBar.setProgressPercentage(i, true);
-//            }
-//        });
-//
-//        ViewModelProviders.of(getActivity()).get(MainCharacterViewModel.class).getKarma().observe(this, new Observer<Integer>() {
-//            @Override
-//            public void onChanged(Integer i) {
-//                mainChar.setKarma(i);
-//            }
-//        });
     }
 
     public boolean isEndGame() {
@@ -139,7 +57,7 @@ public class StatusFragment extends Fragment {
     }
 
     public void checkAge() {
-        if(mainCharacterViewModel.getAge().getValue() == 1) {
+        if(mainCharacterViewModel.getAge().getValue() == 0) {
             binding.playerStatus.setText("Новорожденный");
             binding.playerStatModifiers.setText("Модификаторы отсутствуют");
         } else if(mainCharacterViewModel.getAge().getValue() == 2) {
@@ -164,7 +82,6 @@ public class StatusFragment extends Fragment {
 
     public void nextYear() {
         Log.e("onChanged", "Age = " + mainCharacterViewModel.getAge().getValue());
-        //mainChar.setAge(mainChar.getAge() + 1);
         mainCharacterViewModel.setAge(mainCharacterViewModel.getAge().getValue() + 1);
         checkAge();
         String randomEvent = EventUtils.generateEvent(mainCharacterViewModel);

@@ -30,4 +30,9 @@
         <item name="colorOnPrimary">#000</item>
     </style>
 
+    <style name="roundedCorners" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">30dp</item>
+    </style>
+
 </resources>

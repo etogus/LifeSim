@@ -1,7 +1,5 @@
 package com.mamedovga.lifesim.utils;
 
-import android.widget.ProgressBar;
-
 import com.mackhartley.roundedprogressbar.RoundedProgressBar;
 import com.mamedovga.lifesim.models.Person;
 

@@ -1,7 +1,6 @@
 package com.mamedovga.lifesim.utils;
 
 import com.mamedovga.lifesim.R;
-import com.mamedovga.lifesim.models.Country;
 
 import java.util.HashMap;
 import java.util.Map;

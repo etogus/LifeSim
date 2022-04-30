@@ -45,9 +45,9 @@ public class SliderAdapter extends RecyclerView.Adapter<SliderAdapter.SliderView
         return sliderItems.size();
     }
 
-    class SliderViewHolder extends RecyclerView.ViewHolder {
+    static class SliderViewHolder extends RecyclerView.ViewHolder {
 
-        private RoundedImageView roundedImageView;
+        private final RoundedImageView roundedImageView;
 
         public SliderViewHolder(@NonNull View itemView) {
             super(itemView);
