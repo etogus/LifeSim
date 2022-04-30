@@ -45,7 +45,7 @@ public class NewGameAvatarFragment extends Fragment {
             sliderItems.add(new SliderItem(ImageUtils.decodeSampledBitmapFromResource(getResources(),
                     PersonUtils.femaleAvatars[1], 100, 100)));
             sliderItems.add(new SliderItem(ImageUtils.decodeSampledBitmapFromResource(getResources(),
-                    PersonUtils.femaleAvatars[0], 100, 100)));
+                    PersonUtils.femaleAvatars[2], 100, 100)));
         }
         binding.viewPagerImageSlider.setAdapter(new SliderAdapter(sliderItems, binding.viewPagerImageSlider));
         binding.viewPagerImageSlider.setClipToPadding(false);
