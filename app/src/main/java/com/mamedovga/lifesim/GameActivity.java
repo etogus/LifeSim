@@ -41,6 +41,7 @@ public class GameActivity extends AppCompatActivity {
         String playerLastName = intent.getStringExtra("lastName");
         String playerGender = intent.getStringExtra("gender");
         String playerCountry = intent.getStringExtra("country");
+        int playerAvatar = intent.getIntExtra("avatar", 0);
         int playerAge = 0;
         Person samplePerson = new Person(playerName, playerLastName, playerGender, playerCountry, playerAge);
         PersonUtils.randomizeStats(samplePerson);
@@ -57,6 +58,7 @@ public class GameActivity extends AppCompatActivity {
         mainCharacterViewModel.setLooks(samplePerson.getLooks());
         mainCharacterViewModel.setEnergy(samplePerson.getEnergy());
         mainCharacterViewModel.setKarma(samplePerson.getKarma());
+        mainCharacterViewModel.setAvatar(playerAvatar);
 
         getSupportFragmentManager().beginTransaction().add(R.id.topAndMiddleContainer, actionsFragment, "4").hide(actionsFragment).commit();
         getSupportFragmentManager().beginTransaction().add(R.id.topAndMiddleContainer, relationshipsFragment, "3").hide(relationshipsFragment).commit();

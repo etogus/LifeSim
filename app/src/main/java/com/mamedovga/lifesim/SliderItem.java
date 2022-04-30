@@ -1,14 +1,16 @@
 package com.mamedovga.lifesim;
 
+import android.graphics.Bitmap;
+
 public class SliderItem {
 
-    private int image;
+    private Bitmap image;
 
-    public SliderItem(int image) {
+    public SliderItem(Bitmap image) {
         this.image = image;
     }
 
-    public int getImage() {
+    public Bitmap getImage() {
         return image;
     }
 }

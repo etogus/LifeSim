@@ -18,6 +18,7 @@ import com.mamedovga.lifesim.models.MainCharacterViewModel;
 import com.mamedovga.lifesim.models.Person;
 import com.mamedovga.lifesim.utils.CountryUtils;
 import com.mamedovga.lifesim.utils.EventUtils;
+import com.mamedovga.lifesim.utils.ImageUtils;
 
 public class StatusFragment extends Fragment {
 
@@ -37,6 +38,7 @@ public class StatusFragment extends Fragment {
         binding.smartsBar.setProgressPercentage(mainCharacterViewModel.getIntelligence().getValue(), true);
         binding.looksBar.setProgressPercentage(mainCharacterViewModel.getLooks().getValue(), true);
         binding.energyBar.setProgressPercentage(mainCharacterViewModel.getEnergy().getValue(), true);
+        binding.playerAvatar.setImageBitmap(ImageUtils.decodeSampledBitmapFromResource(getResources(), mainCharacterViewModel.getAvatar().getValue(), 100, 100));
         return binding.getRoot();
     }
 

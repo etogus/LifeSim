@@ -55,7 +55,7 @@ public class SliderAdapter extends RecyclerView.Adapter<SliderAdapter.SliderView
         }
 
         public void setRoundedImageView(SliderItem sliderItem) {
-            roundedImageView.setImageResource(sliderItem.getImage());
+            roundedImageView.setImageBitmap(sliderItem.getImage());
         }
     }
 }
