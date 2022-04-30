@@ -36,16 +36,16 @@ public class NewGameAvatarFragment extends Fragment {
         List<SliderItem> sliderItems = new ArrayList<>();
         if(NewGameInputFragment.getGender().equals("male")) {
             sliderItems.add(new SliderItem(ImageUtils.decodeSampledBitmapFromResource(getResources(),
-                    PersonUtils.maleAvatars[0], 100, 100)));
+                    PersonUtils.maleAvatars[0], 300, 300)));
             sliderItems.add(new SliderItem(ImageUtils.decodeSampledBitmapFromResource(getResources(),
-                    PersonUtils.maleAvatars[1], 100, 100)));
+                    PersonUtils.maleAvatars[1], 300, 300)));
         } else {
             sliderItems.add(new SliderItem(ImageUtils.decodeSampledBitmapFromResource(getResources(),
-                    PersonUtils.femaleAvatars[0], 100, 100)));
+                    PersonUtils.femaleAvatars[0], 300, 300)));
             sliderItems.add(new SliderItem(ImageUtils.decodeSampledBitmapFromResource(getResources(),
-                    PersonUtils.femaleAvatars[1], 100, 100)));
+                    PersonUtils.femaleAvatars[1], 300, 300)));
             sliderItems.add(new SliderItem(ImageUtils.decodeSampledBitmapFromResource(getResources(),
-                    PersonUtils.femaleAvatars[2], 100, 100)));
+                    PersonUtils.femaleAvatars[2], 300, 300)));
         }
         binding.viewPagerImageSlider.setAdapter(new SliderAdapter(sliderItems, binding.viewPagerImageSlider));
         binding.viewPagerImageSlider.setClipToPadding(false);

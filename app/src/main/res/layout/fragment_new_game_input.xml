@@ -71,7 +71,7 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="295dp"
         android:layout_height="84dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="80dp"
         app:counterEnabled="true"
         app:counterMaxLength="12"
@@ -96,7 +96,7 @@
         android:id="@+id/chooseGenderField"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:text="@string/choose_gender_field"
         app:layout_constraintStart_toStartOf="@+id/inputLastNameField"
         app:layout_constraintTop_toBottomOf="@+id/inputLastNameField" />
@@ -111,8 +111,8 @@
         <RadioButton
             android:id="@+id/radioButtonMale"
             android:layout_width="match_parent"
-            android:checked="true"
             android:layout_height="wrap_content"
+            android:checked="true"
             android:text="@string/radiobutton_male" />
 
         <RadioButton
@@ -127,7 +127,7 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
         android:layout_width="288dp"
         android:layout_height="68dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="30dp"
         android:hint="@string/country_picker"
         app:layout_constraintEnd_toEndOf="@+id/inputLastNameField"
         app:layout_constraintStart_toStartOf="@+id/radioGroup"
@@ -148,12 +148,12 @@
         android:id="@+id/start_game_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
+        android:layout_marginTop="40dp"
         android:background="@drawable/button_shape"
         android:text="@string/start_game_button"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/randomizeFirstName"
@@ -184,9 +184,16 @@
         android:layout_width="120dp"
         android:layout_height="120dp"
         android:src="@drawable/angel_21"
-        app:layout_constraintBottom_toTopOf="@+id/textInputLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/radioGroup"
-        app:layout_constraintTop_toBottomOf="@+id/inputLastNameField" />
+        app:layout_constraintTop_toTopOf="@+id/radioGroup" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Внешность:"
+        app:layout_constraintStart_toStartOf="@+id/chooseAvatar"
+        app:layout_constraintTop_toTopOf="@+id/chooseGenderField" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
