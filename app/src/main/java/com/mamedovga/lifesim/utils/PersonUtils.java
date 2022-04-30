@@ -5,8 +5,14 @@ import com.mamedovga.lifesim.models.Person;
 
 public class PersonUtils {
 
-    public static int[] maleAvatars = {R.drawable.scott_21, R.drawable.shaun_21};
-    public static int[] femaleAvatars = {R.drawable.angel_21, R.drawable.chloe_21, R.drawable.daphne_21};
+    public static int[][] maleAvatars = {
+            {R.drawable.scott_5, R.drawable.scott_9, R.drawable.scott_12, R.drawable.scott_15, R.drawable.scott_21},
+            {R.drawable.shaun_5, R.drawable.shaun_9, R.drawable.shaun_12, R.drawable.shaun_15, R.drawable.shaun_21}};
+
+    public static int[][] femaleAvatars = {
+            {R.drawable.angel_5, R.drawable.angel_9, R.drawable.angel_12, R.drawable.angel_15, R.drawable.angel_21},
+            {R.drawable.chloe_5, R.drawable.chloe_9, R.drawable.chloe_12, R.drawable.chloe_15, R.drawable.chloe_21},
+            {R.drawable.daphne_5, R.drawable.daphne_9, R.drawable.daphne_12, R.drawable.daphne_15, R.drawable.daphne_21}};
 
     public static void randomizeStats(Person person) {
         person.setKarma(randomizeKarma());

@@ -32,7 +32,6 @@ public class StatusFragment extends Fragment {
         binding.smartsBar.setProgressPercentage(mainCharacterViewModel.getIntelligence().getValue(), true);
         binding.looksBar.setProgressPercentage(mainCharacterViewModel.getLooks().getValue(), true);
         binding.energyBar.setProgressPercentage(mainCharacterViewModel.getEnergy().getValue(), true);
-        binding.playerAvatar.setImageBitmap(ImageUtils.decodeSampledBitmapFromResource(getResources(), mainCharacterViewModel.getAvatar().getValue(), 100, 100));
         checkAge();
         return binding.getRoot();
     }
@@ -57,6 +56,7 @@ public class StatusFragment extends Fragment {
 
     public void checkAge() {
         if(mainCharacterViewModel.getAge().getValue() == 0) {
+            binding.playerAvatar.setImageBitmap(ImageUtils.decodeSampledBitmapFromResource(getResources(), mainCharacterViewModel.getAvatar().getValue()[0], 100, 100));
             binding.playerStatModifiers.setText("Модификаторы отсутствуют");
             if(mainCharacterViewModel.getGender().getValue().equals("male")) {
                 binding.playerStatus.setText("Новорожденный");
@@ -68,22 +68,26 @@ public class StatusFragment extends Fragment {
             binding.playerStatusImage.setImageResource(R.drawable.ic_baseline_child_36);
         } else if(mainCharacterViewModel.getAge().getValue() == 4) {
             binding.playerStatus.setText("Ребёнок");
+            binding.playerAvatar.setImageBitmap(ImageUtils.decodeSampledBitmapFromResource(getResources(), mainCharacterViewModel.getAvatar().getValue()[1], 100, 100));
             if(mainCharacterViewModel.getGender().getValue().equals("male"))
                 binding.playerStatusImage.setImageResource(R.drawable.outline_boy_24);
             else binding.playerStatusImage.setImageResource(R.drawable.outline_girl_24);
         } else if(mainCharacterViewModel.getAge().getValue() == 7) {
+            binding.playerAvatar.setImageBitmap(ImageUtils.decodeSampledBitmapFromResource(getResources(), mainCharacterViewModel.getAvatar().getValue()[2], 100, 100));
             if(mainCharacterViewModel.getGender().getValue().equals("male")) {
                 binding.playerStatus.setText("Школьник");
             } else {
                 binding.playerStatus.setText("Школьница");
             }
         } else if(mainCharacterViewModel.getAge().getValue() == 18) {
+            binding.playerAvatar.setImageBitmap(ImageUtils.decodeSampledBitmapFromResource(getResources(), mainCharacterViewModel.getAvatar().getValue()[3], 100, 100));
             if(mainCharacterViewModel.getGender().getValue().equals("male")) {
                 binding.playerStatus.setText("Студент");
             } else {
                 binding.playerStatus.setText("Студентка");
             }
         } else if(mainCharacterViewModel.getAge().getValue() == 23) {
+            binding.playerAvatar.setImageBitmap(ImageUtils.decodeSampledBitmapFromResource(getResources(), mainCharacterViewModel.getAvatar().getValue()[4], 100, 100));
             if(mainCharacterViewModel.getGender().getValue().equals("male")) {
                 binding.playerStatus.setText("Молодой человек");
                 binding.playerStatusImage.setImageResource(R.drawable.outline_man_24);

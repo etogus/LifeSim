@@ -41,7 +41,7 @@ public class GameActivity extends AppCompatActivity {
         String playerLastName = intent.getStringExtra("lastName");
         String playerGender = intent.getStringExtra("gender");
         String playerCountry = intent.getStringExtra("country");
-        int playerAvatar = intent.getIntExtra("avatar", 0);
+        int[] playerAvatar = intent.getIntArrayExtra("avatar");
         int playerAge = 0;
         Person samplePerson = new Person(playerName, playerLastName, playerGender, playerCountry, playerAge);
         PersonUtils.randomizeStats(samplePerson);

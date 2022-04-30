@@ -27,7 +27,7 @@ import java.util.List;
 public class NewGameAvatarFragment extends Fragment {
 
     private FragmentNewGameAvatarBinding binding;
-    private static int avatar;
+    private static int[] avatar;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -36,16 +36,16 @@ public class NewGameAvatarFragment extends Fragment {
         List<SliderItem> sliderItems = new ArrayList<>();
         if(NewGameInputFragment.getGender().equals("male")) {
             sliderItems.add(new SliderItem(ImageUtils.decodeSampledBitmapFromResource(getResources(),
-                    PersonUtils.maleAvatars[0], 300, 300)));
+                    PersonUtils.maleAvatars[0][4], 300, 300)));
             sliderItems.add(new SliderItem(ImageUtils.decodeSampledBitmapFromResource(getResources(),
-                    PersonUtils.maleAvatars[1], 300, 300)));
+                    PersonUtils.maleAvatars[1][4], 300, 300)));
         } else {
             sliderItems.add(new SliderItem(ImageUtils.decodeSampledBitmapFromResource(getResources(),
-                    PersonUtils.femaleAvatars[0], 300, 300)));
+                    PersonUtils.femaleAvatars[0][4], 300, 300)));
             sliderItems.add(new SliderItem(ImageUtils.decodeSampledBitmapFromResource(getResources(),
-                    PersonUtils.femaleAvatars[1], 300, 300)));
+                    PersonUtils.femaleAvatars[1][4], 300, 300)));
             sliderItems.add(new SliderItem(ImageUtils.decodeSampledBitmapFromResource(getResources(),
-                    PersonUtils.femaleAvatars[2], 300, 300)));
+                    PersonUtils.femaleAvatars[2][4], 300, 300)));
         }
         binding.viewPagerImageSlider.setAdapter(new SliderAdapter(sliderItems, binding.viewPagerImageSlider));
         binding.viewPagerImageSlider.setClipToPadding(false);
@@ -79,7 +79,7 @@ public class NewGameAvatarFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Bundle bundle = new Bundle();
-                bundle.putInt("avatar", avatar);
+                bundle.putIntArray("avatar", avatar);
                 getParentFragmentManager().setFragmentResult("requestKey", bundle);
                 getFragmentManager().popBackStackImmediate();
             }
