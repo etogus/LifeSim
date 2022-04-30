@@ -2,15 +2,8 @@ package com.mamedovga.lifesim;
 
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentResultListener;
-
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,8 +13,11 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
-import com.mamedovga.lifesim.databinding.ActivityNewGameBinding;
-import com.mamedovga.lifesim.databinding.FragmentNewGameAvatarBinding;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentResultListener;
+
 import com.mamedovga.lifesim.databinding.FragmentNewGameInputBinding;
 import com.mamedovga.lifesim.utils.CountryUtils;
 import com.mamedovga.lifesim.utils.ImageUtils;

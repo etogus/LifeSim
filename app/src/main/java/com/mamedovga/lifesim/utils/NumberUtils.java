@@ -1,7 +1,5 @@
 package com.mamedovga.lifesim.utils;
 
-import android.util.Log;
-
 import java.util.Arrays;
 import java.util.Random;
 

@@ -1,9 +1,5 @@
 package com.mamedovga.lifesim.models;
 
-import com.mamedovga.lifesim.R;
-
-import java.util.ArrayList;
-
 public class Person {
 
     private String name;
