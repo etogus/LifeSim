@@ -18,12 +18,14 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import com.mamedovga.lifesim.databinding.ActivityNewGameBinding;
 import com.mamedovga.lifesim.databinding.FragmentNewGameAvatarBinding;
 import com.mamedovga.lifesim.databinding.FragmentNewGameInputBinding;
 import com.mamedovga.lifesim.utils.CountryUtils;
 import com.mamedovga.lifesim.utils.ImageUtils;
+import com.mamedovga.lifesim.utils.NumberUtils;
 import com.mamedovga.lifesim.utils.PersonUtils;
 import com.mamedovga.lifesim.utils.StringUtils;
 
@@ -48,7 +50,6 @@ public class NewGameInputFragment extends Fragment {
             }
         });
 
-        Log.e("onCreateView", "Я тут");
         binding = FragmentNewGameInputBinding.inflate(inflater, container, false);
 
         String[] countries = CountryUtils.getCountries();
@@ -191,6 +192,28 @@ public class NewGameInputFragment extends Fragment {
             intent.putExtra("lastName", surname);
             intent.putExtra("gender", gender);
             intent.putExtra("country", country);
+
+            if(NumberUtils.contains(PersonUtils.maleAvatars, avatar)) {
+                if (!gender.equals("male")) {
+                    avatar = PersonUtils.femaleAvatars[NumberUtils.getRandomNumber(0, PersonUtils.femaleAvatars.length - 1)];
+                    Toast.makeText(getContext(), "Вы выбрали женский пол. Выбрана случайная женская внешность вместо мужской.", Toast.LENGTH_LONG).show();
+                }
+            } else {
+                if(gender.equals("male")) {
+                    avatar = PersonUtils.maleAvatars[NumberUtils.getRandomNumber(0, PersonUtils.maleAvatars.length - 1)];
+                    Toast.makeText(getContext(), "Вы выбрали мужской пол. Выбрана случайная мужская внешность вместо женской.", Toast.LENGTH_LONG).show();
+                }
+                if(avatar == 0) {
+                    if(gender.equals("male")) {
+                        avatar = PersonUtils.maleAvatars[NumberUtils.getRandomNumber(0, PersonUtils.maleAvatars.length - 1)];
+                        Toast.makeText(getContext(), "Вы выбрали мужской пол. Выбрана случайная мужская внешность.", Toast.LENGTH_LONG).show();
+                    }
+                    else {
+                        avatar = PersonUtils.femaleAvatars[NumberUtils.getRandomNumber(0, PersonUtils.femaleAvatars.length - 1)];
+                        Toast.makeText(getContext(), "Вы выбрали женский пол. Выбрана случайная женская внешность.", Toast.LENGTH_LONG).show();
+                    }
+                }
+            }
             intent.putExtra("avatar", avatar);
 
             startActivity(intent);

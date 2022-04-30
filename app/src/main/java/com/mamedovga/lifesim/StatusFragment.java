@@ -26,7 +26,6 @@ public class StatusFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentStatusBinding.inflate(inflater, container, false);
-        Log.e("onCreateView", "Age = " + mainCharacterViewModel.getAge().getValue());
         binding.playerName.setText(mainCharacterViewModel.getName().getValue() + " " + mainCharacterViewModel.getLastName().getValue());
         binding.moodBar.setProgressPercentage(mainCharacterViewModel.getMood().getValue(), true);
         binding.healthBar.setProgressPercentage(mainCharacterViewModel.getHealth().getValue(), true);
@@ -58,8 +57,12 @@ public class StatusFragment extends Fragment {
 
     public void checkAge() {
         if(mainCharacterViewModel.getAge().getValue() == 0) {
-            binding.playerStatus.setText("Новорожденный");
             binding.playerStatModifiers.setText("Модификаторы отсутствуют");
+            if(mainCharacterViewModel.getGender().getValue().equals("male")) {
+                binding.playerStatus.setText("Новорожденный");
+            } else {
+                binding.playerStatus.setText("Новорожденная");
+            }
         } else if(mainCharacterViewModel.getAge().getValue() == 2) {
             binding.playerStatus.setText("Дитя");
             binding.playerStatusImage.setImageResource(R.drawable.ic_baseline_child_36);
@@ -69,19 +72,29 @@ public class StatusFragment extends Fragment {
                 binding.playerStatusImage.setImageResource(R.drawable.outline_boy_24);
             else binding.playerStatusImage.setImageResource(R.drawable.outline_girl_24);
         } else if(mainCharacterViewModel.getAge().getValue() == 7) {
-            binding.playerStatus.setText("Школьник");
+            if(mainCharacterViewModel.getGender().getValue().equals("male")) {
+                binding.playerStatus.setText("Школьник");
+            } else {
+                binding.playerStatus.setText("Школьница");
+            }
         } else if(mainCharacterViewModel.getAge().getValue() == 18) {
-            binding.playerStatus.setText("Студент");
+            if(mainCharacterViewModel.getGender().getValue().equals("male")) {
+                binding.playerStatus.setText("Студент");
+            } else {
+                binding.playerStatus.setText("Студентка");
+            }
         } else if(mainCharacterViewModel.getAge().getValue() == 23) {
-            binding.playerStatus.setText("Молодой человек");
-            if(mainCharacterViewModel.getGender().getValue().equals("male"))
+            if(mainCharacterViewModel.getGender().getValue().equals("male")) {
+                binding.playerStatus.setText("Молодой человек");
                 binding.playerStatusImage.setImageResource(R.drawable.outline_man_24);
-            else binding.playerStatusImage.setImageResource(R.drawable.outline_woman_24);
+            } else {
+                binding.playerStatus.setText("Девушка");
+                binding.playerStatusImage.setImageResource(R.drawable.outline_woman_24);
+            }
         }
     }
 
     public void nextYear() {
-        Log.e("onChanged", "Age = " + mainCharacterViewModel.getAge().getValue());
         mainCharacterViewModel.setAge(mainCharacterViewModel.getAge().getValue() + 1);
         checkAge();
         String randomEvent = EventUtils.generateEvent(mainCharacterViewModel);

@@ -87,8 +87,4 @@ public class NewGameAvatarFragment extends Fragment {
 
         return binding.getRoot();
     }
-
-    public static int getAvatar() {
-        return avatar;
-    }
 }
