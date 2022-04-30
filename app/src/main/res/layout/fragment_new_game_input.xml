@@ -179,12 +179,14 @@
         app:layout_constraintStart_toEndOf="@+id/inputLastNameField"
         app:layout_constraintTop_toTopOf="@+id/inputLastNameField" />
 
-    <ImageView
+    <com.makeramen.roundedimageview.RoundedImageView
         android:id="@+id/chooseAvatar"
         android:layout_width="115dp"
         android:layout_height="115dp"
         android:layout_margin="5dp"
         android:src="@drawable/unknown_avatar"
+        android:adjustViewBounds="true"
+        app:riv_corner_radius="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/radioGroup"
         app:layout_constraintTop_toTopOf="@+id/radioGroup" />

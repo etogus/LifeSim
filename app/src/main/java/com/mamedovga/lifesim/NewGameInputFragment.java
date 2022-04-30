@@ -104,7 +104,7 @@ public class NewGameInputFragment extends Fragment {
                 if(!(StringUtils.isStringLetterOnly(firstName.toString()))) {
                     binding.inputFirstNameFieldEditText.setError(getString(R.string.error_format));
                 }
-                if(firstName.length() > 10) {
+                if(firstName.length() > 12) {
                     binding.inputFirstNameFieldEditText.setError(getString(R.string.error_length));
                 }
             }
@@ -133,7 +133,7 @@ public class NewGameInputFragment extends Fragment {
                 if(!(StringUtils.isStringLetterOnly(lastName.toString()))) {
                     binding.inputLastNameFieldEditText.setError(getString(R.string.error_format));
                 }
-                if(lastName.length() > 10) {
+                if(lastName.length() > 12) {
                     binding.inputLastNameFieldEditText.setError(getString(R.string.error_length));
                 }
             }
@@ -196,12 +196,12 @@ public class NewGameInputFragment extends Fragment {
             if(NumberUtils.contains(PersonUtils.maleAvatars, avatar)) {
                 if (!gender.equals("male")) {
                     avatar = PersonUtils.femaleAvatars[NumberUtils.getRandomNumber(0, PersonUtils.femaleAvatars.length - 1)];
-                    Toast.makeText(getContext(), "Вы выбрали женский пол. Выбрана случайная женская внешность вместо мужской.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(), "Вы выбрали женский пол. Выбрана случайная женская внешность.", Toast.LENGTH_LONG).show();
                 }
             } else {
                 if(gender.equals("male")) {
                     avatar = PersonUtils.maleAvatars[NumberUtils.getRandomNumber(0, PersonUtils.maleAvatars.length - 1)];
-                    Toast.makeText(getContext(), "Вы выбрали мужской пол. Выбрана случайная мужская внешность вместо женской.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(), "Вы выбрали мужской пол. Выбрана случайная мужская внешность.", Toast.LENGTH_LONG).show();
                 }
                 if(avatar == 0) {
                     if(gender.equals("male")) {
