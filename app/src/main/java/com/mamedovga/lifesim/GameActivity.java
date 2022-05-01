@@ -13,7 +13,7 @@ import androidx.lifecycle.ViewModelProviders;
 import com.google.android.material.navigation.NavigationBarView;
 import com.mamedovga.lifesim.databinding.ActivityGameBinding;
 import com.mamedovga.lifesim.models.MainCharacterViewModel;
-import com.mamedovga.lifesim.models.Person;
+import com.mamedovga.lifesim.models.MainCharacter;
 import com.mamedovga.lifesim.utils.PersonUtils;
 
 public class GameActivity extends AppCompatActivity {
@@ -43,21 +43,21 @@ public class GameActivity extends AppCompatActivity {
         String playerCountry = intent.getStringExtra("country");
         int[] playerAvatar = intent.getIntArrayExtra("avatar");
         int playerAge = 0;
-        Person samplePerson = new Person(playerName, playerLastName, playerGender, playerCountry, playerAge);
-        PersonUtils.randomizeStats(samplePerson);
+        MainCharacter sampleMainCharacter = new MainCharacter(playerName, playerLastName, playerGender, playerCountry, playerAge);
+        PersonUtils.randomizeStats(sampleMainCharacter);
 
         mainCharacterViewModel = ViewModelProviders.of(this).get(MainCharacterViewModel.class);
-        mainCharacterViewModel.setName(samplePerson.getName());
-        mainCharacterViewModel.setLastName(samplePerson.getLastName());
-        mainCharacterViewModel.setGender(samplePerson.getGender());
-        mainCharacterViewModel.setCountry(samplePerson.getCountry());
-        mainCharacterViewModel.setAge(samplePerson.getAge());
-        mainCharacterViewModel.setMood(samplePerson.getMood());
-        mainCharacterViewModel.setHealth(samplePerson.getHealth());
-        mainCharacterViewModel.setIntelligence(samplePerson.getIntelligence());
-        mainCharacterViewModel.setLooks(samplePerson.getLooks());
-        mainCharacterViewModel.setEnergy(samplePerson.getEnergy());
-        mainCharacterViewModel.setKarma(samplePerson.getKarma());
+        mainCharacterViewModel.setName(sampleMainCharacter.getName());
+        mainCharacterViewModel.setLastName(sampleMainCharacter.getLastName());
+        mainCharacterViewModel.setGender(sampleMainCharacter.getGender());
+        mainCharacterViewModel.setCountry(sampleMainCharacter.getCountry());
+        mainCharacterViewModel.setAge(sampleMainCharacter.getAge());
+        mainCharacterViewModel.setMood(sampleMainCharacter.getMood());
+        mainCharacterViewModel.setHealth(sampleMainCharacter.getHealth());
+        mainCharacterViewModel.setIntelligence(sampleMainCharacter.getIntelligence());
+        mainCharacterViewModel.setLooks(sampleMainCharacter.getLooks());
+        mainCharacterViewModel.setEnergy(sampleMainCharacter.getEnergy());
+        mainCharacterViewModel.setKarma(sampleMainCharacter.getKarma());
         mainCharacterViewModel.setAvatar(playerAvatar);
 
         getSupportFragmentManager().beginTransaction().add(R.id.topAndMiddleContainer, actionsFragment, "4").hide(actionsFragment).commit();

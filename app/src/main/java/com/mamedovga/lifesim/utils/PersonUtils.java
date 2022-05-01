@@ -1,7 +1,8 @@
 package com.mamedovga.lifesim.utils;
 
 import com.mamedovga.lifesim.R;
-import com.mamedovga.lifesim.models.Person;
+import com.mamedovga.lifesim.models.MainCharacter;
+import com.mamedovga.lifesim.models.NonPlayableCharacter;
 
 public class PersonUtils {
 
@@ -14,22 +15,44 @@ public class PersonUtils {
             {R.drawable.chloe_5, R.drawable.chloe_9, R.drawable.chloe_12, R.drawable.chloe_15, R.drawable.chloe_21},
             {R.drawable.daphne_5, R.drawable.daphne_9, R.drawable.daphne_12, R.drawable.daphne_15, R.drawable.daphne_21}};
 
-    public static void randomizeStats(Person person) {
-        person.setKarma(randomizeKarma());
-        int karma = person.getKarma();
+    public static String[] AllStatusToPlayer = {"unknown", "classmate", "coworker", "supervisor",
+            "friend", "enemy", "lover", "father", "mother", "sister", "brother", "husband", "wife", "son", "daughter"};
+
+    public static void randomizeStats(MainCharacter mainCharacter) {
+        mainCharacter.setKarma(randomizeKarma());
+        int karma = mainCharacter.getKarma();
         if(karma == 10)
-            person.setPersonStats(100, 100, 100, 100, 100);
+            mainCharacter.setStats(100, 100, 100, 100, 100);
         else if(karma >= 8) {
-            person.setPersonStats(randomizeMood(80, 100), randomizeHealth(80, 100), randomizeIntelligence(80, 100), randomizeLooks(80, 100), randomizeEnergy(80, 100));
+            mainCharacter.setStats(randomizeMood(80, 100), randomizeHealth(80, 100), randomizeIntelligence(80, 100), randomizeLooks(80, 100), randomizeEnergy(80, 100));
         }
         else if(karma >= 6) {
-            person.setPersonStats(randomizeMood(60, 90), randomizeHealth(60, 90), randomizeIntelligence(60, 100), randomizeLooks(60, 90), randomizeEnergy(60, 90));
+            mainCharacter.setStats(randomizeMood(60, 90), randomizeHealth(60, 90), randomizeIntelligence(60, 100), randomizeLooks(60, 90), randomizeEnergy(60, 90));
         }
         else if(karma >= 4) {
-            person.setPersonStats(randomizeMood(40, 80), randomizeHealth(40, 80), randomizeIntelligence(40, 80), randomizeLooks(40, 80), randomizeEnergy(40, 80));
+            mainCharacter.setStats(randomizeMood(40, 80), randomizeHealth(40, 80), randomizeIntelligence(40, 80), randomizeLooks(40, 80), randomizeEnergy(40, 80));
         }
         else if(karma <= 2) {
-            person.setPersonStats(randomizeMood(0, 60), randomizeHealth(0, 60), randomizeIntelligence(0, 60), randomizeLooks(0, 60), randomizeEnergy(0, 60));
+            mainCharacter.setStats(randomizeMood(0, 60), randomizeHealth(0, 60), randomizeIntelligence(0, 60), randomizeLooks(0, 60), randomizeEnergy(0, 60));
+        }
+    }
+
+    public static void randomizeStats(NonPlayableCharacter nonPlayableCharacter) {
+        nonPlayableCharacter.setKarma(randomizeKarma());
+        int karma = nonPlayableCharacter.getKarma();
+        if(karma == 10)
+            nonPlayableCharacter.setStats(100, 100, 100, 100, randomizeMoney(3000000, 10000000, nonPlayableCharacter.getIntelligence()));
+        else if(karma >= 8) {
+            nonPlayableCharacter.setStats(randomizeMood(80, 100), randomizeHealth(80, 100), randomizeIntelligence(80, 100), randomizeLooks(80, 100), randomizeEnergy(80, 100), randomizeMoney(1000000, 3000000, nonPlayableCharacter.getIntelligence()));
+        }
+        else if(karma >= 6) {
+            nonPlayableCharacter.setStats(randomizeMood(60, 90), randomizeHealth(60, 90), randomizeIntelligence(60, 100), randomizeLooks(60, 90), randomizeEnergy(60, 90), randomizeMoney(100000, 1000000, nonPlayableCharacter.getIntelligence()));
+        }
+        else if(karma >= 4) {
+            nonPlayableCharacter.setStats(randomizeMood(40, 80), randomizeHealth(40, 80), randomizeIntelligence(40, 80), randomizeLooks(40, 80), randomizeEnergy(40, 80), randomizeMoney(10000, 100000, nonPlayableCharacter.getIntelligence()));
+        }
+        else if(karma <= 2) {
+            nonPlayableCharacter.setStats(randomizeMood(0, 60), randomizeHealth(0, 60), randomizeIntelligence(0, 60), randomizeLooks(0, 60), randomizeEnergy(0, 60), randomizeMoney(0, 10000, nonPlayableCharacter.getIntelligence()));
         }
     }
 
@@ -54,6 +77,10 @@ public class PersonUtils {
     }
 
     private static int randomizeEnergy(int min, int max) {
+        return NumberUtils.getRandomNumber(min, max);
+    }
+
+    private static int randomizeMoney(int min, int max, int intelligence) {
         return NumberUtils.getRandomNumber(min, max);
     }
 

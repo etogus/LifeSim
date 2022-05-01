@@ -1,7 +1,7 @@
 package com.mamedovga.lifesim.utils;
 
 import com.mamedovga.lifesim.models.MainCharacterViewModel;
-import com.mamedovga.lifesim.models.Person;
+import com.mamedovga.lifesim.models.MainCharacter;
 
 import java.util.Arrays;
 import java.util.List;
@@ -89,8 +89,8 @@ public class EventUtils {
         return givenList.get(rand.nextInt(givenList.size()));
     }
 
-    public static String generateEvent(Person person) {
-        int age = person.getAge();
+    public static String generateEvent(MainCharacter mainCharacter) {
+        int age = mainCharacter.getAge();
         if(age == 0) {
             return getBornEvent();
         }
