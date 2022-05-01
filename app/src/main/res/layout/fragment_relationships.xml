@@ -22,7 +22,7 @@
             android:layout_margin="5dp"
             android:text="Отношения"
             android:textColor="@color/white"
-            android:textSize="16sp"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
     </FrameLayout>
@@ -43,7 +43,7 @@
             android:layout_margin="5dp"
             android:text="Семья"
             android:textColor="@color/white"
-            android:textSize="16sp"
+            android:textSize="12sp"
             android:textStyle="bold" />
 
     </FrameLayout>

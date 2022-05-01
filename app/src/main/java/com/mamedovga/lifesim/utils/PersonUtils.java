@@ -60,11 +60,11 @@ public class PersonUtils {
         if(gender.equals("male")) {
             int array = NumberUtils.getRandomNumber(0, maleAvatars.length - 1);
             int position = NumberUtils.getRandomNumber(0, maleAvatars[array].length - 1);
-            return maleAvatars[array][position];
+            return maleAvatars[array][4];
         } else {
             int array = NumberUtils.getRandomNumber(0, femaleAvatars.length - 1);
             int position = NumberUtils.getRandomNumber(0, femaleAvatars[array].length - 1);
-            return femaleAvatars[array][position];
+            return femaleAvatars[array][4];
         }
     }
 

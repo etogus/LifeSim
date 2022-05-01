@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import com.mamedovga.lifesim.databinding.FragmentRelationshipsBinding;
 import com.mamedovga.lifesim.databinding.FragmentStatusBinding;
 import com.mamedovga.lifesim.models.NonPlayableCharacter;
+import com.mamedovga.lifesim.utils.PersonUtils;
 
 import java.util.ArrayList;
 
@@ -35,8 +36,12 @@ public class RelationshipsFragment extends Fragment implements RelationshipsRecy
     }
 
     private void buildList() {
-        list.add(new NonPlayableCharacter("Name", "LastName", "male", "country", 28, 100, "unknown"));
-        list.add(new NonPlayableCharacter("Name2", "LastName2", "female", "country", 24, 100, "unknown"));
+        NonPlayableCharacter father = new NonPlayableCharacter(PersonUtils.getRandomFirstName("male", "Россия"),
+                PersonUtils.getRandomLastName("male", "Россия"), "male", "country", 28, 100, "Папа");
+        NonPlayableCharacter mother = new NonPlayableCharacter(PersonUtils.getRandomFirstName("female", "Россия"),
+                father.getLastName() + "а", "female", "country", 24, 100, "Мама");
+        list.add(father);
+        list.add(mother);
     }
 
     @Override
@@ -44,7 +49,6 @@ public class RelationshipsFragment extends Fragment implements RelationshipsRecy
         Fragment fragment = DetailFragment.newInstance(nonPlayableCharacter.getFullName());
         Log.e("onItemClick", "nonPlayableCharacter.getFullName() = " + nonPlayableCharacter.getFullName());
         FragmentTransaction transaction = requireActivity().getSupportFragmentManager().beginTransaction();
-        //transaction.replace(R.id.topAndMiddleContainer, fragment, "detail");
         transaction.hide(requireActivity().getSupportFragmentManager().findFragmentByTag("relationshipsFragment"));
         transaction.add(R.id.topAndMiddleContainer, fragment);
         transaction.addToBackStack(null);
