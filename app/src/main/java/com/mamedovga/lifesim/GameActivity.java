@@ -27,6 +27,7 @@ public class GameActivity extends AppCompatActivity {
     private final AssetsFragment assetsFragment = new AssetsFragment();
     private final RelationshipsFragment relationshipsFragment = new RelationshipsFragment();
     private final ActionsFragment actionsFragment = new ActionsFragment();
+    private final RelationshipDialogFragment relationshipDialogFragment = new RelationshipDialogFragment();
     private Fragment active = statusFragment;
 
     @Override

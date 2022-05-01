@@ -46,12 +46,15 @@ public class RelationshipsFragment extends Fragment implements RelationshipsRecy
 
     @Override
     public void onItemClick(NonPlayableCharacter nonPlayableCharacter) {
-        Fragment fragment = DetailFragment.newInstance(nonPlayableCharacter.getFullName());
-        Log.e("onItemClick", "nonPlayableCharacter.getFullName() = " + nonPlayableCharacter.getFullName());
-        FragmentTransaction transaction = requireActivity().getSupportFragmentManager().beginTransaction();
-        transaction.hide(requireActivity().getSupportFragmentManager().findFragmentByTag("relationshipsFragment"));
-        transaction.add(R.id.topAndMiddleContainer, fragment);
-        transaction.addToBackStack(null);
-        transaction.commit();
+//        Fragment fragment = DetailFragment.newInstance(nonPlayableCharacter.getFullName());
+//
+//        FragmentTransaction transaction = requireActivity().getSupportFragmentManager().beginTransaction();
+//        transaction.hide(requireActivity().getSupportFragmentManager().findFragmentByTag("relationshipsFragment"));
+//        transaction.add(R.id.topAndMiddleContainer, fragment);
+//        transaction.addToBackStack(null);
+//        transaction.commit();
+        RelationshipDialogFragment dialog = RelationshipDialogFragment.newInstance(nonPlayableCharacter.avatar);
+        dialog.setTargetFragment(RelationshipsFragment.this, 1);
+        dialog.show(getActivity().getSupportFragmentManager(), "MyCustomDialog");
     }
 }

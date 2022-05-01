@@ -1,12 +1,15 @@
 package com.mamedovga.lifesim;
 
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
+
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -14,6 +17,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.mamedovga.lifesim.databinding.FragmentChatBinding;
+import com.mamedovga.lifesim.databinding.FragmentDetailBinding;
 import com.mamedovga.lifesim.models.Chat;
 import com.mamedovga.lifesim.models.Response;
 
@@ -25,39 +30,72 @@ import java.util.ArrayList;
 import retrofit2.Call;
 import retrofit2.Callback;
 
-public class ChatActivity extends AppCompatActivity {
-    //private ChatBinding binding;
-    private static final String TAG = "ChatActivity";
+public class ChatFragment extends Fragment {
+
+//    private static final String ARG_PARAM1 = "param1";
+//    private static final String ARG_PARAM2 = "param2";
+//    private String mParam1;
+//    private String mParam2;
+
+    private FragmentChatBinding binding;
+    private static final String TAG = "ChatFragment";
     private final String BOT_KEY = "bot";
     private final String USER_KEY = "user";
     private ArrayList<Chat> chatArrayList;
     private ChatAdapter chatAdapter;
 
+//    public ChatFragment() { }
+//
+//    public static ChatFragment newInstance(String param1, String param2) {
+//        ChatFragment fragment = new ChatFragment();
+//        Bundle args = new Bundle();
+//        args.putString(ARG_PARAM1, param1);
+//        args.putString(ARG_PARAM2, param2);
+//        fragment.setArguments(args);
+//        return fragment;
+//    }
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        binding = ChatBinding.inflate(getLayoutInflater());
-//        View view = binding.getRoot();
-//        setContentView(view);
-//
-//        chatArrayList = new ArrayList<>();
-//        chatAdapter = new ChatAdapter(chatArrayList, this);
-//        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
-//        binding.chatRecyclerView.setLayoutManager(linearLayoutManager);
-//        binding.chatRecyclerView.setAdapter(chatAdapter);
-//
-//        binding.floatingActionButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                if(binding.editText.getText().toString().isEmpty()) {
-//                    Toast.makeText(ChatActivity.this, "Введите сообщение", Toast.LENGTH_SHORT).show();
-//                    return;
-//                }
-//                getResp(binding.editText.getText().toString());
-//                //sendMessage(binding.editText.getText().toString());
-//                binding.editText.setText("");
-//            }
-//        });
+//        if (getArguments() != null) {
+//            mParam1 = getArguments().getString(ARG_PARAM1);
+//            mParam2 = getArguments().getString(ARG_PARAM2);
+//        }
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        binding = FragmentChatBinding.inflate(inflater, container, false);
+        chatArrayList = new ArrayList<>();
+        chatAdapter = new ChatAdapter(chatArrayList, requireContext());
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(requireContext());
+        binding.chatRecyclerView.setLayoutManager(linearLayoutManager);
+        binding.chatRecyclerView.setAdapter(chatAdapter);
+        binding.floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(binding.editText.getText().toString().isEmpty()) {
+                    Toast.makeText(requireContext(), "Введите сообщение", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                getResp(binding.editText.getText().toString());
+                //sendMessage(binding.editText.getText().toString());
+                binding.editText.setText("");
+            }
+        });
+
+        binding.floatingActionButtonCloseChat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                View view1 = getActivity().findViewById(R.id.bottomContainer);
+                view1.setVisibility(View.VISIBLE);
+                getActivity().onBackPressed();
+            }
+        });
+
+        return binding.getRoot();
     }
 
     private void getResp(String message) {
@@ -69,10 +107,10 @@ public class ChatActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
                 //if(response.isSuccessful()) {
-                    Response response1 = response.body();
-                    chatArrayList.add(new Chat(response1.getResponse(), BOT_KEY));
-                    chatAdapter.notifyDataSetChanged();
-                    Log.e(TAG, "onResponse: " + response.body());
+                Response response1 = response.body();
+                chatArrayList.add(new Chat(response1.getResponse(), BOT_KEY));
+                chatAdapter.notifyDataSetChanged();
+                Log.e(TAG, "onResponse: " + response.body());
                 //}
             }
 
@@ -95,7 +133,7 @@ public class ChatActivity extends AppCompatActivity {
             e.printStackTrace();
         }
         String url = "http://192.168.1.55:5000/chat";
-        RequestQueue queue = Volley.newRequestQueue(ChatActivity.this);
+        RequestQueue queue = Volley.newRequestQueue(requireContext());
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, jsonObject, new com.android.volley.Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
@@ -116,7 +154,7 @@ public class ChatActivity extends AppCompatActivity {
             public void onErrorResponse(VolleyError error) {
                 VolleyLog.d("Error", "Error: " + error.getMessage());
                 chatArrayList.add(new Chat("Sorry no response found", BOT_KEY));
-                Toast.makeText(ChatActivity.this, "No response from the bot..", Toast.LENGTH_SHORT).show();
+                Toast.makeText(requireContext(), "No response from the bot..", Toast.LENGTH_SHORT).show();
             }
         });
         queue.add(jsonObjectRequest);
