@@ -73,15 +73,19 @@ public class GameActivity extends AppCompatActivity {
                 switch (item.getItemId()) {
                     case R.id.page_1:
                         statusButton();
+                        binding.floatingActionButton.show();
                         break;
                     case R.id.page_2:
                         assetsButton();
+                        binding.floatingActionButton.hide();
                         break;
                     case R.id.page_3:
                         relationShipsButton();
+                        binding.floatingActionButton.hide();
                         break;
                     case R.id.page_4:
                         actionsButton();
+                        binding.floatingActionButton.hide();
                         break;
                 }
                 return true;
