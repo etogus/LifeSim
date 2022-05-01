@@ -12,6 +12,7 @@ public abstract class AbstractCharacter {
     public int looks;
     public int karma;
     public int money;
+    public int avatar;
 
     public void setData(String name, String lastName, String gender, String country, int age) {
         this.name = name;
@@ -110,5 +111,17 @@ public abstract class AbstractCharacter {
 
     public void setKarma(int karma) {
         this.karma = karma;
+    }
+
+    public int getMoney() {
+        return money;
+    }
+
+    public int getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(int avatar) {
+        this.avatar = avatar;
     }
 }

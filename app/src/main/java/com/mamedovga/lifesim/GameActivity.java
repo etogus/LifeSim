@@ -60,10 +60,10 @@ public class GameActivity extends AppCompatActivity {
         mainCharacterViewModel.setKarma(sampleMainCharacter.getKarma());
         mainCharacterViewModel.setAvatar(playerAvatar);
 
-        getSupportFragmentManager().beginTransaction().add(R.id.topAndMiddleContainer, actionsFragment, "4").hide(actionsFragment).commit();
-        getSupportFragmentManager().beginTransaction().add(R.id.topAndMiddleContainer, relationshipsFragment, "3").hide(relationshipsFragment).commit();
-        getSupportFragmentManager().beginTransaction().add(R.id.topAndMiddleContainer, assetsFragment, "2").hide(assetsFragment).commit();
-        getSupportFragmentManager().beginTransaction().add(R.id.topAndMiddleContainer, statusFragment, "1").commit();
+        getSupportFragmentManager().beginTransaction().add(R.id.topAndMiddleContainer, actionsFragment, "actionsFragment").hide(actionsFragment).commit();
+        getSupportFragmentManager().beginTransaction().add(R.id.topAndMiddleContainer, relationshipsFragment, "relationshipsFragment").hide(relationshipsFragment).commit();
+        getSupportFragmentManager().beginTransaction().add(R.id.topAndMiddleContainer, assetsFragment, "assetsFragment").hide(assetsFragment).commit();
+        getSupportFragmentManager().beginTransaction().add(R.id.topAndMiddleContainer, statusFragment, "statusFragment").commit();
 
         //getSupportFragmentManager().beginTransaction().replace(R.id.topAndMiddleContainer, statusFragment).commit();
 
