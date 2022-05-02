@@ -20,7 +20,7 @@ import com.mamedovga.lifesim.utils.ImageUtils;
 public class StatusFragment extends Fragment {
 
     private FragmentStatusBinding binding;
-    private final StringBuilder activityLogText = new StringBuilder();
+    //private final StringBuilder activityLogText = new StringBuilder();
     private MainCharacterViewModel mainCharacterViewModel;
 
     @Override
@@ -33,6 +33,7 @@ public class StatusFragment extends Fragment {
         binding.smartsBar.setProgressPercentage(mainCharacterViewModel.getIntelligence().getValue(), true);
         binding.looksBar.setProgressPercentage(mainCharacterViewModel.getLooks().getValue(), true);
         binding.energyBar.setProgressPercentage(mainCharacterViewModel.getEnergy().getValue(), true);
+        binding.activityDisplay.setText(mainCharacterViewModel.getActivityLogText().getValue());
         checkAge();
         return binding.getRoot();
     }
@@ -103,10 +104,16 @@ public class StatusFragment extends Fragment {
         mainCharacterViewModel.setAge(mainCharacterViewModel.getAge().getValue() + 1);
         checkAge();
         String randomEvent = EventUtils.generateEvent(mainCharacterViewModel);
-        activityLogText.append("Возраст: ").append(mainCharacterViewModel.getAge().getValue());
-        binding.activityDisplay.setText(activityLogText);
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(mainCharacterViewModel.getActivityLogText().getValue()).append("\n \n");
+        stringBuilder.append("Возраст: ").append(mainCharacterViewModel.getAge().getValue());
+        stringBuilder.append("\n").append(randomEvent);
+        mainCharacterViewModel.setActivityLogText(stringBuilder);
+        binding.activityDisplay.setText(mainCharacterViewModel.getActivityLogText().getValue());
+        //activityLogText.append("Возраст: ").append(mainCharacterViewModel.getAge().getValue());
+        //activityLogText.append("\n").append(randomEvent);
+        //binding.activityDisplay.setText(activityLogText);
         binding.activityDisplay.setTextColor(Color.BLUE);
-        activityLogText.append("\n").append(randomEvent);
         binding.activityLog.post(new Runnable() {
             @Override
             public void run() {

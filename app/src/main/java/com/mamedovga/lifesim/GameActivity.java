@@ -60,6 +60,7 @@ public class GameActivity extends AppCompatActivity {
         mainCharacterViewModel.setEnergy(sampleMainCharacter.getEnergy());
         mainCharacterViewModel.setKarma(sampleMainCharacter.getKarma());
         mainCharacterViewModel.setAvatar(playerAvatar);
+        mainCharacterViewModel.setActivityLogText(new StringBuilder().append("Возраст: ").append(0).append("\n").append("Я родился."));
 
         getSupportFragmentManager().beginTransaction().add(R.id.topAndMiddleContainer, actionsFragment, "actionsFragment").hide(actionsFragment).commit();
         getSupportFragmentManager().beginTransaction().add(R.id.topAndMiddleContainer, relationshipsFragment, "relationshipsFragment").hide(relationshipsFragment).commit();

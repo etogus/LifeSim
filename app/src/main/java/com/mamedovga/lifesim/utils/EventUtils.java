@@ -10,81 +10,81 @@ import java.util.Random;
 public class EventUtils {
     private static String getBornEvent()  {
         List<String> givenList = Arrays.asList(
-                "Эвент1-родился \n \n",
-                "Эвент2-родился \n \n",
-                "Эвент3-родился \n \n");
+                "Эвент1-родился",
+                "Эвент2-родился",
+                "Эвент3-родился");
         Random rand = new Random();
         return givenList.get(rand.nextInt(givenList.size()));
     }
 
     private static String getBabyEvent()  {
         List<String> givenList = Arrays.asList(
-                "Эвент1-малыш \n \n",
-                "Эвент2-малыш \n \n",
-                "Эвент3-малыш \n \n");
+                "Эвент1-малыш",
+                "Эвент2-малыш",
+                "Эвент3-малыш");
         Random rand = new Random();
         return givenList.get(rand.nextInt(givenList.size()));
     }
 
     private static String getChildEvent()  {
         List<String> givenList = Arrays.asList(
-                "Эвент1-ребёнок \n \n",
-                "Эвент2-ребёнок \n \n",
-                "Эвент3-ребёнок \n \n");
+                "Эвент1-ребёнок",
+                "Эвент2-ребёнок",
+                "Эвент3-ребёнок");
         Random rand = new Random();
         return givenList.get(rand.nextInt(givenList.size()));
     }
 
     private static String getPrimarySchoolEvent()  {
         List<String> givenList = Arrays.asList(
-                "Эвент1-школьник \n \n",
-                "Эвент2-школьник \n \n",
-                "Эвент3-школьник \n \n");
+                "Эвент1-школьник",
+                "Эвент2-школьник",
+                "Эвент3-школьник");
         Random rand = new Random();
         return givenList.get(rand.nextInt(givenList.size()));
     }
 
     private static String getMiddleSchoolEvent()  {
         List<String> givenList = Arrays.asList(
-                "Эвент1-подросток \n \n",
-                "Эвент2-подросток \n \n",
-                "Эвент3-подросток \n \n");
+                "Эвент1-подросток",
+                "Эвент2-подросток",
+                "Эвент3-подросток");
         Random rand = new Random();
         return givenList.get(rand.nextInt(givenList.size()));
     }
 
     private static String getHighSchoolEvent()  {
         List<String> givenList = Arrays.asList(
-                "Эвент1-старшая-школа \n \n",
-                "Эвент2-старшая-школа \n \n",
-                "Эвент3-старшая-школа \n \n");
+                "Эвент1-старшая-школа",
+                "Эвент2-старшая-школа",
+                "Эвент3-старшая-школа");
         Random rand = new Random();
         return givenList.get(rand.nextInt(givenList.size()));
     }
 
     private static String getUniEvent()  {
         List<String> givenList = Arrays.asList(
-                "Эвент1-универ \n \n",
-                "Эвент2-универ \n \n",
-                "Эвент3-универ \n \n");
+                "Эвент1-универ \n",
+                "Эвент2-универ \n",
+                "Эвент3-универ \n");
         Random rand = new Random();
         return givenList.get(rand.nextInt(givenList.size()));
     }
 
     private static String getJobEvent()  {
         List<String> givenList = Arrays.asList(
-                "Эвент1-работа \n \n",
-                "Эвент2-работа \n \n",
-                "Эвент3-работа \n \n");
+                "Эвент1-работа",
+                "Эвент2-работа",
+                "Эвент3-работа");
         Random rand = new Random();
         return givenList.get(rand.nextInt(givenList.size()));
     }
 
     private static String getOldEvent()  {
         List<String> givenList = Arrays.asList(
-                "Эвент1-пенсионер \n \n",
-                "Эвент2-пенсионер \n \n",
-                "Эвент3-пенсионер \n \n");
+                "Эвент1-пенсионер",
+                "Эвент2-пенсионер",
+                "Эвент3-пенсионер");
         Random rand = new Random();
         return givenList.get(rand.nextInt(givenList.size()));
     }

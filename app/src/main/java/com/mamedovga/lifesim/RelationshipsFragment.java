@@ -37,9 +37,9 @@ public class RelationshipsFragment extends Fragment implements RelationshipsRecy
 
     private void buildList() {
         NonPlayableCharacter father = new NonPlayableCharacter(PersonUtils.getRandomFirstName("male", "Россия"),
-                PersonUtils.getRandomLastName("male", "Россия"), "male", "country", 28, 100, "Папа");
+                PersonUtils.getRandomLastName("male", "Россия"), "male", "country", 28, 90, "Папа");
         NonPlayableCharacter mother = new NonPlayableCharacter(PersonUtils.getRandomFirstName("female", "Россия"),
-                father.getLastName() + "а", "female", "country", 24, 100, "Мама");
+                father.getLastName() + "а", "female", "country", 24, 80, "Мама");
         list.add(father);
         list.add(mother);
     }
@@ -53,7 +53,8 @@ public class RelationshipsFragment extends Fragment implements RelationshipsRecy
 //        transaction.add(R.id.topAndMiddleContainer, fragment);
 //        transaction.addToBackStack(null);
 //        transaction.commit();
-        RelationshipDialogFragment dialog = RelationshipDialogFragment.newInstance(nonPlayableCharacter.avatar);
+        RelationshipDialogFragment dialog = RelationshipDialogFragment.newInstance(nonPlayableCharacter.getAvatar(), nonPlayableCharacter.getStatusToPlayer(), nonPlayableCharacter.getAffinity());
+        Log.e("onItemClick", "nonPlayableCharacter.getStatusToPlayer() = " + nonPlayableCharacter.getStatusToPlayer());
         dialog.setTargetFragment(RelationshipsFragment.this, 1);
         dialog.show(getActivity().getSupportFragmentManager(), "MyCustomDialog");
     }

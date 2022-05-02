@@ -1,5 +1,6 @@
 package com.mamedovga.lifesim;
 
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.fragment.app.DialogFragment;
@@ -12,31 +13,30 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ScrollView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.mackhartley.roundedprogressbar.RoundedProgressBar;
 import com.mamedovga.lifesim.databinding.FragmentActionDialogBinding;
 import com.mamedovga.lifesim.databinding.FragmentActionsBinding;
 import com.mamedovga.lifesim.models.MainCharacterViewModel;
+import com.mamedovga.lifesim.utils.ProgressBarUtils;
 
 public class ActionDialogFragment extends DialogFragment {
 
     private FragmentActionDialogBinding binding;
     private MainCharacterViewModel mainCharacterViewModel;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "image";
     private static final String ARG_PARAM2 = "energy";
     private static final String ARG_PARAM3 = "label";
 
-    // TODO: Rename and change types of parameters
     private int dialogImage;
     private int dialogEnergy;
     private String dialogLabel;
 
-    public ActionDialogFragment() {
-        // Required empty public constructor
-    }
+    public ActionDialogFragment() { }
 
     public static ActionDialogFragment newInstance(int param1, int param2, String param3) {
         ActionDialogFragment fragment = new ActionDialogFragment();
@@ -80,8 +80,16 @@ public class ActionDialogFragment extends DialogFragment {
                 switch (dialogLabel) {
                     case "gym":
                         if(mainCharacterViewModel.getEnergy().getValue() >= dialogEnergy) {
-                            mainCharacterViewModel.setHealth(mainCharacterViewModel.getHealth().getValue() + 10);
-                            mainCharacterViewModel.setEnergy(mainCharacterViewModel.getEnergy().getValue() - dialogEnergy);
+                            ProgressBarUtils.updateHealthBar(mainCharacterViewModel, 10, getFragmentManager().findFragmentByTag("statusFragment").getView().findViewById(R.id.healthBar));
+                            //mainCharacterViewModel.setHealth(mainCharacterViewModel.getHealth().getValue() + 10);
+                            ProgressBarUtils.updateEnergyBar(mainCharacterViewModel, -30, getFragmentManager().findFragmentByTag("statusFragment").getView().findViewById(R.id.energyBar));
+                            //mainCharacterViewModel.setEnergy(mainCharacterViewModel.getEnergy().getValue() - dialogEnergy);
+                            StringBuilder stringBuilder = new StringBuilder();
+                            stringBuilder.append(mainCharacterViewModel.getActivityLogText().getValue());
+                            stringBuilder.append("\n").append("Я сходил в спортзал.");
+                            mainCharacterViewModel.setActivityLogText(stringBuilder);
+                            TextView activityDisplay = getFragmentManager().findFragmentByTag("statusFragment").getView().findViewById(R.id.activityDisplay);
+                            activityDisplay.setText(mainCharacterViewModel.getActivityLogText().getValue());
                         } else {
                             Toast.makeText(requireContext(), "Недостаточно энергии", Toast.LENGTH_SHORT).show();
                         }
@@ -90,16 +98,20 @@ public class ActionDialogFragment extends DialogFragment {
                     case "game":
                     case "movie":
                         if(mainCharacterViewModel.getEnergy().getValue() >= dialogEnergy) {
-                            mainCharacterViewModel.setMood(mainCharacterViewModel.getMood().getValue() + 5);
-                            mainCharacterViewModel.setEnergy(mainCharacterViewModel.getEnergy().getValue() - dialogEnergy);
+                            ProgressBarUtils.updateMoodBar(mainCharacterViewModel, 5, getFragmentManager().findFragmentByTag("statusFragment").getView().findViewById(R.id.moodBar));
+                            //mainCharacterViewModel.setMood(mainCharacterViewModel.getMood().getValue() + 5);
+                            //mainCharacterViewModel.setEnergy(mainCharacterViewModel.getEnergy().getValue() - dialogEnergy);
+                            ProgressBarUtils.updateEnergyBar(mainCharacterViewModel, -5, getFragmentManager().findFragmentByTag("statusFragment").getView().findViewById(R.id.energyBar));
                         } else {
                             Toast.makeText(requireContext(), "Недостаточно энергии", Toast.LENGTH_SHORT).show();
                         }
                         break;
                     case "doctor":
                         if(mainCharacterViewModel.getEnergy().getValue() >= dialogEnergy) {
-                            mainCharacterViewModel.setHealth(mainCharacterViewModel.getHealth().getValue() + 5);
-                            mainCharacterViewModel.setEnergy(mainCharacterViewModel.getEnergy().getValue() - dialogEnergy);
+                            ProgressBarUtils.updateHealthBar(mainCharacterViewModel, 5, getFragmentManager().findFragmentByTag("statusFragment").getView().findViewById(R.id.healthBar));
+                            //mainCharacterViewModel.setHealth(mainCharacterViewModel.getHealth().getValue() + 5);
+                            //mainCharacterViewModel.setEnergy(mainCharacterViewModel.getEnergy().getValue() - dialogEnergy);
+                            ProgressBarUtils.updateEnergyBar(mainCharacterViewModel, -5, getFragmentManager().findFragmentByTag("statusFragment").getView().findViewById(R.id.energyBar));
                         } else {
                             Toast.makeText(requireContext(), "Недостаточно энергии", Toast.LENGTH_SHORT).show();
                         }

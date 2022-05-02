@@ -21,16 +21,22 @@ public class RelationshipDialogFragment extends DialogFragment {
     private static final String TAG = "MyCustomDialog";
     private FragmentRelationshipDialogBinding binding;
 
-    private static final String ARG_PARAM1 = "param1";
+    private static final String ARG_PARAM1 = "avatar";
+    private static final String ARG_PARAM2 = "statusToPlayer";
+    private static final String ARG_PARAM3 = "affinityToPlayer";
 
     private int mParam1;
+    private String mParam2;
+    private int mParam3;
 
     public RelationshipDialogFragment() { }
 
-    public static RelationshipDialogFragment newInstance(int param1) {
+    public static RelationshipDialogFragment newInstance(int param1, String param2, int param3) {
         RelationshipDialogFragment fragment = new RelationshipDialogFragment();
         Bundle args = new Bundle();
         args.putInt(ARG_PARAM1, param1);
+        args.putString(ARG_PARAM2, param2);
+        args.putInt(ARG_PARAM3, param3);
         fragment.setArguments(args);
         return fragment;
     }
@@ -40,6 +46,8 @@ public class RelationshipDialogFragment extends DialogFragment {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             mParam1 = getArguments().getInt(ARG_PARAM1);
+            mParam2 = getArguments().getString(ARG_PARAM2);
+            mParam3 = getArguments().getInt(ARG_PARAM3);
         }
     }
 
@@ -48,6 +56,9 @@ public class RelationshipDialogFragment extends DialogFragment {
                              Bundle savedInstanceState) {
         binding = FragmentRelationshipDialogBinding.inflate(inflater, container, false);
         binding.charAvatar.setImageResource(mParam1);
+        binding.charStatusToPlayer.setText(mParam2);
+        binding.relationshipBar.setProgressPercentage(mParam3, false);
+        Log.e("onCreateView", "mParam2 = " + mParam2);
 
         binding.actionClose.setOnClickListener(new View.OnClickListener() {
             @Override

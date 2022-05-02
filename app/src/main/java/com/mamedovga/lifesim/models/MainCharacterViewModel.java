@@ -17,6 +17,7 @@ public class MainCharacterViewModel extends ViewModel {
     private MutableLiveData<Integer> energy = new MutableLiveData<>();
     private MutableLiveData<Integer> karma = new MutableLiveData<>();
     private MutableLiveData<int[]> avatar = new MutableLiveData<>();
+    private MutableLiveData<StringBuilder> activityLogText = new MutableLiveData<>();
 
     public void setName(String s) {
         name.setValue(s);
@@ -112,5 +113,13 @@ public class MainCharacterViewModel extends ViewModel {
 
     public MutableLiveData<int[]> getAvatar() {
         return avatar;
+    }
+
+    public void setActivityLogText(StringBuilder s) {
+        activityLogText.setValue(s);
+    }
+
+    public MutableLiveData<StringBuilder> getActivityLogText() {
+        return activityLogText;
     }
 }

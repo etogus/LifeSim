@@ -91,8 +91,8 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:text="+"
-                        android:textSize="20sp"
                         android:textColor="#21C254"
+                        android:textSize="20sp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/incomeAndOutcomeYearHeader" />
 
@@ -101,8 +101,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="0"
-                        android:textSize="20sp"
                         android:textColor="#21C254"
+                        android:textSize="20sp"
                         app:layout_constraintStart_toEndOf="@+id/plusYearIncome"
                         app:layout_constraintTop_toBottomOf="@+id/incomeAndOutcomeYearHeader" />
 
@@ -111,8 +111,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="$"
-                        android:textSize="20sp"
                         android:textColor="#21C254"
+                        android:textSize="20sp"
                         app:layout_constraintStart_toEndOf="@+id/YearIncome"
                         app:layout_constraintTop_toBottomOf="@+id/incomeAndOutcomeYearHeader" />
 
@@ -122,8 +122,8 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:text="-"
-                        android:textSize="20sp"
                         android:textColor="#D11D3B"
+                        android:textSize="20sp"
                         app:layout_constraintEnd_toEndOf="@+id/plusYearIncome"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/plusYearIncome" />
@@ -133,8 +133,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="0"
-                        android:textSize="20sp"
                         android:textColor="#D11D3B"
+                        android:textSize="20sp"
                         app:layout_constraintStart_toEndOf="@+id/plusYearIncome"
                         app:layout_constraintTop_toBottomOf="@+id/YearIncome" />
 
@@ -143,8 +143,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="$"
-                        android:textSize="20sp"
                         android:textColor="#D11D3B"
+                        android:textSize="20sp"
                         app:layout_constraintStart_toEndOf="@+id/yearOutcome"
                         app:layout_constraintTop_toBottomOf="@+id/yearIncomeDollar" />
 
@@ -195,8 +195,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="+"
-                        android:textSize="20sp"
                         android:textColor="#21C254"
+                        android:textSize="20sp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/incomeAndOutcomeLifetimeHeader" />
 
@@ -205,8 +205,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="0"
-                        android:textSize="20sp"
                         android:textColor="#21C254"
+                        android:textSize="20sp"
                         app:layout_constraintStart_toEndOf="@+id/plusLifetimeIncome"
                         app:layout_constraintTop_toBottomOf="@+id/incomeAndOutcomeLifetimeHeader" />
 
@@ -215,8 +215,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="$"
-                        android:textSize="20sp"
                         android:textColor="#21C254"
+                        android:textSize="20sp"
                         app:layout_constraintStart_toEndOf="@+id/LifetimeIncome"
                         app:layout_constraintTop_toBottomOf="@+id/incomeAndOutcomeLifetimeHeader" />
 
@@ -225,8 +225,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="-"
-                        android:textSize="20sp"
                         android:textColor="#D11D3B"
+                        android:textSize="20sp"
                         app:layout_constraintEnd_toEndOf="@+id/plusLifetimeIncome"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/plusLifetimeIncome" />
@@ -236,8 +236,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="0"
-                        android:textSize="20sp"
                         android:textColor="#D11D3B"
+                        android:textSize="20sp"
                         app:layout_constraintStart_toEndOf="@+id/plusLifetimeIncome"
                         app:layout_constraintTop_toBottomOf="@+id/LifetimeIncome" />
 
@@ -246,8 +246,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="$"
-                        android:textSize="20sp"
                         android:textColor="#D11D3B"
+                        android:textSize="20sp"
                         app:layout_constraintStart_toEndOf="@+id/lifetimeOutcome"
                         app:layout_constraintTop_toBottomOf="@+id/lifetimeIncomeDollar" />
 
@@ -293,8 +293,30 @@
             android:id="@+id/recyclerViewAssets"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"/>
+            android:layout_margin="10dp" />
 
     </FrameLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButtonBuyAssets"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:backgroundTint="#00FF00"
+        android:clickable="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recyclerViewAssetsFrameLayout"
+        app:srcCompat="@drawable/ic_baseline_shopping_cart_32" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:text="Нажмите, чтобы перейти в магазин"
+        android:textStyle="italic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/floatingActionButtonBuyAssets" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
