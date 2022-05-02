@@ -31,19 +31,22 @@ public class ActionDialogFragment extends DialogFragment {
     private static final String ARG_PARAM1 = "image";
     private static final String ARG_PARAM2 = "energy";
     private static final String ARG_PARAM3 = "label";
+    private static final String ARG_PARAM4 = "name";
 
     private int dialogImage;
     private int dialogEnergy;
     private String dialogLabel;
+    private String dialogName;
 
     public ActionDialogFragment() { }
 
-    public static ActionDialogFragment newInstance(int param1, int param2, String param3) {
+    public static ActionDialogFragment newInstance(int param1, int param2, String param3, String param4) {
         ActionDialogFragment fragment = new ActionDialogFragment();
         Bundle args = new Bundle();
         args.putInt(ARG_PARAM1, param1);
         args.putInt(ARG_PARAM2, param2);
         args.putString(ARG_PARAM3, param3);
+        args.putString(ARG_PARAM4, param4);
         fragment.setArguments(args);
         return fragment;
     }
@@ -55,6 +58,7 @@ public class ActionDialogFragment extends DialogFragment {
             dialogImage = getArguments().getInt(ARG_PARAM1);
             dialogEnergy = getArguments().getInt(ARG_PARAM2);
             dialogLabel = getArguments().getString(ARG_PARAM3);
+            dialogName = getArguments().getString(ARG_PARAM4);
         }
         mainCharacterViewModel = new ViewModelProvider(requireActivity()).get(MainCharacterViewModel.class);
     }
@@ -65,6 +69,21 @@ public class ActionDialogFragment extends DialogFragment {
         binding = FragmentActionDialogBinding.inflate(inflater, container, false);
         binding.actionImage.setImageResource(dialogImage);
         binding.energyCost.setText(String.valueOf(dialogEnergy));
+        binding.actionName.setText(dialogName);
+
+        switch (dialogLabel) {
+            case "doctor":
+            case "gym":
+                binding.propertyText.setText("Ваше здоровье:");
+                binding.progressBar.setProgressPercentage(mainCharacterViewModel.getHealth().getValue(), false);
+                break;
+            case "book":
+            case "game":
+            case "movie":
+                binding.propertyText.setText("Ваше настроение:");
+                binding.progressBar.setProgressPercentage(mainCharacterViewModel.getMood().getValue(), false);
+                break;
+        }
 
         binding.actionClose.setOnClickListener(new View.OnClickListener() {
             @Override

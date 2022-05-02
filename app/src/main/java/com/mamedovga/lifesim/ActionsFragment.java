@@ -54,7 +54,7 @@ public class ActionsFragment extends Fragment implements ActionsRecyclerViewAdap
 
     @Override
     public void onItemClick(BasicAction basicAction) {
-        ActionDialogFragment dialog = ActionDialogFragment.newInstance(basicAction.getImage(), basicAction.getEnergy(), basicAction.getLabel());
+        ActionDialogFragment dialog = ActionDialogFragment.newInstance(basicAction.getImage(), basicAction.getEnergy(), basicAction.getLabel(), basicAction.getName());
         dialog.setTargetFragment(ActionsFragment.this, 1);
         dialog.show(getActivity().getSupportFragmentManager(), "ActionDialog");
     }

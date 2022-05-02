@@ -33,7 +33,7 @@
         app:riv_corner_radius="12dp" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/propertyText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -50,7 +50,7 @@
         android:layout_marginTop="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        app:layout_constraintTop_toBottomOf="@+id/propertyText"
         app:rpbBackgroundColor="#43AA8B"
         app:rpbCornerRadius="20dp"
         app:rpbProgressColor="#254441"
