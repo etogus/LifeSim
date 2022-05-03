@@ -1,8 +1,14 @@
 package com.mamedovga.lifesim;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
+import android.text.Spannable;
 import android.text.SpannableStringBuilder;
+import android.text.style.ForegroundColorSpan;
+import android.text.style.StyleSpan;
+import android.text.style.UnderlineSpan;
 import android.view.MenuItem;
 import android.view.View;
 
@@ -61,7 +67,14 @@ public class GameActivity extends AppCompatActivity {
         mainCharacterViewModel.setEnergy(sampleMainCharacter.getEnergy());
         mainCharacterViewModel.setKarma(sampleMainCharacter.getKarma());
         mainCharacterViewModel.setAvatar(playerAvatar);
-        mainCharacterViewModel.setActivityLogText(new SpannableStringBuilder().append("Возраст: ").append("0").append("\n").append("Я родился."));
+
+        SpannableStringBuilder stringBuilder = new SpannableStringBuilder();
+        String s = "Возраст: 0";
+        stringBuilder.append(s);
+        stringBuilder.setSpan(new StyleSpan(Typeface.BOLD), 0, s.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        stringBuilder.setSpan(new ForegroundColorSpan(Color.BLUE), 0, s.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        stringBuilder.setSpan(new UnderlineSpan(), 0, s.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        mainCharacterViewModel.setActivityLogText(stringBuilder.append("\nЯ родился."));
 
         getSupportFragmentManager().beginTransaction().add(R.id.topAndMiddleContainer, actionsFragment, "actionsFragment").hide(actionsFragment).commit();
         getSupportFragmentManager().beginTransaction().add(R.id.topAndMiddleContainer, relationshipsFragment, "relationshipsFragment").hide(relationshipsFragment).commit();

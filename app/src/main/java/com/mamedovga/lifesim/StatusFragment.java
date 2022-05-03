@@ -28,7 +28,6 @@ import com.mamedovga.lifesim.utils.ProgressBarUtils;
 public class StatusFragment extends Fragment {
 
     private FragmentStatusBinding binding;
-    //private final StringBuilder activityLogText = new StringBuilder();
     private MainCharacterViewModel mainCharacterViewModel;
 
     @Override
