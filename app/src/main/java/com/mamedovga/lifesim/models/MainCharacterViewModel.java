@@ -1,5 +1,7 @@
 package com.mamedovga.lifesim.models;
 
+import android.text.SpannableStringBuilder;
+
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
@@ -17,7 +19,7 @@ public class MainCharacterViewModel extends ViewModel {
     private MutableLiveData<Integer> energy = new MutableLiveData<>();
     private MutableLiveData<Integer> karma = new MutableLiveData<>();
     private MutableLiveData<int[]> avatar = new MutableLiveData<>();
-    private MutableLiveData<StringBuilder> activityLogText = new MutableLiveData<>();
+    private MutableLiveData<SpannableStringBuilder> activityLogText = new MutableLiveData<>();
 
     public void setName(String s) {
         name.setValue(s);
@@ -115,11 +117,11 @@ public class MainCharacterViewModel extends ViewModel {
         return avatar;
     }
 
-    public void setActivityLogText(StringBuilder s) {
+    public void setActivityLogText(SpannableStringBuilder s) {
         activityLogText.setValue(s);
     }
 
-    public MutableLiveData<StringBuilder> getActivityLogText() {
+    public MutableLiveData<SpannableStringBuilder> getActivityLogText() {
         return activityLogText;
     }
 }

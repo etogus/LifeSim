@@ -2,6 +2,8 @@ package com.mamedovga.lifesim;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.text.Spannable;
+import android.text.SpannableStringBuilder;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +19,7 @@ import com.mamedovga.lifesim.models.BasicEvent;
 import com.mamedovga.lifesim.models.MainCharacterViewModel;
 import com.mamedovga.lifesim.utils.EventUtils;
 import com.mamedovga.lifesim.utils.ImageUtils;
+import com.mamedovga.lifesim.utils.ProgressBarUtils;
 
 public class StatusFragment extends Fragment {
 
@@ -103,11 +106,14 @@ public class StatusFragment extends Fragment {
 
     public void nextYear() {
         mainCharacterViewModel.setAge(mainCharacterViewModel.getAge().getValue() + 1);
+        ProgressBarUtils.updateEnergyBar(mainCharacterViewModel, 100 - mainCharacterViewModel.getAge().getValue(), binding.energyBar);
         checkAge();
         //String randomEvent = EventUtils.generateEvent(mainCharacterViewModel);
-        StringBuilder stringBuilder = new StringBuilder();
+        SpannableStringBuilder stringBuilder = new SpannableStringBuilder();
+        String s = "Возраст: " + mainCharacterViewModel.getAge().getValue();
         stringBuilder.append(mainCharacterViewModel.getActivityLogText().getValue()).append("\n \n");
-        stringBuilder.append("Возраст: ").append(mainCharacterViewModel.getAge().getValue());
+        stringBuilder.append(s);
+        stringBuilder.setSpan(new android.text.style.StyleSpan(android.graphics.Typeface.BOLD), stringBuilder.toString().indexOf(s), stringBuilder.toString().indexOf(s)+s.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         //stringBuilder.append("\n").append(randomEvent);
         BasicEvent basicEvent = EventUtils.generateEvent(mainCharacterViewModel);
 

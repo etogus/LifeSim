@@ -1,9 +1,11 @@
 package com.mamedovga.lifesim;
 
 import android.os.Bundle;
+import android.text.SpannableStringBuilder;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.fragment.app.DialogFragment;
 import androidx.lifecycle.ViewModelProvider;
@@ -85,26 +87,64 @@ public class EventDialogFragment extends DialogFragment {
         binding.positiveAction.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                SpannableStringBuilder stringBuilder = new SpannableStringBuilder();
+                TextView activityDisplay = getFragmentManager().findFragmentByTag("statusFragment").getView().findViewById(R.id.activityDisplay);
                 switch (label) {
                     case "bornMomCalls":
                         ProgressBarUtils.updateMoodBar(mainCharacterViewModel, 10, getFragmentManager().findFragmentByTag("statusFragment").getView().findViewById(R.id.moodBar));
+                        //SpannableStringBuilder stringBuilder = new SpannableStringBuilder();
+                        stringBuilder.append(mainCharacterViewModel.getActivityLogText().getValue());
+                        stringBuilder.append("\n").append("Я сказал 'ма ма', после чего меня подняли на руки и поцеловали.");
+                        mainCharacterViewModel.setActivityLogText(stringBuilder);
+                        //TextView activityDisplay = getFragmentManager().findFragmentByTag("statusFragment").getView().findViewById(R.id.activityDisplay);
+                        activityDisplay.setText(mainCharacterViewModel.getActivityLogText().getValue());
                         break;
                     case "childMomAsksDrink":
                         ProgressBarUtils.updateMoodBar(mainCharacterViewModel, 4, getFragmentManager().findFragmentByTag("statusFragment").getView().findViewById(R.id.moodBar));
                         ProgressBarUtils.updateHealthBar(mainCharacterViewModel, 8, getFragmentManager().findFragmentByTag("statusFragment").getView().findViewById(R.id.healthBar));
+                        //SpannableStringBuilder stringBuilder = new SpannableStringBuilder();
+                        stringBuilder.append(mainCharacterViewModel.getActivityLogText().getValue());
+                        stringBuilder.append("\n").append("Я выбрал воду, когда мама предложила мне что-нибудь выпить.");
+                        mainCharacterViewModel.setActivityLogText(stringBuilder);
+                        //TextView activityDisplay = getFragmentManager().findFragmentByTag("statusFragment").getView().findViewById(R.id.activityDisplay);
+                        activityDisplay.setText(mainCharacterViewModel.getActivityLogText().getValue());
                         break;
                     case "childMomTakesToDoc":
                         ProgressBarUtils.updateHealthBar(mainCharacterViewModel, 10, getFragmentManager().findFragmentByTag("statusFragment").getView().findViewById(R.id.healthBar));
                         ProgressBarUtils.updateMoodBar(mainCharacterViewModel, -5, getFragmentManager().findFragmentByTag("statusFragment").getView().findViewById(R.id.moodBar));
+                        //SpannableStringBuilder stringBuilder = new SpannableStringBuilder();
+                        stringBuilder.append(mainCharacterViewModel.getActivityLogText().getValue());
+                        stringBuilder.append("\n").append("Я сохранил спокойствие, когда мама привела меня делать прививку.");
+                        mainCharacterViewModel.setActivityLogText(stringBuilder);
+                        //TextView activityDisplay = getFragmentManager().findFragmentByTag("statusFragment").getView().findViewById(R.id.activityDisplay);
+                        activityDisplay.setText(mainCharacterViewModel.getActivityLogText().getValue());
                         break;
                     case "childGirlTakesToy":
                         ProgressBarUtils.updateMoodBar(mainCharacterViewModel, 5, getFragmentManager().findFragmentByTag("statusFragment").getView().findViewById(R.id.moodBar));
+                        //SpannableStringBuilder stringBuilder = new SpannableStringBuilder();
+                        stringBuilder.append(mainCharacterViewModel.getActivityLogText().getValue());
+                        stringBuilder.append("\n").append("Я не стал вредничать, и мы с девочкой вместе поиграли с моей игрушкой.");
+                        mainCharacterViewModel.setActivityLogText(stringBuilder);
+                        //TextView activityDisplay = getFragmentManager().findFragmentByTag("statusFragment").getView().findViewById(R.id.activityDisplay);
+                        activityDisplay.setText(mainCharacterViewModel.getActivityLogText().getValue());
                         break;
                     case "primarySchoolKidsAskToMovie":
                         ProgressBarUtils.updateMoodBar(mainCharacterViewModel, 8, getFragmentManager().findFragmentByTag("statusFragment").getView().findViewById(R.id.moodBar));
+                        //SpannableStringBuilder stringBuilder = new SpannableStringBuilder();
+                        stringBuilder.append(mainCharacterViewModel.getActivityLogText().getValue());
+                        stringBuilder.append("\n").append("Я пошёл в кинотеатр с соседскими мальчишками и отлично провёл время.");
+                        mainCharacterViewModel.setActivityLogText(stringBuilder);
+                        //TextView activityDisplay = getFragmentManager().findFragmentByTag("statusFragment").getView().findViewById(R.id.activityDisplay);
+                        activityDisplay.setText(mainCharacterViewModel.getActivityLogText().getValue());
                         break;
                     case "primarySchoolParentsAskToVacation":
                         ProgressBarUtils.updateMoodBar(mainCharacterViewModel, 6, getFragmentManager().findFragmentByTag("statusFragment").getView().findViewById(R.id.moodBar));
+                        //SpannableStringBuilder stringBuilder = new SpannableStringBuilder();
+                        stringBuilder.append(mainCharacterViewModel.getActivityLogText().getValue());
+                        stringBuilder.append("\n").append("Я поехал с семьёй в отпуск, было очень здорово!");
+                        mainCharacterViewModel.setActivityLogText(stringBuilder);
+                        //TextView activityDisplay = getFragmentManager().findFragmentByTag("statusFragment").getView().findViewById(R.id.activityDisplay);
+                        activityDisplay.setText(mainCharacterViewModel.getActivityLogText().getValue());
                         break;
                 }
                 getDialog().dismiss();
@@ -114,26 +154,67 @@ public class EventDialogFragment extends DialogFragment {
         binding.negativeAction.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                SpannableStringBuilder stringBuilder = new SpannableStringBuilder();
+                TextView activityDisplay = getFragmentManager().findFragmentByTag("statusFragment").getView().findViewById(R.id.activityDisplay);
                 switch (label) {
                     case "bornMomCalls":
                         ProgressBarUtils.updateMoodBar(mainCharacterViewModel, -10, getFragmentManager().findFragmentByTag("statusFragment").getView().findViewById(R.id.moodBar));
+                        ProgressBarUtils.updateMoodBar(mainCharacterViewModel, -8, getFragmentManager().findFragmentByTag("statusFragment").getView().findViewById(R.id.moodBar));
+                        //SpannableStringBuilder stringBuilder = new SpannableStringBuilder();
+                        stringBuilder.append(mainCharacterViewModel.getActivityLogText().getValue());
+                        stringBuilder.append("\n").append("Я заплакал, когда мама позвала меня.");
+                        mainCharacterViewModel.setActivityLogText(stringBuilder);
+                        //TextView activityDisplay = getFragmentManager().findFragmentByTag("statusFragment").getView().findViewById(R.id.activityDisplay);
+                        activityDisplay.setText(mainCharacterViewModel.getActivityLogText().getValue());
                         break;
                     case "childMomAsksDrink":
                         ProgressBarUtils.updateMoodBar(mainCharacterViewModel, 5, getFragmentManager().findFragmentByTag("statusFragment").getView().findViewById(R.id.moodBar));
                         ProgressBarUtils.updateHealthBar(mainCharacterViewModel, -8, getFragmentManager().findFragmentByTag("statusFragment").getView().findViewById(R.id.healthBar));
+                        ProgressBarUtils.updateMoodBar(mainCharacterViewModel, -8, getFragmentManager().findFragmentByTag("statusFragment").getView().findViewById(R.id.moodBar));
+                        //SpannableStringBuilder stringBuilder = new SpannableStringBuilder();
+                        stringBuilder.append(mainCharacterViewModel.getActivityLogText().getValue());
+                        stringBuilder.append("\n").append("Я выбрал яблочный сок, когда мама предложила мне что-нибудь выпить.");
+                        mainCharacterViewModel.setActivityLogText(stringBuilder);
+                        //TextView activityDisplay = getFragmentManager().findFragmentByTag("statusFragment").getView().findViewById(R.id.activityDisplay);
+                        activityDisplay.setText(mainCharacterViewModel.getActivityLogText().getValue());
                         break;
                     case "childMomTakesToDoc":
                         ProgressBarUtils.updateHealthBar(mainCharacterViewModel, -10, getFragmentManager().findFragmentByTag("statusFragment").getView().findViewById(R.id.healthBar));
                         ProgressBarUtils.updateMoodBar(mainCharacterViewModel, -5, getFragmentManager().findFragmentByTag("statusFragment").getView().findViewById(R.id.moodBar));
+                        ProgressBarUtils.updateMoodBar(mainCharacterViewModel, -8, getFragmentManager().findFragmentByTag("statusFragment").getView().findViewById(R.id.moodBar));
+                        //SpannableStringBuilder stringBuilder = new SpannableStringBuilder();
+                        stringBuilder.append(mainCharacterViewModel.getActivityLogText().getValue());
+                        stringBuilder.append("\n").append("Я плюнул на медсестру, когда та натирала мою руку спиртом.");
+                        mainCharacterViewModel.setActivityLogText(stringBuilder);
+                        //TextView activityDisplay = getFragmentManager().findFragmentByTag("statusFragment").getView().findViewById(R.id.activityDisplay);
+                        activityDisplay.setText(mainCharacterViewModel.getActivityLogText().getValue());
                         break;
                     case "childGirlTakesToy":
                         ProgressBarUtils.updateMoodBar(mainCharacterViewModel, -8, getFragmentManager().findFragmentByTag("statusFragment").getView().findViewById(R.id.moodBar));
+                        //SpannableStringBuilder stringBuilder = new SpannableStringBuilder();
+                        stringBuilder.append(mainCharacterViewModel.getActivityLogText().getValue());
+                        stringBuilder.append("\n").append("Я отобрал свою любимую игрушку у девочки на площадке и ушёл домой.");
+                        mainCharacterViewModel.setActivityLogText(stringBuilder);
+                        //TextView activityDisplay = getFragmentManager().findFragmentByTag("statusFragment").getView().findViewById(R.id.activityDisplay);
+                        activityDisplay.setText(mainCharacterViewModel.getActivityLogText().getValue());
                         break;
                     case "primarySchoolKidsAskToMovie":
                         ProgressBarUtils.updateMoodBar(mainCharacterViewModel, -6, getFragmentManager().findFragmentByTag("statusFragment").getView().findViewById(R.id.moodBar));
+                        //SpannableStringBuilder stringBuilder = new SpannableStringBuilder();
+                        stringBuilder.append(mainCharacterViewModel.getActivityLogText().getValue());
+                        stringBuilder.append("\n").append("Я предпочёл остаться дома, когда соседские ребята предложили пойти в кинотеатр.");
+                        mainCharacterViewModel.setActivityLogText(stringBuilder);
+                        //TextView activityDisplay = getFragmentManager().findFragmentByTag("statusFragment").getView().findViewById(R.id.activityDisplay);
+                        activityDisplay.setText(mainCharacterViewModel.getActivityLogText().getValue());
                         break;
                     case "primarySchoolParentsAskToVacation":
                         ProgressBarUtils.updateMoodBar(mainCharacterViewModel, -15, getFragmentManager().findFragmentByTag("statusFragment").getView().findViewById(R.id.moodBar));
+                        //SpannableStringBuilder stringBuilder = new SpannableStringBuilder();
+                        stringBuilder.append(mainCharacterViewModel.getActivityLogText().getValue());
+                        stringBuilder.append("\n").append("Я отказался ехать с семьей в отпуск.");
+                        mainCharacterViewModel.setActivityLogText(stringBuilder);
+                        //TextView activityDisplay = getFragmentManager().findFragmentByTag("statusFragment").getView().findViewById(R.id.activityDisplay);
+                        activityDisplay.setText(mainCharacterViewModel.getActivityLogText().getValue());
                         break;
                 }
                 getDialog().dismiss();
@@ -144,23 +225,55 @@ public class EventDialogFragment extends DialogFragment {
             binding.thirdAction.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    SpannableStringBuilder stringBuilder = new SpannableStringBuilder();
+                    TextView activityDisplay = getFragmentManager().findFragmentByTag("statusFragment").getView().findViewById(R.id.activityDisplay);
                     switch (label) {
                         case "bornMomCalls":
                             ProgressBarUtils.updateMoodBar(mainCharacterViewModel, 5, getFragmentManager().findFragmentByTag("statusFragment").getView().findViewById(R.id.moodBar));
+                            //SpannableStringBuilder stringBuilder = new SpannableStringBuilder();
+                            stringBuilder.append(mainCharacterViewModel.getActivityLogText().getValue());
+                            stringBuilder.append("\n").append("Я сказал 'па па', после чего меня подняли на руки и поцеловали.");
+                            mainCharacterViewModel.setActivityLogText(stringBuilder);
+                            //TextView activityDisplay = getFragmentManager().findFragmentByTag("statusFragment").getView().findViewById(R.id.activityDisplay);
+                            activityDisplay.setText(mainCharacterViewModel.getActivityLogText().getValue());
                             break;
                         case "childMomAsksDrink":
                             ProgressBarUtils.updateMoodBar(mainCharacterViewModel, 4, getFragmentManager().findFragmentByTag("statusFragment").getView().findViewById(R.id.moodBar));
                             ProgressBarUtils.updateHealthBar(mainCharacterViewModel, 4, getFragmentManager().findFragmentByTag("statusFragment").getView().findViewById(R.id.healthBar));
+                            //SpannableStringBuilder stringBuilder = new SpannableStringBuilder();
+                            stringBuilder.append(mainCharacterViewModel.getActivityLogText().getValue());
+                            stringBuilder.append("\n").append("Я выбрал молоко, когда мама предложила мне что-нибудь выпить.");
+                            mainCharacterViewModel.setActivityLogText(stringBuilder);
+                            //TextView activityDisplay = getFragmentManager().findFragmentByTag("statusFragment").getView().findViewById(R.id.activityDisplay);
+                            activityDisplay.setText(mainCharacterViewModel.getActivityLogText().getValue());
                             break;
                         case "childMomTakesToDoc":
                             ProgressBarUtils.updateHealthBar(mainCharacterViewModel, -3, getFragmentManager().findFragmentByTag("statusFragment").getView().findViewById(R.id.healthBar));
                             ProgressBarUtils.updateMoodBar(mainCharacterViewModel, -5, getFragmentManager().findFragmentByTag("statusFragment").getView().findViewById(R.id.moodBar));
+                            //SpannableStringBuilder stringBuilder = new SpannableStringBuilder();
+                            stringBuilder.append(mainCharacterViewModel.getActivityLogText().getValue());
+                            stringBuilder.append("\n").append("Я заплакал, когда почувствовал боль во время прививки.");
+                            mainCharacterViewModel.setActivityLogText(stringBuilder);
+                            //TextView activityDisplay = getFragmentManager().findFragmentByTag("statusFragment").getView().findViewById(R.id.activityDisplay);
+                            activityDisplay.setText(mainCharacterViewModel.getActivityLogText().getValue());
                             break;
                         case "childGirlTakesToy":
                             ProgressBarUtils.updateMoodBar(mainCharacterViewModel, -2, getFragmentManager().findFragmentByTag("statusFragment").getView().findViewById(R.id.moodBar));
+                            //SpannableStringBuilder stringBuilder = new SpannableStringBuilder();
+                            stringBuilder.append(mainCharacterViewModel.getActivityLogText().getValue());
+                            stringBuilder.append("\n").append("Я не стал вредничать и отдал девочке свою игрушку.");
+                            mainCharacterViewModel.setActivityLogText(stringBuilder);
+                            //TextView activityDisplay = getFragmentManager().findFragmentByTag("statusFragment").getView().findViewById(R.id.activityDisplay);
+                            activityDisplay.setText(mainCharacterViewModel.getActivityLogText().getValue());
                             break;
                         case "primarySchoolParentsAskToVacation":
                             ProgressBarUtils.updateMoodBar(mainCharacterViewModel, -5, getFragmentManager().findFragmentByTag("statusFragment").getView().findViewById(R.id.moodBar));
+                            //SpannableStringBuilder stringBuilder = new SpannableStringBuilder();
+                            stringBuilder.append(mainCharacterViewModel.getActivityLogText().getValue());
+                            stringBuilder.append("\n").append("Мне не понравилась идея семейного отпуска, но пришлось поехать, ибо выбора не было.");
+                            mainCharacterViewModel.setActivityLogText(stringBuilder);
+                            //TextView activityDisplay = getFragmentManager().findFragmentByTag("statusFragment").getView().findViewById(R.id.activityDisplay);
+                            activityDisplay.setText(mainCharacterViewModel.getActivityLogText().getValue());
                             break;
                     }
                     getDialog().dismiss();

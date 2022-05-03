@@ -9,6 +9,7 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.text.SpannableStringBuilder;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -103,7 +104,7 @@ public class ActionDialogFragment extends DialogFragment {
                             //mainCharacterViewModel.setHealth(mainCharacterViewModel.getHealth().getValue() + 10);
                             ProgressBarUtils.updateEnergyBar(mainCharacterViewModel, -30, getFragmentManager().findFragmentByTag("statusFragment").getView().findViewById(R.id.energyBar));
                             //mainCharacterViewModel.setEnergy(mainCharacterViewModel.getEnergy().getValue() - dialogEnergy);
-                            StringBuilder stringBuilder = new StringBuilder();
+                            SpannableStringBuilder stringBuilder = new SpannableStringBuilder();
                             stringBuilder.append(mainCharacterViewModel.getActivityLogText().getValue());
                             stringBuilder.append("\n").append("Я сходил в спортзал.");
                             mainCharacterViewModel.setActivityLogText(stringBuilder);
