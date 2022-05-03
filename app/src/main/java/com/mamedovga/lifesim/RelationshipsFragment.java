@@ -2,8 +2,10 @@ package com.mamedovga.lifesim;
 
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.util.Log;
@@ -13,6 +15,7 @@ import android.view.ViewGroup;
 
 import com.mamedovga.lifesim.databinding.FragmentRelationshipsBinding;
 import com.mamedovga.lifesim.databinding.FragmentStatusBinding;
+import com.mamedovga.lifesim.models.MainCharacterViewModel;
 import com.mamedovga.lifesim.models.NonPlayableCharacter;
 import com.mamedovga.lifesim.utils.PersonUtils;
 
@@ -22,6 +25,7 @@ public class RelationshipsFragment extends Fragment implements RelationshipsRecy
 
     private FragmentRelationshipsBinding binding;
     private ArrayList<NonPlayableCharacter> list = new ArrayList<>();
+    private MainCharacterViewModel mainCharacterViewModel;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -35,11 +39,17 @@ public class RelationshipsFragment extends Fragment implements RelationshipsRecy
         return binding.getRoot();
     }
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mainCharacterViewModel = new ViewModelProvider(requireActivity()).get(MainCharacterViewModel.class);
+    }
+
     private void buildList() {
         NonPlayableCharacter father = new NonPlayableCharacter(PersonUtils.getRandomFirstName("male", "Россия"),
-                PersonUtils.getRandomLastName("male", "Россия"), "male", "country", 28, 90, "Папа");
+                mainCharacterViewModel.getLastName().getValue(), "male", "country", 28, 90, "Папа");
         NonPlayableCharacter mother = new NonPlayableCharacter(PersonUtils.getRandomFirstName("female", "Россия"),
-                father.getLastName() + "а", "female", "country", 24, 80, "Мама");
+                mainCharacterViewModel.getLastName().getValue() + "а", "female", "country", 24, 80, "Мама");
         list.add(father);
         list.add(mother);
     }
