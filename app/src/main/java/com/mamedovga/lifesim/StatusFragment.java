@@ -1,9 +1,13 @@
 package com.mamedovga.lifesim;
 
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
+import android.text.style.ForegroundColorSpan;
+import android.text.style.StyleSpan;
+import android.text.style.UnderlineSpan;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -108,13 +112,13 @@ public class StatusFragment extends Fragment {
         mainCharacterViewModel.setAge(mainCharacterViewModel.getAge().getValue() + 1);
         ProgressBarUtils.updateEnergyBar(mainCharacterViewModel, 100 - mainCharacterViewModel.getAge().getValue(), binding.energyBar);
         checkAge();
-        //String randomEvent = EventUtils.generateEvent(mainCharacterViewModel);
         SpannableStringBuilder stringBuilder = new SpannableStringBuilder();
         String s = "Возраст: " + mainCharacterViewModel.getAge().getValue();
         stringBuilder.append(mainCharacterViewModel.getActivityLogText().getValue()).append("\n \n");
         stringBuilder.append(s);
-        stringBuilder.setSpan(new android.text.style.StyleSpan(android.graphics.Typeface.BOLD), stringBuilder.toString().indexOf(s), stringBuilder.toString().indexOf(s)+s.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-        //stringBuilder.append("\n").append(randomEvent);
+        stringBuilder.setSpan(new StyleSpan(Typeface.BOLD), stringBuilder.toString().indexOf(s), stringBuilder.toString().indexOf(s)+s.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        stringBuilder.setSpan(new ForegroundColorSpan(Color.BLUE), stringBuilder.toString().indexOf(s), stringBuilder.toString().indexOf(s)+s.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        stringBuilder.setSpan(new UnderlineSpan(), stringBuilder.toString().indexOf(s), stringBuilder.toString().indexOf(s)+s.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         BasicEvent basicEvent = EventUtils.generateEvent(mainCharacterViewModel);
 
         EventDialogFragment dialog = EventDialogFragment.newInstance(basicEvent.getName(), basicEvent.getImage(), basicEvent.getDescription(),
@@ -125,10 +129,6 @@ public class StatusFragment extends Fragment {
 
         mainCharacterViewModel.setActivityLogText(stringBuilder);
         binding.activityDisplay.setText(mainCharacterViewModel.getActivityLogText().getValue());
-        //activityLogText.append("Возраст: ").append(mainCharacterViewModel.getAge().getValue());
-        //activityLogText.append("\n").append(randomEvent);
-        //binding.activityDisplay.setText(activityLogText);
-        binding.activityDisplay.setTextColor(Color.BLUE);
         binding.activityLog.post(new Runnable() {
             @Override
             public void run() {
