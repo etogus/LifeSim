@@ -13,6 +13,7 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.mamedovga.lifesim.databinding.FragmentStatusBinding;
+import com.mamedovga.lifesim.models.BasicEvent;
 import com.mamedovga.lifesim.models.MainCharacterViewModel;
 import com.mamedovga.lifesim.utils.EventUtils;
 import com.mamedovga.lifesim.utils.ImageUtils;
@@ -103,11 +104,19 @@ public class StatusFragment extends Fragment {
     public void nextYear() {
         mainCharacterViewModel.setAge(mainCharacterViewModel.getAge().getValue() + 1);
         checkAge();
-        String randomEvent = EventUtils.generateEvent(mainCharacterViewModel);
+        //String randomEvent = EventUtils.generateEvent(mainCharacterViewModel);
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append(mainCharacterViewModel.getActivityLogText().getValue()).append("\n \n");
         stringBuilder.append("Возраст: ").append(mainCharacterViewModel.getAge().getValue());
-        stringBuilder.append("\n").append(randomEvent);
+        //stringBuilder.append("\n").append(randomEvent);
+        BasicEvent basicEvent = EventUtils.generateEvent(mainCharacterViewModel);
+
+        EventDialogFragment dialog = EventDialogFragment.newInstance(basicEvent.getName(), basicEvent.getImage(), basicEvent.getDescription(),
+                basicEvent.getActions().get(0), basicEvent.getActions().get(1), basicEvent.getActions().get(2), basicEvent.getLabel());
+
+        dialog.setTargetFragment(StatusFragment.this, 1);
+        dialog.show(getActivity().getSupportFragmentManager(), "eventDialogFragment");
+
         mainCharacterViewModel.setActivityLogText(stringBuilder);
         binding.activityDisplay.setText(mainCharacterViewModel.getActivityLogText().getValue());
         //activityLogText.append("Возраст: ").append(mainCharacterViewModel.getAge().getValue());
