@@ -100,9 +100,8 @@ public class EventUtils {
         else if(age < 7) {
             return getChildEvent();
         }
-        else if(age < 12) {
-            return getPrimarySchoolEvent();
-        }
+
+        return getPrimarySchoolEvent();
 //        else if(age < 16) {
 //            return getPrimarySchoolEvent();
 //        }
@@ -116,6 +115,5 @@ public class EventUtils {
 //            return getJobEvent();
 //        }
 //        return getOldEvent();
-        return null;
     }
 }

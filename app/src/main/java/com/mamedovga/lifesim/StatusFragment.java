@@ -21,6 +21,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.mamedovga.lifesim.databinding.FragmentStatusBinding;
 import com.mamedovga.lifesim.models.BasicEvent;
 import com.mamedovga.lifesim.models.MainCharacterViewModel;
+import com.mamedovga.lifesim.utils.CountryUtils;
 import com.mamedovga.lifesim.utils.EventUtils;
 import com.mamedovga.lifesim.utils.ImageUtils;
 import com.mamedovga.lifesim.utils.ProgressBarUtils;
@@ -41,6 +42,7 @@ public class StatusFragment extends Fragment {
         binding.looksBar.setProgressPercentage(mainCharacterViewModel.getLooks().getValue(), true);
         binding.energyBar.setProgressPercentage(mainCharacterViewModel.getEnergy().getValue(), true);
         binding.activityDisplay.setText(mainCharacterViewModel.getActivityLogText().getValue());
+        binding.countryFlag.setImageResource(CountryUtils.getCountryFlag(mainCharacterViewModel.getCountry().getValue()));
         checkAge();
         return binding.getRoot();
     }
