@@ -14,7 +14,7 @@ import org.junit.Test;
 public class MainActivityTest {
 
     @Rule
-    public ActivityTestRule<MainActivity> activityTestRule = new ActivityTestRule<MainActivity>(MainActivity.class);
+    public ActivityTestRule<MainActivity> activityTestRule = new ActivityTestRule<>(MainActivity.class);
 
     private MainActivity mainActivity = null;
 
