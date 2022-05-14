@@ -124,6 +124,12 @@ public class ActionDialogFragment extends DialogFragment {
                             //mainCharacterViewModel.setMood(mainCharacterViewModel.getMood().getValue() + 5);
                             //mainCharacterViewModel.setEnergy(mainCharacterViewModel.getEnergy().getValue() - dialogEnergy);
                             ProgressBarUtils.updateEnergyBar(mainCharacterViewModel, -5, getFragmentManager().findFragmentByTag("statusFragment").getView().findViewById(R.id.energyBar));
+                            SpannableStringBuilder stringBuilder = new SpannableStringBuilder();
+                            stringBuilder.append(mainCharacterViewModel.getActivityLogText().getValue());
+                            stringBuilder.append("\n").append("Я сходил в кинотеатр.");
+                            mainCharacterViewModel.setActivityLogText(stringBuilder);
+                            TextView activityDisplay = getFragmentManager().findFragmentByTag("statusFragment").getView().findViewById(R.id.activityDisplay);
+                            activityDisplay.setText(mainCharacterViewModel.getActivityLogText().getValue());
                         } else {
                             Toast.makeText(requireContext(), "Недостаточно энергии", Toast.LENGTH_SHORT).show();
                         }
@@ -134,6 +140,12 @@ public class ActionDialogFragment extends DialogFragment {
                             //mainCharacterViewModel.setHealth(mainCharacterViewModel.getHealth().getValue() + 5);
                             //mainCharacterViewModel.setEnergy(mainCharacterViewModel.getEnergy().getValue() - dialogEnergy);
                             ProgressBarUtils.updateEnergyBar(mainCharacterViewModel, -5, getFragmentManager().findFragmentByTag("statusFragment").getView().findViewById(R.id.energyBar));
+                            SpannableStringBuilder stringBuilder = new SpannableStringBuilder();
+                            stringBuilder.append(mainCharacterViewModel.getActivityLogText().getValue());
+                            stringBuilder.append("\n").append("Я сходил к врачу.");
+                            mainCharacterViewModel.setActivityLogText(stringBuilder);
+                            TextView activityDisplay = getFragmentManager().findFragmentByTag("statusFragment").getView().findViewById(R.id.activityDisplay);
+                            activityDisplay.setText(mainCharacterViewModel.getActivityLogText().getValue());
                         } else {
                             Toast.makeText(requireContext(), "Недостаточно энергии", Toast.LENGTH_SHORT).show();
                         }
