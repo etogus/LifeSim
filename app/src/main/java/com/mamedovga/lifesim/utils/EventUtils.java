@@ -1,5 +1,8 @@
 package com.mamedovga.lifesim.utils;
 
+import android.util.Log;
+
+import com.mamedovga.lifesim.GameActivity;
 import com.mamedovga.lifesim.R;
 import com.mamedovga.lifesim.models.BasicEvent;
 import com.mamedovga.lifesim.models.MainCharacterViewModel;
@@ -13,7 +16,7 @@ import java.util.Random;
 public class EventUtils {
     private static BasicEvent getBornEvent()  {
         List<BasicEvent> givenList = Arrays.asList(
-                new BasicEvent("Первые звуки", R.drawable.baby,"bornMomCalls",
+                new BasicEvent(0, "Первые звуки", R.drawable.baby,"bornMomCalls",
                         "Ваша мама зовёт вас к ней мягким голосом.\nВы чувствуете, что вам нужно ответить.\n\nКак вы ответите?",
                         new ArrayList<>(Arrays.asList("Сказать 'ма ма'", "Заплакать", "Сказать 'па па'"))));
         Random rand = new Random();
@@ -22,13 +25,13 @@ public class EventUtils {
 
     private static BasicEvent getChildEvent()  {
         List<BasicEvent> givenList = Arrays.asList(
-                new BasicEvent("Любимый напиток", R.drawable.drink,"childMomAsksDrink",
+                new BasicEvent(1, "Любимый напиток", R.drawable.drink,"childMomAsksDrink",
                         "Вы бегали весь день, и ваша мама спрашивает, что дать тебе попить.\n\nЧто вы выберите?",
                         new ArrayList<>(Arrays.asList("Вода", "Яблочный сок", "Молоко"))),
-                new BasicEvent("Вакцинация", R.drawable.vaccine,"childMomTakesToDoc",
+                new BasicEvent(2, "Вакцинация", R.drawable.vaccine,"childMomTakesToDoc",
                         "Ваша мама отводит вас к врачу, чтобы сделать прививку.\n\nКак вы будете себя вести?",
                         new ArrayList<>(Arrays.asList("Оставаться спокойным", "Плюнуть на медсестру", "Заплакать"))),
-                new BasicEvent("Детская площадка", R.drawable.toy,"childGirlTakesToy",
+                new BasicEvent(3, "Детская площадка", R.drawable.toy,"childGirlTakesToy",
                         "Маленькая девочка, с которой вы играете, взяла вашу любимую игрушку\n\nЧто вы сделаете?",
                         new ArrayList<>(Arrays.asList("Поиграть вместе", "Забрать игрушку и уйти", "Отдать игрушку ей"))));
         Random rand = new Random();
@@ -37,10 +40,10 @@ public class EventUtils {
 
     private static BasicEvent getPrimarySchoolEvent()  {
         List<BasicEvent> givenList = Arrays.asList(
-                new BasicEvent("Кинотеатр", R.drawable.cinema, "primarySchoolKidsAskToMovie",
+                new BasicEvent(4, "Кинотеатр", R.drawable.cinema, "primarySchoolKidsAskToMovie",
                         "Соседские ребята приглашают вас посмотреть с ними новый популярный десткий фильм.\n\nЧто вы сделаете?",
                         new ArrayList<>(Arrays.asList("Пойти с ними", "Остаться дома", ""))),
-                new BasicEvent("Семейный отдых", R.drawable.vacation,"primarySchoolParentsAskToVacation",
+                new BasicEvent(5, "Семейный отдых", R.drawable.vacation,"primarySchoolParentsAskToVacation",
                         "Ваши родители хотят всей семьей отправиться отдыхать в Сингапур.\n\nЧто вы сделаете?",
                         new ArrayList<>(Arrays.asList("Быть благодарным", "Отказаться от поездки", "Побухтеть, но поехать"))));
         Random rand = new Random();
@@ -95,13 +98,35 @@ public class EventUtils {
     public static BasicEvent generateEvent(MainCharacterViewModel viewModel) {
         int age = viewModel.getAge().getValue();
         if(age <= 2) {
-            return getBornEvent();
+            BasicEvent event = getBornEvent();
+            Log.e("generateEvent", "list: " + GameActivity.eventListId.size());
+            if(GameActivity.eventListId.contains(event.getId())) {
+                GameActivity.eventListId.remove(event.getId());
+                return event;
+            }
+            return null;
         }
         else if(age < 7) {
-            return getChildEvent();
+            BasicEvent event = getChildEvent();
+            Log.e("generateEvent", "list: " + GameActivity.eventListId.size());
+            if(GameActivity.eventListId.contains(event.getId())) {
+                GameActivity.eventListId.remove(event.getId());
+                return event;
+            }
+            return null;
         }
 
-        return getPrimarySchoolEvent();
+        else if(age < 12) {
+            BasicEvent event = getPrimarySchoolEvent();
+            Log.e("generateEvent", "list: " + GameActivity.eventListId.size());
+            if(GameActivity.eventListId.contains(event.getId())) {
+                GameActivity.eventListId.remove(event.getId());
+                return event;
+            }
+            return null;
+        }
+
+        return null;
 //        else if(age < 16) {
 //            return getPrimarySchoolEvent();
 //        }

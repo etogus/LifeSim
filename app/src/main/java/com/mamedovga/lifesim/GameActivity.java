@@ -19,14 +19,21 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.google.android.material.navigation.NavigationBarView;
 import com.mamedovga.lifesim.databinding.ActivityGameBinding;
+import com.mamedovga.lifesim.models.BasicEvent;
 import com.mamedovga.lifesim.models.MainCharacterViewModel;
 import com.mamedovga.lifesim.models.MainCharacter;
 import com.mamedovga.lifesim.utils.PersonUtils;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 public class GameActivity extends AppCompatActivity {
 
     private ActivityGameBinding binding;
     private boolean activityCheck = false;
+    public static Set<Integer> eventListId = new HashSet<>(Arrays.asList(0, 1, 2, 3, 4, 5));
 
     private MainCharacterViewModel mainCharacterViewModel;
 

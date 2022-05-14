@@ -120,13 +120,18 @@ public class StatusFragment extends Fragment {
         stringBuilder.setSpan(new StyleSpan(Typeface.BOLD), stringBuilder.toString().indexOf(s), stringBuilder.toString().indexOf(s)+s.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         stringBuilder.setSpan(new ForegroundColorSpan(Color.BLUE), stringBuilder.toString().indexOf(s), stringBuilder.toString().indexOf(s)+s.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         stringBuilder.setSpan(new UnderlineSpan(), stringBuilder.toString().indexOf(s), stringBuilder.toString().indexOf(s)+s.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-        BasicEvent basicEvent = EventUtils.generateEvent(mainCharacterViewModel);
 
-        EventDialogFragment dialog = EventDialogFragment.newInstance(basicEvent.getName(), basicEvent.getImage(), basicEvent.getDescription(),
-                basicEvent.getActions().get(0), basicEvent.getActions().get(1), basicEvent.getActions().get(2), basicEvent.getLabel());
+        try {
+            BasicEvent basicEvent = EventUtils.generateEvent(mainCharacterViewModel);
 
-        dialog.setTargetFragment(StatusFragment.this, 1);
-        dialog.show(getActivity().getSupportFragmentManager(), "eventDialogFragment");
+            EventDialogFragment dialog = EventDialogFragment.newInstance(basicEvent.getName(), basicEvent.getImage(), basicEvent.getDescription(),
+                    basicEvent.getActions().get(0), basicEvent.getActions().get(1), basicEvent.getActions().get(2), basicEvent.getLabel());
+
+            dialog.setTargetFragment(StatusFragment.this, 1);
+            dialog.show(getActivity().getSupportFragmentManager(), "eventDialogFragment");
+        } catch (NullPointerException e) {
+
+        }
 
         mainCharacterViewModel.setActivityLogText(stringBuilder);
         binding.activityDisplay.setText(mainCharacterViewModel.getActivityLogText().getValue());

@@ -3,6 +3,7 @@ package com.mamedovga.lifesim.models;
 import java.util.ArrayList;
 
 public class BasicEvent {
+    private int id;
     private String name;
     private int image;
     private String label;
@@ -10,13 +11,22 @@ public class BasicEvent {
     private ArrayList<String> actions;
     //private String resolution;
 
-    public BasicEvent(String name, int image, String label, String description, ArrayList<String> actions) {
+    public BasicEvent(int id, String name, int image, String label, String description, ArrayList<String> actions) {
+        this.id = id;
         this.name = name;
         this.image = image;
         this.label = label;
         this.description = description;
         //this.resolution = resolution;
         this.actions = actions;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
