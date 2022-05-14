@@ -32,7 +32,6 @@ import java.util.Set;
 public class GameActivity extends AppCompatActivity {
 
     private ActivityGameBinding binding;
-    private boolean activityCheck = false;
     public static Set<Integer> eventListId = new HashSet<>(Arrays.asList(0, 1, 2, 3, 4, 5));
 
     private MainCharacterViewModel mainCharacterViewModel;
@@ -201,6 +200,5 @@ public class GameActivity extends AppCompatActivity {
             finish();
         }
         statusFragment.nextYear();
-        activityCheck = false;
     }
 }

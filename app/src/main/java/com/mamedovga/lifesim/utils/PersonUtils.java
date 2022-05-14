@@ -24,16 +24,16 @@ public class PersonUtils {
         if(karma == 10)
             mainCharacter.setStats(100, 100, 100, 100, 100);
         else if(karma >= 8) {
-            mainCharacter.setStats(randomizeMood(80, 100), randomizeHealth(80, 100), randomizeIntelligence(80, 100), randomizeLooks(80, 100), randomizeEnergy(80, 100));
+            mainCharacter.setStats(randomizeMood(80, 100), randomizeHealth(80, 100), randomizeIntelligence(80, 100), randomizeLooks(80, 100), 100);
         }
         else if(karma >= 6) {
-            mainCharacter.setStats(randomizeMood(60, 90), randomizeHealth(60, 90), randomizeIntelligence(60, 100), randomizeLooks(60, 90), randomizeEnergy(60, 90));
+            mainCharacter.setStats(randomizeMood(60, 90), randomizeHealth(60, 90), randomizeIntelligence(60, 100), randomizeLooks(60, 90), 100);
         }
         else if(karma >= 4) {
-            mainCharacter.setStats(randomizeMood(40, 80), randomizeHealth(40, 80), randomizeIntelligence(40, 80), randomizeLooks(40, 80), randomizeEnergy(40, 80));
+            mainCharacter.setStats(randomizeMood(40, 80), randomizeHealth(40, 80), randomizeIntelligence(40, 80), randomizeLooks(40, 80), 100);
         }
         else if(karma <= 2) {
-            mainCharacter.setStats(randomizeMood(0, 60), randomizeHealth(0, 60), randomizeIntelligence(0, 60), randomizeLooks(0, 60), randomizeEnergy(0, 60));
+            mainCharacter.setStats(randomizeMood(0, 60), randomizeHealth(0, 60), randomizeIntelligence(0, 60), randomizeLooks(0, 60), 100);
         }
     }
 
@@ -311,20 +311,20 @@ public class PersonUtils {
                         "Gerber", "Graf", "Gunther", "Haase", "Habicht", "Halle", "Haumann"};
         }
 
-        return new String[] {"Александров", "Алексеев", "Андреев", "Антонов", "Богданов",
-                "Богомолов", "Борисов", "Федоров", "Иванов", "Константинов",
+        return new String[] {"Алексеев", "Андреев", "Антонов", "Богданов", "Борисов",
+                "Федоров", "Иванов",
                 "Козлов", "Кузнецов", "Лебедев", "Максимов", "Матвеев", "Мельников",
                 "Михайлов", "Николаев", "Новиков", "Орлов", "Павлов", "Попов",
-                "Романов", "Васильев", "Виноградов", "Волков", "Петров", "Яковлев",
+                "Романов", "Васильев", "Волков", "Петров", "Яковлев",
                 "Соколов", "Тимофеев", "Смирнов"};
     }
 
     public static String[] getWomanFirstNamesRussian() {
-        return new String[] {"Александрова", "Алексеева", "Андреева", "Антонова", "Богданова",
-                "Богомолова", "Борисова", "Федорова", "Иванова", "Константинова",
+        return new String[] {"Алексеева", "Андреева", "Антонова", "Богданова",
+                "Борисова", "Федорова", "Иванова",
                 "Козлова", "Кузнецова", "Лебедева", "Максимова", "Матвеева", "Мельникова",
                 "Михайлова", "Николаева", "Новикова", "Орлова", "Павлова", "Попова",
-                "Романова", "Васильева", "Виноградова", "Волкова", "Петрова", "Яковлева",
+                "Романова", "Васильева", "Волкова", "Петрова", "Яковлева",
                 "Соколова", "Тимофеева", "Смирнова"};
     }
 
