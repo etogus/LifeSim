@@ -24,7 +24,7 @@
         <entry key="..\:/Projects/Android/LifeSim/app/src/main/res/layout/fragment_actions_row.xml" value="0.1414324569356301" />
         <entry key="..\:/Projects/Android/LifeSim/app/src/main/res/layout/fragment_chat.xml" value="0.1" />
         <entry key="..\:/Projects/Android/LifeSim/app/src/main/res/layout/fragment_relationship_dialog.xml" value="0.1414324569356301" />
-        <entry key="..\:/Projects/Android/LifeSim/app/src/main/res/layout/fragment_status.xml" value="0.1" />
+        <entry key="..\:/Projects/Android/LifeSim/app/src/main/res/layout/fragment_status.xml" value="0.2884990253411306" />
         <entry key="..\:/Projects/Android/LifeSim/app/src/main/res/layout/recycler_actions_row.xml" value="0.1414324569356301" />
         <entry key="..\:/Projects/Android/LifeSim/app/src/main/res/layout/recycler_relationships_row.xml" value="0.1414324569356301" />
         <entry key="..\:/Projects/Android/LifeSim/app/src/main/res/layout/splash_background.xml" value="0.14130434782608695" />
@@ -41,7 +41,6 @@
         <entry key="..\:/projects/android/LifeSim/app/src/main/res/drawable/ic_baseline_people_36.xml" value="0.3675" />
         <entry key="..\:/projects/android/LifeSim/app/src/main/res/drawable/ic_baseline_shopping_cart_32.xml" value="0.3675" />
         <entry key="..\:/projects/android/LifeSim/app/src/main/res/drawable/ic_baseline_smarts_24.xml" value="0.3675" />
-        <entry key="..\:/projects/android/LifeSim/app/src/main/res/drawable/rounded_dialog.xml" value="0.3675" />
         <entry key="..\:/projects/android/LifeSim/app/src/main/res/drawable/scrollview_border.xml" value="0.3675" />
         <entry key="..\:/projects/android/LifeSim/app/src/main/res/drawable/splash_background.xml" value="0.207" />
         <entry key="..\:/projects/android/LifeSim/app/src/main/res/font/kaushan.xml" value="0.396875" />
@@ -61,7 +60,6 @@
         <entry key="..\:/projects/android/LifeSim/app/src/main/res/layout/fragment_avatar.xml" value="0.36666666666666664" />
         <entry key="..\:/projects/android/LifeSim/app/src/main/res/layout/fragment_chat.xml" value="0.36666666666666664" />
         <entry key="..\:/projects/android/LifeSim/app/src/main/res/layout/fragment_detail.xml" value="0.36666666666666664" />
-        <entry key="..\:/projects/android/LifeSim/app/src/main/res/layout/fragment_dialog_event.xml" value="0.29891304347826086" />
         <entry key="..\:/projects/android/LifeSim/app/src/main/res/layout/fragment_event.xml" value="0.36666666666666664" />
         <entry key="..\:/projects/android/LifeSim/app/src/main/res/layout/fragment_new_game_avatar.xml" value="0.36666666666666664" />
         <entry key="..\:/projects/android/LifeSim/app/src/main/res/layout/fragment_new_game_input.xml" value="0.5" />
@@ -71,7 +69,6 @@
         <entry key="..\:/projects/android/LifeSim/app/src/main/res/layout/recycler_assets_row.xml" value="0.36666666666666664" />
         <entry key="..\:/projects/android/LifeSim/app/src/main/res/layout/recycler_relationships_row.xml" value="0.36666666666666664" />
         <entry key="..\:/projects/android/LifeSim/app/src/main/res/layout/recycler_view_relationships.xml" value="0.36666666666666664" />
-        <entry key="..\:/projects/android/LifeSim/app/src/main/res/layout/slide_in_up.xml" value="0.29891304347826086" />
         <entry key="..\:/projects/android/LifeSim/app/src/main/res/layout/slide_item_container.xml" value="0.36666666666666664" />
         <entry key="..\:/projects/android/LifeSim/app/src/main/res/layout/user_message_item.xml" value="0.271286231884058" />
         <entry key="..\:/projects/android/LifeSim/app/src/main/res/mipmap-anydpi-v26/ic_baseline_account_circle.xml" value="0.207" />

@@ -43,6 +43,7 @@ public class StatusFragment extends Fragment {
         binding.energyBar.setProgressPercentage(mainCharacterViewModel.getEnergy().getValue(), true);
         binding.activityDisplay.setText(mainCharacterViewModel.getActivityLogText().getValue());
         binding.countryFlag.setImageResource(CountryUtils.getCountryFlag(mainCharacterViewModel.getCountry().getValue()));
+        binding.playerMoney.setText(mainCharacterViewModel.getMoney().getValue().toString());
         checkAge();
         return binding.getRoot();
     }

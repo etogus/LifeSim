@@ -118,7 +118,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="2dp"
-                        android:text="@string/player_money"
                         android:textSize="20sp"
                         app:layout_constraintEnd_toStartOf="@+id/dollarSign"
                         app:layout_constraintTop_toTopOf="@+id/playerName" />
