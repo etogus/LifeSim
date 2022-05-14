@@ -117,7 +117,37 @@ public class ActionDialogFragment extends DialogFragment {
                         }
                         break;
                     case "book":
+                        if(mainCharacterViewModel.getEnergy().getValue() >= dialogEnergy) {
+                            ProgressBarUtils.updateMoodBar(mainCharacterViewModel, 5, getFragmentManager().findFragmentByTag("statusFragment").getView().findViewById(R.id.moodBar));
+                            //mainCharacterViewModel.setMood(mainCharacterViewModel.getMood().getValue() + 5);
+                            //mainCharacterViewModel.setEnergy(mainCharacterViewModel.getEnergy().getValue() - dialogEnergy);
+                            ProgressBarUtils.updateEnergyBar(mainCharacterViewModel, -5, getFragmentManager().findFragmentByTag("statusFragment").getView().findViewById(R.id.energyBar));
+                            SpannableStringBuilder stringBuilder = new SpannableStringBuilder();
+                            stringBuilder.append(mainCharacterViewModel.getActivityLogText().getValue());
+                            stringBuilder.append("\n").append("Я прочитал книгу.");
+                            mainCharacterViewModel.setActivityLogText(stringBuilder);
+                            TextView activityDisplay = getFragmentManager().findFragmentByTag("statusFragment").getView().findViewById(R.id.activityDisplay);
+                            activityDisplay.setText(mainCharacterViewModel.getActivityLogText().getValue());
+                        } else {
+                            Toast.makeText(requireContext(), "Недостаточно энергии", Toast.LENGTH_SHORT).show();
+                        }
+                        break;
                     case "game":
+                        if(mainCharacterViewModel.getEnergy().getValue() >= dialogEnergy) {
+                            ProgressBarUtils.updateMoodBar(mainCharacterViewModel, 5, getFragmentManager().findFragmentByTag("statusFragment").getView().findViewById(R.id.moodBar));
+                            //mainCharacterViewModel.setMood(mainCharacterViewModel.getMood().getValue() + 5);
+                            //mainCharacterViewModel.setEnergy(mainCharacterViewModel.getEnergy().getValue() - dialogEnergy);
+                            ProgressBarUtils.updateEnergyBar(mainCharacterViewModel, -5, getFragmentManager().findFragmentByTag("statusFragment").getView().findViewById(R.id.energyBar));
+                            SpannableStringBuilder stringBuilder = new SpannableStringBuilder();
+                            stringBuilder.append(mainCharacterViewModel.getActivityLogText().getValue());
+                            stringBuilder.append("\n").append("Я поиграл в игру.");
+                            mainCharacterViewModel.setActivityLogText(stringBuilder);
+                            TextView activityDisplay = getFragmentManager().findFragmentByTag("statusFragment").getView().findViewById(R.id.activityDisplay);
+                            activityDisplay.setText(mainCharacterViewModel.getActivityLogText().getValue());
+                        } else {
+                            Toast.makeText(requireContext(), "Недостаточно энергии", Toast.LENGTH_SHORT).show();
+                        }
+                        break;
                     case "movie":
                         if(mainCharacterViewModel.getEnergy().getValue() >= dialogEnergy) {
                             ProgressBarUtils.updateMoodBar(mainCharacterViewModel, 5, getFragmentManager().findFragmentByTag("statusFragment").getView().findViewById(R.id.moodBar));
