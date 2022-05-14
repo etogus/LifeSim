@@ -1,5 +1,7 @@
 package com.mamedovga.lifesim;
 
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.SpannableStringBuilder;
 import android.view.LayoutInflater;
@@ -72,6 +74,7 @@ public class EventDialogFragment extends DialogFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentDialogEventBinding.inflate(inflater, container, false);
+        getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         binding.eventName.setText(eventName);
         binding.eventImage.setImageResource(eventImage);
         binding.eventDescription.setText(eventDescription);

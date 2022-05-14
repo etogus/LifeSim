@@ -1,6 +1,7 @@
 package com.mamedovga.lifesim;
 
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
 import androidx.fragment.app.DialogFragment;
@@ -68,6 +69,7 @@ public class ActionDialogFragment extends DialogFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentActionDialogBinding.inflate(inflater, container, false);
+        getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         binding.actionImage.setImageResource(dialogImage);
         binding.energyCost.setText(String.valueOf(dialogEnergy));
         binding.actionName.setText(dialogName);

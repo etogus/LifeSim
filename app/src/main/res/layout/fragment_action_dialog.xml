@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@drawable/rounded_dialog"
     android:layout_margin="10dp">
 
     <TextView
@@ -88,7 +89,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="5dp"
+        android:layout_marginEnd="30dp"
         android:layout_marginBottom="20dp"
         android:text="Выполнить"
         android:textColor="#33bbff"
@@ -103,7 +104,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="5dp"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="20dp"
         android:text="Закрыть"
