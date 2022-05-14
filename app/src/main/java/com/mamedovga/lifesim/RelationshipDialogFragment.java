@@ -24,19 +24,22 @@ public class RelationshipDialogFragment extends DialogFragment {
     private static final String ARG_PARAM1 = "avatar";
     private static final String ARG_PARAM2 = "statusToPlayer";
     private static final String ARG_PARAM3 = "affinityToPlayer";
+    private static final String ARG_PARAM4 = "name";
 
     private int mParam1;
     private String mParam2;
     private int mParam3;
+    private String mParam4;
 
     public RelationshipDialogFragment() { }
 
-    public static RelationshipDialogFragment newInstance(int param1, String param2, int param3) {
+    public static RelationshipDialogFragment newInstance(int param1, String param2, int param3, String param4) {
         RelationshipDialogFragment fragment = new RelationshipDialogFragment();
         Bundle args = new Bundle();
         args.putInt(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
         args.putInt(ARG_PARAM3, param3);
+        args.putString(ARG_PARAM4, param4);
         fragment.setArguments(args);
         return fragment;
     }
@@ -48,6 +51,7 @@ public class RelationshipDialogFragment extends DialogFragment {
             mParam1 = getArguments().getInt(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
             mParam3 = getArguments().getInt(ARG_PARAM3);
+            mParam4 = getArguments().getString(ARG_PARAM4);
         }
     }
 
@@ -73,7 +77,7 @@ public class RelationshipDialogFragment extends DialogFragment {
             public void onClick(View v) {
                 Log.d(TAG, "onClick: capturing input.");
 
-                ChatFragment fragment = new ChatFragment();
+                ChatFragment fragment = ChatFragment.newInstance(mParam1, mParam4, mParam2);
                 FragmentTransaction transaction = requireActivity().getSupportFragmentManager().beginTransaction();
                 transaction.hide(requireActivity().getSupportFragmentManager().findFragmentByTag("relationshipsFragment"));
                 transaction.add(R.id.topAndMiddleContainer, fragment, "chatFragment");

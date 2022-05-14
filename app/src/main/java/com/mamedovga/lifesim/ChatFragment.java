@@ -32,10 +32,12 @@ import retrofit2.Callback;
 
 public class ChatFragment extends Fragment {
 
-//    private static final String ARG_PARAM1 = "param1";
-//    private static final String ARG_PARAM2 = "param2";
-//    private String mParam1;
-//    private String mParam2;
+    private static final String ARG_PARAM1 = "avatar";
+    private static final String ARG_PARAM2 = "name";
+    private static final String ARG_PARAM3 = "statusToPlayer";
+    private int mParam1;
+    private String mParam2;
+    private String mParam3;
 
     private FragmentChatBinding binding;
     private static final String TAG = "ChatFragment";
@@ -46,22 +48,24 @@ public class ChatFragment extends Fragment {
 
 //    public ChatFragment() { }
 //
-//    public static ChatFragment newInstance(String param1, String param2) {
-//        ChatFragment fragment = new ChatFragment();
-//        Bundle args = new Bundle();
-//        args.putString(ARG_PARAM1, param1);
-//        args.putString(ARG_PARAM2, param2);
-//        fragment.setArguments(args);
-//        return fragment;
-//    }
+    public static ChatFragment newInstance(int param1, String param2, String param3) {
+        ChatFragment fragment = new ChatFragment();
+        Bundle args = new Bundle();
+        args.putInt(ARG_PARAM1, param1);
+        args.putString(ARG_PARAM2, param2);
+        args.putString(ARG_PARAM3, param3);
+        fragment.setArguments(args);
+        return fragment;
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        if (getArguments() != null) {
-//            mParam1 = getArguments().getString(ARG_PARAM1);
-//            mParam2 = getArguments().getString(ARG_PARAM2);
-//        }
+        if (getArguments() != null) {
+            mParam1 = getArguments().getInt(ARG_PARAM1);
+            mParam2 = getArguments().getString(ARG_PARAM2);
+            mParam3 = getArguments().getString(ARG_PARAM3);
+        }
     }
 
     @Override
@@ -94,6 +98,10 @@ public class ChatFragment extends Fragment {
                 getActivity().onBackPressed();
             }
         });
+
+        binding.talkingAvatar.setImageResource(mParam1);
+        binding.talkingName.setText(mParam2);
+        binding.talkingStatus.setText(mParam3);
 
         return binding.getRoot();
     }

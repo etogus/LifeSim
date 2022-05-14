@@ -63,7 +63,7 @@ public class RelationshipsFragment extends Fragment implements RelationshipsRecy
 //        transaction.add(R.id.topAndMiddleContainer, fragment);
 //        transaction.addToBackStack(null);
 //        transaction.commit();
-        RelationshipDialogFragment dialog = RelationshipDialogFragment.newInstance(nonPlayableCharacter.getAvatar(), nonPlayableCharacter.getStatusToPlayer(), nonPlayableCharacter.getAffinity());
+        RelationshipDialogFragment dialog = RelationshipDialogFragment.newInstance(nonPlayableCharacter.getAvatar(), nonPlayableCharacter.getStatusToPlayer(), nonPlayableCharacter.getAffinity(), nonPlayableCharacter.getName());
         Log.e("onItemClick", "nonPlayableCharacter.getStatusToPlayer() = " + nonPlayableCharacter.getStatusToPlayer());
         dialog.setTargetFragment(RelationshipsFragment.this, 1);
         dialog.show(getActivity().getSupportFragmentManager(), "MyCustomDialog");
