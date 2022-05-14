@@ -112,27 +112,27 @@ public class GameActivity extends AppCompatActivity {
     }
 
     public void statusButton() {
-        getSupportFragmentManager().beginTransaction().hide(active).show(statusFragment).commit();
+        getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.slide_in_up, R.anim.slide_out_up).hide(active).show(statusFragment).commit();
         active = statusFragment;
         //getSupportFragmentManager().beginTransaction().replace(R.id.topAndMiddleContainer, statusFragment).commit();
     }
 
     public void assetsButton() {
-        getSupportFragmentManager().beginTransaction().hide(active).show(assetsFragment).commit();
+        getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.slide_in_up, R.anim.slide_out_up).hide(active).show(assetsFragment).commit();
         active = assetsFragment;
         //getSupportFragmentManager().beginTransaction().replace(R.id.topAndMiddleContainer, assetsFragment).commit();
     }
 
     public void relationShipsButton() {
         //startActivity(new Intent(this, ChatActivity.class));
-        getSupportFragmentManager().beginTransaction().hide(active).show(relationshipsFragment).commit();
+        getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.slide_in_up, R.anim.slide_out_up).hide(active).show(relationshipsFragment).commit();
         active = relationshipsFragment;
         //getSupportFragmentManager().beginTransaction().replace(R.id.topAndMiddleContainer, relationshipsFragment).commit();
     }
 
     public void actionsButton() {
         //getSupportFragmentManager().beginTransaction().replace(binding.topAndMiddleContainer.getId(), actionsFragment).commit();
-        getSupportFragmentManager().beginTransaction().hide(active).show(actionsFragment).commit();
+        getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.slide_in_up, R.anim.slide_out_up).hide(active).show(actionsFragment).commit();
         active = actionsFragment;
 //        if(!activityCheck) {
 //            int n = NumberUtils.getRandomNumber(1, 4);
