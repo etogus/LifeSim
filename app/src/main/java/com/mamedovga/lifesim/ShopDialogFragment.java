@@ -39,9 +39,7 @@ public class ShopDialogFragment extends DialogFragment {
     private int mParam8;
     private String mParam9;
 
-    public ShopDialogFragment() {
-        // Required empty public constructor
-    }
+    public ShopDialogFragment() { }
 
     public static ShopDialogFragment newInstanceBook(String param1, int param2, int param3, int param4, String param5, int param6, String param9) {
         ShopDialogFragment fragment = new ShopDialogFragment();

@@ -12,8 +12,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import com.mamedovga.lifesim.databinding.FragmentAssetsBinding;
 import com.mamedovga.lifesim.models.AbstractAsset;
 
-import java.util.ArrayList;
-
 public class AssetsFragment extends Fragment implements AssetsAdapter.ItemClickListener {
 
     private FragmentAssetsBinding binding;
@@ -48,6 +46,8 @@ public class AssetsFragment extends Fragment implements AssetsAdapter.ItemClickL
 
     @Override
     public void onItemClick(AbstractAsset abstractAsset) {
-
+        AssetDialogFragment dialog = AssetDialogFragment.newInstance(abstractAsset.getName(), abstractAsset.getImage(), GameActivity.assetList.indexOf(abstractAsset));
+        dialog.setTargetFragment(AssetsFragment.this, 1);
+        dialog.show(getActivity().getSupportFragmentManager(), "AssetsDialog");
     }
 }
