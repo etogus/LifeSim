@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -24,6 +25,7 @@ import com.mamedovga.lifesim.models.MainCharacterViewModel;
 import com.mamedovga.lifesim.utils.CountryUtils;
 import com.mamedovga.lifesim.utils.EventUtils;
 import com.mamedovga.lifesim.utils.ImageUtils;
+import com.mamedovga.lifesim.utils.NumberUtils;
 import com.mamedovga.lifesim.utils.ProgressBarUtils;
 
 public class StatusFragment extends Fragment {
@@ -134,8 +136,23 @@ public class StatusFragment extends Fragment {
 
         }
 
+        //mainCharacterViewModel.setActivityLogText(stringBuilder);
+        //binding.activityDisplay.setText(mainCharacterViewModel.getActivityLogText().getValue());
+
+        if(mainCharacterViewModel.getAge().getValue() >= 8 && mainCharacterViewModel.getAge().getValue() <= 18) {
+            int present = NumberUtils.getRandomNumber(50, 200);
+            mainCharacterViewModel.setMoney(mainCharacterViewModel.getMoney().getValue() + present);
+            //SpannableStringBuilder stringBuilder = new SpannableStringBuilder();
+            //stringBuilder.append(mainCharacterViewModel.getActivityLogText().getValue());
+            stringBuilder.append("\n").append("Родители подарили мне ").append(String.valueOf(present)).append("$ на день рождения.");
+            //mainCharacterViewModel.setActivityLogText(stringBuilder);
+            //binding.activityDisplay.setText(mainCharacterViewModel.getActivityLogText().getValue());
+            binding.playerMoney.setText(mainCharacterViewModel.getMoney().getValue().toString());
+        }
+
         mainCharacterViewModel.setActivityLogText(stringBuilder);
         binding.activityDisplay.setText(mainCharacterViewModel.getActivityLogText().getValue());
+
         binding.activityLog.post(new Runnable() {
             @Override
             public void run() {

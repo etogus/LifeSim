@@ -6,18 +6,22 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.fragment.app.DialogFragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.mamedovga.lifesim.databinding.FragmentShopDialogBinding;
 import com.mamedovga.lifesim.models.Book;
 import com.mamedovga.lifesim.models.Car;
 import com.mamedovga.lifesim.models.House;
+import com.mamedovga.lifesim.models.MainCharacterViewModel;
 import com.mamedovga.lifesim.models.Sport;
 
 public class ShopDialogFragment extends DialogFragment {
 
     private FragmentShopDialogBinding binding;
+    private MainCharacterViewModel mainCharacterViewModel;
 
     private static final String ARG_PARAM1 = "name";
     private static final String ARG_PARAM2 = "image";
@@ -111,6 +115,7 @@ public class ShopDialogFragment extends DialogFragment {
             mParam8 = getArguments().getInt(ARG_PARAM8);
             mParam9 = getArguments().getString(ARG_PARAM9);
         }
+        mainCharacterViewModel = new ViewModelProvider(requireActivity()).get(MainCharacterViewModel.class);
     }
 
     @Override
@@ -132,29 +137,50 @@ public class ShopDialogFragment extends DialogFragment {
         binding.actionBuyItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                GameActivity.shopList.remove(mParam4);
-
                 switch (mParam9) {
                     case "Book":
-                        GameActivity.assetList.add(new Book(mParam1, mParam3, mParam2, mParam5, mParam6));
-                        AssetsFragment.assetsAdapter.notifyDataSetChanged();
+                        if(mainCharacterViewModel.getMoney().getValue() >= mParam3) {
+                            GameActivity.assetList.add(new Book(mParam1, mParam3, mParam2, mParam5, mParam6));
+                            AssetsFragment.assetsAdapter.notifyDataSetChanged();
+                            GameActivity.shopList.remove(mParam4);
+                            ShopFragment.shopAdapter.notifyDataSetChanged();
+                        } else {
+                            Toast.makeText(requireContext(), "Недостаточно средств", Toast.LENGTH_SHORT).show();
+                        }
                         break;
                     case "Car":
-                        GameActivity.assetList.add(new Car(mParam1, mParam3, mParam2, mParam5, mParam7));
-                        AssetsFragment.assetsAdapter.notifyDataSetChanged();
+                        if(mainCharacterViewModel.getMoney().getValue() >= mParam3) {
+                            GameActivity.assetList.add(new Car(mParam1, mParam3, mParam2, mParam5, mParam7));
+                            AssetsFragment.assetsAdapter.notifyDataSetChanged();
+                            GameActivity.shopList.remove(mParam4);
+                            ShopFragment.shopAdapter.notifyDataSetChanged();
+                        }
+                        else {
+                            Toast.makeText(requireContext(), "Недостаточно средств", Toast.LENGTH_SHORT).show();
+                        }
                         break;
                     case "House":
-                        GameActivity.assetList.add(new House(mParam1, mParam3, mParam2, mParam5, mParam8, mParam7));
-                        AssetsFragment.assetsAdapter.notifyDataSetChanged();
+                        if(mainCharacterViewModel.getMoney().getValue() >= mParam3) {
+                            GameActivity.assetList.add(new House(mParam1, mParam3, mParam2, mParam5, mParam8, mParam7));
+                            AssetsFragment.assetsAdapter.notifyDataSetChanged();
+                            GameActivity.shopList.remove(mParam4);
+                            ShopFragment.shopAdapter.notifyDataSetChanged();
+                        } else {
+                            Toast.makeText(requireContext(), "Недостаточно средств", Toast.LENGTH_SHORT).show();
+                        }
                         break;
                     case "Sport":
-                        GameActivity.assetList.add(new Sport(mParam1, mParam3, mParam2, mParam5));
-                        AssetsFragment.assetsAdapter.notifyDataSetChanged();
+                        if(mainCharacterViewModel.getMoney().getValue() >= mParam3) {
+                            GameActivity.assetList.add(new Sport(mParam1, mParam3, mParam2, mParam5));
+                            AssetsFragment.assetsAdapter.notifyDataSetChanged();
+                            GameActivity.shopList.remove(mParam4);
+                            ShopFragment.shopAdapter.notifyDataSetChanged();
+                        } else {
+                            Toast.makeText(requireContext(), "Недостаточно средств", Toast.LENGTH_SHORT).show();
+                        }
                         break;
                 }
-
                 getDialog().dismiss();
-                ShopFragment.shopAdapter.notifyDataSetChanged();
             }
         });
 
