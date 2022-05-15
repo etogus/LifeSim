@@ -3,9 +3,11 @@ package com.mamedovga.lifesim;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.text.SpannableStringBuilder;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.fragment.app.DialogFragment;
@@ -140,20 +142,42 @@ public class ShopDialogFragment extends DialogFragment {
                 switch (mParam9) {
                     case "Book":
                         if(mainCharacterViewModel.getMoney().getValue() >= mParam3) {
+                            mainCharacterViewModel.setMoney(mainCharacterViewModel.getMoney().getValue() - mParam3);
                             GameActivity.assetList.add(new Book(mParam1, mParam3, mParam2, mParam5, mParam6));
                             AssetsFragment.assetsAdapter.notifyDataSetChanged();
                             GameActivity.shopList.remove(mParam4);
                             ShopFragment.shopAdapter.notifyDataSetChanged();
+
+                            SpannableStringBuilder stringBuilder = new SpannableStringBuilder();
+                            stringBuilder.append(mainCharacterViewModel.getActivityLogText().getValue());
+                            stringBuilder.append("\n").append("Я приобрёл новую книгу.");
+                            mainCharacterViewModel.setActivityLogText(stringBuilder);
+                            TextView activityDisplay = getFragmentManager().findFragmentByTag("statusFragment").getView().findViewById(R.id.activityDisplay);
+                            activityDisplay.setText(mainCharacterViewModel.getActivityLogText().getValue());
+                            TextView playerMoney = getFragmentManager().findFragmentByTag("statusFragment").getView().findViewById(R.id.playerMoney);
+                            playerMoney.setText(mainCharacterViewModel.getMoney().getValue().toString());
+
                         } else {
                             Toast.makeText(requireContext(), "Недостаточно средств", Toast.LENGTH_SHORT).show();
                         }
                         break;
                     case "Car":
                         if(mainCharacterViewModel.getMoney().getValue() >= mParam3) {
+                            mainCharacterViewModel.setMoney(mainCharacterViewModel.getMoney().getValue() - mParam3);
                             GameActivity.assetList.add(new Car(mParam1, mParam3, mParam2, mParam5, mParam7));
                             AssetsFragment.assetsAdapter.notifyDataSetChanged();
                             GameActivity.shopList.remove(mParam4);
                             ShopFragment.shopAdapter.notifyDataSetChanged();
+
+                            SpannableStringBuilder stringBuilder = new SpannableStringBuilder();
+                            stringBuilder.append(mainCharacterViewModel.getActivityLogText().getValue());
+                            stringBuilder.append("\n").append("Я приобрёл новый автомобиль.");
+                            mainCharacterViewModel.setActivityLogText(stringBuilder);
+                            TextView activityDisplay = getFragmentManager().findFragmentByTag("statusFragment").getView().findViewById(R.id.activityDisplay);
+                            activityDisplay.setText(mainCharacterViewModel.getActivityLogText().getValue());
+                            TextView playerMoney = getFragmentManager().findFragmentByTag("statusFragment").getView().findViewById(R.id.playerMoney);
+                            playerMoney.setText(mainCharacterViewModel.getMoney().getValue().toString());
+
                         }
                         else {
                             Toast.makeText(requireContext(), "Недостаточно средств", Toast.LENGTH_SHORT).show();
@@ -161,20 +185,42 @@ public class ShopDialogFragment extends DialogFragment {
                         break;
                     case "House":
                         if(mainCharacterViewModel.getMoney().getValue() >= mParam3) {
+                            mainCharacterViewModel.setMoney(mainCharacterViewModel.getMoney().getValue() - mParam3);
                             GameActivity.assetList.add(new House(mParam1, mParam3, mParam2, mParam5, mParam8, mParam7));
                             AssetsFragment.assetsAdapter.notifyDataSetChanged();
                             GameActivity.shopList.remove(mParam4);
                             ShopFragment.shopAdapter.notifyDataSetChanged();
+
+                            SpannableStringBuilder stringBuilder = new SpannableStringBuilder();
+                            stringBuilder.append(mainCharacterViewModel.getActivityLogText().getValue());
+                            stringBuilder.append("\n").append("Я приобрёл новый дом.");
+                            mainCharacterViewModel.setActivityLogText(stringBuilder);
+                            TextView activityDisplay = getFragmentManager().findFragmentByTag("statusFragment").getView().findViewById(R.id.activityDisplay);
+                            activityDisplay.setText(mainCharacterViewModel.getActivityLogText().getValue());
+                            TextView playerMoney = getFragmentManager().findFragmentByTag("statusFragment").getView().findViewById(R.id.playerMoney);
+                            playerMoney.setText(mainCharacterViewModel.getMoney().getValue().toString());
+
                         } else {
                             Toast.makeText(requireContext(), "Недостаточно средств", Toast.LENGTH_SHORT).show();
                         }
                         break;
                     case "Sport":
                         if(mainCharacterViewModel.getMoney().getValue() >= mParam3) {
+                            mainCharacterViewModel.setMoney(mainCharacterViewModel.getMoney().getValue() - mParam3);
                             GameActivity.assetList.add(new Sport(mParam1, mParam3, mParam2, mParam5));
                             AssetsFragment.assetsAdapter.notifyDataSetChanged();
                             GameActivity.shopList.remove(mParam4);
                             ShopFragment.shopAdapter.notifyDataSetChanged();
+
+                            SpannableStringBuilder stringBuilder = new SpannableStringBuilder();
+                            stringBuilder.append(mainCharacterViewModel.getActivityLogText().getValue());
+                            stringBuilder.append("\n").append("Я приобрёл новые гантели.");
+                            mainCharacterViewModel.setActivityLogText(stringBuilder);
+                            TextView activityDisplay = getFragmentManager().findFragmentByTag("statusFragment").getView().findViewById(R.id.activityDisplay);
+                            activityDisplay.setText(mainCharacterViewModel.getActivityLogText().getValue());
+                            TextView playerMoney = getFragmentManager().findFragmentByTag("statusFragment").getView().findViewById(R.id.playerMoney);
+                            playerMoney.setText(mainCharacterViewModel.getMoney().getValue().toString());
+
                         } else {
                             Toast.makeText(requireContext(), "Недостаточно средств", Toast.LENGTH_SHORT).show();
                         }
