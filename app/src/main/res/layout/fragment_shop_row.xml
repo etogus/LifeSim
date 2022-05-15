@@ -19,31 +19,42 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <ImageView
-                android:id="@+id/assetImage"
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/shopItemImage"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
+                android:adjustViewBounds="true"
+                app:riv_corner_radius="12dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/ic_launcher_foreground" />
 
             <TextView
-                android:id="@+id/assetName"
+                android:id="@+id/shopItemName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
+                android:layout_marginTop="8dp"
                 android:text="Название"
                 android:textSize="24sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/assetImage"
+                app:layout_constraintStart_toEndOf="@+id/shopItemImage"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/shopItemPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:text="199$"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/shopItemName"
+                app:layout_constraintTop_toBottomOf="@+id/shopItemName" />
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="10dp"
                 android:src="@drawable/ic_baseline_chevron_right_32"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

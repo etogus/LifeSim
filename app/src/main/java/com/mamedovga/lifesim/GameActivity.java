@@ -19,9 +19,13 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.google.android.material.navigation.NavigationBarView;
 import com.mamedovga.lifesim.databinding.ActivityGameBinding;
+import com.mamedovga.lifesim.models.AbstractAsset;
 import com.mamedovga.lifesim.models.BasicEvent;
+import com.mamedovga.lifesim.models.Book;
+import com.mamedovga.lifesim.models.Car;
 import com.mamedovga.lifesim.models.MainCharacterViewModel;
 import com.mamedovga.lifesim.models.MainCharacter;
+import com.mamedovga.lifesim.models.Sport;
 import com.mamedovga.lifesim.utils.PersonUtils;
 
 import java.util.ArrayList;
@@ -40,6 +44,9 @@ public class GameActivity extends AppCompatActivity {
     public static int AllTimeOutcome = 0;
 
     private MainCharacterViewModel mainCharacterViewModel;
+
+    public static ArrayList<AbstractAsset> shopList = new ArrayList<>();
+    public static ArrayList<AbstractAsset> assetList = new ArrayList<>();
 
     private final StatusFragment statusFragment = new StatusFragment();
     private final AssetsFragment assetsFragment = new AssetsFragment();
@@ -79,6 +86,8 @@ public class GameActivity extends AppCompatActivity {
         mainCharacterViewModel.setKarma(sampleMainCharacter.getKarma());
         mainCharacterViewModel.setAvatar(playerAvatar);
         mainCharacterViewModel.setMoney(0);
+
+        buildList();
 
         SpannableStringBuilder stringBuilder = new SpannableStringBuilder();
         String s = "Возраст: 0";
@@ -206,5 +215,14 @@ public class GameActivity extends AppCompatActivity {
             finish();
         }
         statusFragment.nextYear();
+    }
+
+    public void buildList() {
+        AbstractAsset book1 = new Book("Android Guide", 20, R.drawable.book, "IT", 450);
+        AbstractAsset sport1 = new Sport("Гантели", 10, R.drawable.dumbbell, "dumbbell");
+        AbstractAsset car1 = new Car("Mazda 6 Sedan", 62000, R.drawable.sedan, "sedan", 90);
+        shopList.add(book1);
+        shopList.add(sport1);
+        shopList.add(car1);
     }
 }

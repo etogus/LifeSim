@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:background="@drawable/rounded_dialog">
+
+    <TextView
+        android:id="@+id/shopDialogItemName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:gravity="center"
+        android:text="Dialog Heading"
+        android:textColor="#000"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/shopDialogItemAvatar"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="10dp"
+        android:layout_marginTop="5dp"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/player_avatar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/shopDialogItemName"
+        app:riv_corner_radius="12dp" />
+
+    <TextView
+        android:id="@+id/shopDialogItemPriceText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="80dp"
+        android:paddingLeft="20dp"
+        android:text="Цена: "
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/shopDialogItemAvatar" />
+
+    <TextView
+        android:id="@+id/action_buy_item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:paddingHorizontal="20dp"
+        android:text="Купить"
+        android:textColor="#33bbff"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/action_close_item"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/action_close_item" />
+
+    <TextView
+        android:id="@+id/action_close_item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:paddingHorizontal="20dp"
+        android:text="Закрыть"
+        android:textColor="#33bbff"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/shopDialogItemProsText" />
+
+    <TextView
+        android:id="@+id/shopDialogItemPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:text="TextView"
+        android:paddingRight="20dp"
+        app:layout_constraintStart_toEndOf="@+id/shopDialogItemPriceText"
+        app:layout_constraintTop_toTopOf="@+id/shopDialogItemPriceText" />
+
+    <TextView
+        android:id="@+id/shopDialogItemProsText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="100dp"
+        android:paddingLeft="20dp"
+        android:text="Улучшает: "
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/shopDialogItemPriceText" />
+
+    <TextView
+        android:id="@+id/shopDialogItemPros"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:text="TextView"
+        android:paddingRight="20dp"
+        app:layout_constraintStart_toEndOf="@+id/shopDialogItemProsText"
+        app:layout_constraintTop_toTopOf="@+id/shopDialogItemProsText" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
