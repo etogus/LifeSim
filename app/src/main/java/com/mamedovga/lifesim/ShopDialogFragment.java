@@ -157,6 +157,14 @@ public class ShopDialogFragment extends DialogFragment {
                             TextView playerMoney = getFragmentManager().findFragmentByTag("statusFragment").getView().findViewById(R.id.playerMoney);
                             playerMoney.setText(mainCharacterViewModel.getMoney().getValue().toString());
 
+                            GameActivity.YearOutcome += mParam3;
+                            TextView yearOutcome = getFragmentManager().findFragmentByTag("assetsFragment").getView().findViewById(R.id.yearOutcome);
+                            yearOutcome.setText(String.valueOf(GameActivity.YearOutcome));
+
+                            GameActivity.AllTimeOutcome += mParam3;
+                            TextView allTimeOutcome = getFragmentManager().findFragmentByTag("assetsFragment").getView().findViewById(R.id.lifetimeOutcome);
+                            allTimeOutcome.setText(String.valueOf(GameActivity.AllTimeOutcome));
+
                         } else {
                             Toast.makeText(requireContext(), "Недостаточно средств", Toast.LENGTH_SHORT).show();
                         }
@@ -177,6 +185,14 @@ public class ShopDialogFragment extends DialogFragment {
                             activityDisplay.setText(mainCharacterViewModel.getActivityLogText().getValue());
                             TextView playerMoney = getFragmentManager().findFragmentByTag("statusFragment").getView().findViewById(R.id.playerMoney);
                             playerMoney.setText(mainCharacterViewModel.getMoney().getValue().toString());
+
+                            GameActivity.YearOutcome += mParam3;
+                            TextView yearOutcome = getFragmentManager().findFragmentByTag("assetsFragment").getView().findViewById(R.id.yearOutcome);
+                            yearOutcome.setText(String.valueOf(GameActivity.YearOutcome));
+
+                            GameActivity.AllTimeOutcome += mParam3;
+                            TextView allTimeOutcome = getFragmentManager().findFragmentByTag("assetsFragment").getView().findViewById(R.id.lifetimeOutcome);
+                            allTimeOutcome.setText(String.valueOf(GameActivity.AllTimeOutcome));
 
                         }
                         else {
@@ -200,6 +216,14 @@ public class ShopDialogFragment extends DialogFragment {
                             TextView playerMoney = getFragmentManager().findFragmentByTag("statusFragment").getView().findViewById(R.id.playerMoney);
                             playerMoney.setText(mainCharacterViewModel.getMoney().getValue().toString());
 
+                            GameActivity.YearOutcome += mParam3;
+                            TextView yearOutcome = getFragmentManager().findFragmentByTag("assetsFragment").getView().findViewById(R.id.yearOutcome);
+                            yearOutcome.setText(String.valueOf(GameActivity.YearOutcome));
+
+                            GameActivity.AllTimeOutcome += mParam3;
+                            TextView allTimeOutcome = getFragmentManager().findFragmentByTag("assetsFragment").getView().findViewById(R.id.lifetimeOutcome);
+                            allTimeOutcome.setText(String.valueOf(GameActivity.AllTimeOutcome));
+
                         } else {
                             Toast.makeText(requireContext(), "Недостаточно средств", Toast.LENGTH_SHORT).show();
                         }
@@ -220,6 +244,14 @@ public class ShopDialogFragment extends DialogFragment {
                             activityDisplay.setText(mainCharacterViewModel.getActivityLogText().getValue());
                             TextView playerMoney = getFragmentManager().findFragmentByTag("statusFragment").getView().findViewById(R.id.playerMoney);
                             playerMoney.setText(mainCharacterViewModel.getMoney().getValue().toString());
+
+                            GameActivity.YearOutcome += mParam3;
+                            TextView yearOutcome = getFragmentManager().findFragmentByTag("assetsFragment").getView().findViewById(R.id.yearOutcome);
+                            yearOutcome.setText(String.valueOf(GameActivity.YearOutcome));
+
+                            GameActivity.AllTimeOutcome += mParam3;
+                            TextView allTimeOutcome = getFragmentManager().findFragmentByTag("assetsFragment").getView().findViewById(R.id.lifetimeOutcome);
+                            allTimeOutcome.setText(String.valueOf(GameActivity.AllTimeOutcome));
 
                         } else {
                             Toast.makeText(requireContext(), "Недостаточно средств", Toast.LENGTH_SHORT).show();

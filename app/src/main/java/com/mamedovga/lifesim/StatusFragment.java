@@ -113,6 +113,14 @@ public class StatusFragment extends Fragment {
     }
 
     public void nextYear() {
+        GameActivity.YearIncome = 0;
+        GameActivity.YearOutcome = 0;
+
+        TextView yearIncomeReset = getFragmentManager().findFragmentByTag("assetsFragment").getView().findViewById(R.id.YearIncome);
+        yearIncomeReset.setText(String.valueOf(GameActivity.YearIncome));
+        TextView yearOutcomeReset = getFragmentManager().findFragmentByTag("assetsFragment").getView().findViewById(R.id.yearOutcome);
+        yearOutcomeReset.setText(String.valueOf(GameActivity.YearOutcome));
+
         mainCharacterViewModel.setAge(mainCharacterViewModel.getAge().getValue() + 1);
         ProgressBarUtils.updateEnergyBar(mainCharacterViewModel, 100 - mainCharacterViewModel.getAge().getValue(), binding.energyBar);
         checkAge();
@@ -141,6 +149,15 @@ public class StatusFragment extends Fragment {
 
         if(mainCharacterViewModel.getAge().getValue() >= 8 && mainCharacterViewModel.getAge().getValue() <= 18) {
             int present = NumberUtils.getRandomNumber(50, 200);
+
+            GameActivity.YearIncome += present;
+            TextView yearIncome = getFragmentManager().findFragmentByTag("assetsFragment").getView().findViewById(R.id.YearIncome);
+            yearIncome.setText(String.valueOf(GameActivity.YearIncome));
+
+            GameActivity.AllTimeIncome += present;
+            TextView allTimeIncome = getFragmentManager().findFragmentByTag("assetsFragment").getView().findViewById(R.id.LifetimeIncome);
+            allTimeIncome.setText(String.valueOf(GameActivity.AllTimeIncome));
+
             mainCharacterViewModel.setMoney(mainCharacterViewModel.getMoney().getValue() + present);
             //SpannableStringBuilder stringBuilder = new SpannableStringBuilder();
             //stringBuilder.append(mainCharacterViewModel.getActivityLogText().getValue());
