@@ -119,6 +119,11 @@ public class StatusFragment extends Fragment {
             ActionsFragment.statusActionsAdapter.notifyDataSetChanged();
             getFragmentManager().findFragmentByTag("actionsFragment").getView().findViewById(R.id.recyclerViewStatusActionsFrameLayout).setVisibility(View.VISIBLE);
             getFragmentManager().findFragmentByTag("actionsFragment").getView().findViewById(R.id.statusActionsHeader).setVisibility(View.VISIBLE);
+        } else if(mainCharacterViewModel.getAge().getValue() == 18) {
+            GameActivity.statusActions.remove(0);
+            ActionsFragment.statusActionsAdapter.notifyDataSetChanged();
+            getFragmentManager().findFragmentByTag("actionsFragment").getView().findViewById(R.id.recyclerViewStatusActionsFrameLayout).setVisibility(View.GONE);
+            getFragmentManager().findFragmentByTag("actionsFragment").getView().findViewById(R.id.statusActionsHeader).setVisibility(View.GONE);
         }
     }
 

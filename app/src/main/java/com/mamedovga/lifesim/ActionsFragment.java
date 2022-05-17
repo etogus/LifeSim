@@ -45,13 +45,13 @@ public class ActionsFragment extends Fragment implements ActionsRecyclerViewAdap
 
     private void buildList() {
         BasicAction gym = new BasicAction(R.drawable.gym, "Сходить в спортзал",
-                "Улучшает здоровье", "gym", 30);
+                "В здоровем теле - здоровый дух!", "gym", 30);
         BasicAction movie = new BasicAction(R.drawable.movie, "Посмотреть фильм",
                 "Улучшает настроение", "movie", 5);
         BasicAction book = new BasicAction(R.drawable.book, "Почитать книгу",
-                "Улучшает настроение", "book", 5);
+                "Улучшает настроение и интеллект", "book", 5);
         BasicAction game = new BasicAction(R.drawable.game, "Поиграть в игру",
-                "Улучшает настроение", "game", 5);
+                "А ты точно сделал все уроки?", "game", 5);
         BasicAction doctor = new BasicAction(R.drawable.doctor, "Сходить к врачу",
                 "Лечит травмы и болезни", "doctor", 5);
         list.add(gym);
