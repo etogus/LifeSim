@@ -149,6 +149,7 @@ public class StatusFragment extends Fragment {
                     basicEvent.getActions().get(0), basicEvent.getActions().get(1), basicEvent.getActions().get(2), basicEvent.getLabel());
 
             dialog.setTargetFragment(StatusFragment.this, 1);
+            dialog.setCancelable(false);
             dialog.show(getActivity().getSupportFragmentManager(), "eventDialogFragment");
         } catch (NullPointerException e) {
 
