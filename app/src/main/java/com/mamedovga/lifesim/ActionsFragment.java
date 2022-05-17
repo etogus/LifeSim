@@ -3,6 +3,7 @@ package com.mamedovga.lifesim;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.view.LayoutInflater;
@@ -70,6 +71,13 @@ public class ActionsFragment extends Fragment implements ActionsRecyclerViewAdap
 
     @Override
     public void onItemClick(StatusAction statusAction) {
-        Toast.makeText(requireContext(), "Нажал!", Toast.LENGTH_SHORT).show();
+        StatusActionsInsideFragment statusActionsInsideFragment = new StatusActionsInsideFragment();
+        FragmentTransaction transaction = requireActivity().getSupportFragmentManager().beginTransaction();
+        transaction.hide(requireActivity().getSupportFragmentManager().findFragmentByTag("actionsFragment"));
+        transaction.add(R.id.topAndMiddleContainer, statusActionsInsideFragment, "statusActionsInsideFragment");
+        transaction.addToBackStack(null);
+        transaction.commit();
+        View view = getActivity().findViewById(R.id.bottomContainer);
+        view.setVisibility(View.GONE);
     }
 }

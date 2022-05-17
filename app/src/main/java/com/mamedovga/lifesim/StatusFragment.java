@@ -125,6 +125,11 @@ public class StatusFragment extends Fragment {
             getFragmentManager().findFragmentByTag("actionsFragment").getView().findViewById(R.id.recyclerViewStatusActionsFrameLayout).setVisibility(View.GONE);
             getFragmentManager().findFragmentByTag("actionsFragment").getView().findViewById(R.id.statusActionsHeader).setVisibility(View.GONE);
         }
+
+        if(GameActivity.statusActions.size() > 0 && GameActivity.statusActions.get(0).getLabel().equals("school")) {
+            GameActivity.buildSchoolStatusActionsInsideList();
+            //StatusActionsInsideFragment.statusActionsInsideAdapter.notifyDataSetChanged();
+        }
     }
 
     public void nextYear() {

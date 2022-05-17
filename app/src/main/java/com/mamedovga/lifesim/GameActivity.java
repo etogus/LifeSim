@@ -49,6 +49,7 @@ public class GameActivity extends AppCompatActivity {
     public static ArrayList<AbstractAsset> shopList = new ArrayList<>();
     public static ArrayList<AbstractAsset> assetList = new ArrayList<>();
     public static ArrayList<StatusAction> statusActions = new ArrayList<>();
+    public static ArrayList<StatusAction> statusActionsInside = new ArrayList<>();
 
     private final StatusFragment statusFragment = new StatusFragment();
     private final AssetsFragment assetsFragment = new AssetsFragment();
@@ -226,5 +227,10 @@ public class GameActivity extends AppCompatActivity {
         shopList.add(book1);
         shopList.add(sport1);
         shopList.add(car1);
+    }
+
+    public static void buildSchoolStatusActionsInsideList() {
+        statusActionsInside.add(new StatusAction(R.drawable.classmates, "Одноклассники", "Собратья по несчастью", "classmates"));
+        statusActionsInside.add(new StatusAction(R.drawable.studying, "Учиться", "Ботаем", "study"));
     }
 }
