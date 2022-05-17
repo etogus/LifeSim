@@ -8,19 +8,22 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.mamedovga.lifesim.databinding.FragmentActionsBinding;
 import com.mamedovga.lifesim.databinding.FragmentRelationshipsBinding;
 import com.mamedovga.lifesim.models.BasicAction;
 import com.mamedovga.lifesim.models.NonPlayableCharacter;
+import com.mamedovga.lifesim.models.StatusAction;
 import com.mamedovga.lifesim.utils.PersonUtils;
 
 import java.util.ArrayList;
 
-public class ActionsFragment extends Fragment implements ActionsRecyclerViewAdapter.ItemClickListener {
+public class ActionsFragment extends Fragment implements ActionsRecyclerViewAdapter.ItemClickListener, StatusActionsAdapter.ItemClickListener {
 
     private FragmentActionsBinding binding;
     private ArrayList<BasicAction> list = new ArrayList<>();
+    public static StatusActionsAdapter statusActionsAdapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -31,6 +34,12 @@ public class ActionsFragment extends Fragment implements ActionsRecyclerViewAdap
         binding.recyclerViewActions.setLayoutManager(linearLayoutManager);
         ActionsRecyclerViewAdapter recyclerViewAdapter = new ActionsRecyclerViewAdapter(list, this);
         binding.recyclerViewActions.setAdapter(recyclerViewAdapter);
+
+        LinearLayoutManager linearLayoutManagerStatus = new LinearLayoutManager(requireActivity());
+        binding.recyclerViewStatusActions.setLayoutManager(linearLayoutManagerStatus);
+        statusActionsAdapter = new StatusActionsAdapter(GameActivity.statusActions, this);
+        binding.recyclerViewStatusActions.setAdapter(statusActionsAdapter);
+
         return binding.getRoot();
     }
 
@@ -57,5 +66,10 @@ public class ActionsFragment extends Fragment implements ActionsRecyclerViewAdap
         ActionDialogFragment dialog = ActionDialogFragment.newInstance(basicAction.getImage(), basicAction.getEnergy(), basicAction.getLabel(), basicAction.getName());
         dialog.setTargetFragment(ActionsFragment.this, 1);
         dialog.show(getActivity().getSupportFragmentManager(), "ActionDialog");
+    }
+
+    @Override
+    public void onItemClick(StatusAction statusAction) {
+        Toast.makeText(requireContext(), "Нажал!", Toast.LENGTH_SHORT).show();
     }
 }

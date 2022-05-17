@@ -26,6 +26,7 @@ import com.mamedovga.lifesim.models.Car;
 import com.mamedovga.lifesim.models.MainCharacterViewModel;
 import com.mamedovga.lifesim.models.MainCharacter;
 import com.mamedovga.lifesim.models.Sport;
+import com.mamedovga.lifesim.models.StatusAction;
 import com.mamedovga.lifesim.utils.PersonUtils;
 
 import java.util.ArrayList;
@@ -47,6 +48,7 @@ public class GameActivity extends AppCompatActivity {
 
     public static ArrayList<AbstractAsset> shopList = new ArrayList<>();
     public static ArrayList<AbstractAsset> assetList = new ArrayList<>();
+    public static ArrayList<StatusAction> statusActions = new ArrayList<>();
 
     private final StatusFragment statusFragment = new StatusFragment();
     private final AssetsFragment assetsFragment = new AssetsFragment();

@@ -22,6 +22,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.mamedovga.lifesim.databinding.FragmentStatusBinding;
 import com.mamedovga.lifesim.models.BasicEvent;
 import com.mamedovga.lifesim.models.MainCharacterViewModel;
+import com.mamedovga.lifesim.models.StatusAction;
 import com.mamedovga.lifesim.utils.CountryUtils;
 import com.mamedovga.lifesim.utils.EventUtils;
 import com.mamedovga.lifesim.utils.ImageUtils;
@@ -46,6 +47,8 @@ public class StatusFragment extends Fragment {
         binding.activityDisplay.setText(mainCharacterViewModel.getActivityLogText().getValue());
         binding.countryFlag.setImageResource(CountryUtils.getCountryFlag(mainCharacterViewModel.getCountry().getValue()));
         binding.playerMoney.setText(mainCharacterViewModel.getMoney().getValue().toString());
+        getFragmentManager().findFragmentByTag("actionsFragment").getView().findViewById(R.id.recyclerViewStatusActionsFrameLayout).setVisibility(View.GONE);
+        getFragmentManager().findFragmentByTag("actionsFragment").getView().findViewById(R.id.statusActionsHeader).setVisibility(View.GONE);
         checkAge();
         return binding.getRoot();
     }
@@ -109,6 +112,13 @@ public class StatusFragment extends Fragment {
                 binding.playerStatus.setText("Девушка");
                 binding.playerStatusImage.setImageResource(R.drawable.outline_woman_24);
             }
+        }
+
+        if(mainCharacterViewModel.getAge().getValue() == 7) {
+            GameActivity.statusActions.add(new StatusAction(R.drawable.school, "Школа", "Учиться, учиться и ещё раз учиться!", "school"));
+            ActionsFragment.statusActionsAdapter.notifyDataSetChanged();
+            getFragmentManager().findFragmentByTag("actionsFragment").getView().findViewById(R.id.recyclerViewStatusActionsFrameLayout).setVisibility(View.VISIBLE);
+            getFragmentManager().findFragmentByTag("actionsFragment").getView().findViewById(R.id.statusActionsHeader).setVisibility(View.VISIBLE);
         }
     }
 
