@@ -86,6 +86,10 @@ public class ActionDialogFragment extends DialogFragment {
                 binding.propertyText.setText("Ваше настроение:");
                 binding.progressBar.setProgressPercentage(mainCharacterViewModel.getMood().getValue(), false);
                 break;
+            case "study":
+                binding.propertyText.setText("Ваш интеллект:");
+                binding.progressBar.setProgressPercentage(mainCharacterViewModel.getIntelligence().getValue(), false);
+                break;
         }
 
         binding.actionClose.setOnClickListener(new View.OnClickListener() {
@@ -173,6 +177,20 @@ public class ActionDialogFragment extends DialogFragment {
                             SpannableStringBuilder stringBuilder = new SpannableStringBuilder();
                             stringBuilder.append(mainCharacterViewModel.getActivityLogText().getValue());
                             stringBuilder.append("\n").append("Я сходил к врачу.");
+                            mainCharacterViewModel.setActivityLogText(stringBuilder);
+                            TextView activityDisplay = getFragmentManager().findFragmentByTag("statusFragment").getView().findViewById(R.id.activityDisplay);
+                            activityDisplay.setText(mainCharacterViewModel.getActivityLogText().getValue());
+                        } else {
+                            Toast.makeText(requireContext(), "Недостаточно энергии", Toast.LENGTH_SHORT).show();
+                        }
+                        break;
+                    case "study":
+                        if(mainCharacterViewModel.getEnergy().getValue() >= dialogEnergy) {
+                            ProgressBarUtils.updateIntellectBar(mainCharacterViewModel, 5, getFragmentManager().findFragmentByTag("statusFragment").getView().findViewById(R.id.smartsBar));
+                            ProgressBarUtils.updateEnergyBar(mainCharacterViewModel, -20, getFragmentManager().findFragmentByTag("statusFragment").getView().findViewById(R.id.energyBar));
+                            SpannableStringBuilder stringBuilder = new SpannableStringBuilder();
+                            stringBuilder.append(mainCharacterViewModel.getActivityLogText().getValue());
+                            stringBuilder.append("\n").append("Я усердно позанимался учёбой.");
                             mainCharacterViewModel.setActivityLogText(stringBuilder);
                             TextView activityDisplay = getFragmentManager().findFragmentByTag("statusFragment").getView().findViewById(R.id.activityDisplay);
                             activityDisplay.setText(mainCharacterViewModel.getActivityLogText().getValue());

@@ -80,7 +80,9 @@ public class StatusActionsInsideFragment extends Fragment implements StatusActio
             View view = getActivity().findViewById(R.id.bottomContainer);
             view.setVisibility(View.GONE);
         } else if(statusAction.getLabel().equals("study")) {
-
+            ActionDialogFragment dialog = ActionDialogFragment.newInstance(statusAction.getImage(), 20, statusAction.getLabel(), statusAction.getName());
+            dialog.setTargetFragment(StatusActionsInsideFragment.this, 1);
+            dialog.show(getActivity().getSupportFragmentManager(), "StatusActionsInsideFragmentDialog");
         }
 
     }
