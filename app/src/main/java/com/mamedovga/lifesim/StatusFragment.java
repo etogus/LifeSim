@@ -128,7 +128,9 @@ public class StatusFragment extends Fragment {
         }
 
         if(GameActivity.statusActions.size() > 0 && GameActivity.statusActions.get(0).getLabel().equals("school")) {
-            GameActivity.buildSchoolStatusActionsInsideList();
+            if(GameActivity.statusActionsInside.size() == 0) {
+                GameActivity.buildSchoolStatusActionsInsideList();
+            }
             GameActivity.updatePeopleSchoolAvatar(mainCharacterViewModel.getAge().getValue());
             //StatusActionsInsideFragment.statusActionsInsideAdapter.notifyDataSetChanged();
         }

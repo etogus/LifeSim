@@ -13,15 +13,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.mamedovga.lifesim.databinding.FragmentNewGameInputBinding;
-import com.mamedovga.lifesim.databinding.FragmentRelationshipDialogBinding;
+import com.mamedovga.lifesim.databinding.FragmentStatusPeopleDialogBinding;
 
+public class StatusPeopleDialogFragment extends DialogFragment {
 
-public class RelationshipDialogFragment extends DialogFragment {
-
-    private static final String TAG = "MyCustomDialog";
-    private FragmentRelationshipDialogBinding binding;
+    private FragmentStatusPeopleDialogBinding binding;
 
     private static final String ARG_PARAM1 = "avatar";
     private static final String ARG_PARAM2 = "statusToPlayer";
@@ -33,10 +29,10 @@ public class RelationshipDialogFragment extends DialogFragment {
     private int mParam3;
     private String mParam4;
 
-    public RelationshipDialogFragment() { }
+    public StatusPeopleDialogFragment() { }
 
-    public static RelationshipDialogFragment newInstance(int param1, String param2, int param3, String param4) {
-        RelationshipDialogFragment fragment = new RelationshipDialogFragment();
+    public static StatusPeopleDialogFragment newInstance(int param1, String param2, int param3, String param4) {
+        StatusPeopleDialogFragment fragment = new StatusPeopleDialogFragment();
         Bundle args = new Bundle();
         args.putInt(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -60,17 +56,16 @@ public class RelationshipDialogFragment extends DialogFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        binding = FragmentRelationshipDialogBinding.inflate(inflater, container, false);
+        binding = FragmentStatusPeopleDialogBinding.inflate(inflater, container, false);
+
         getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         binding.charAvatar.setImageResource(mParam1);
         binding.charStatusToPlayer.setText(mParam2);
         binding.relationshipBar.setProgressPercentage(mParam3, false);
-        Log.e("onCreateView", "mParam2 = " + mParam2);
 
         binding.actionClose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d(TAG, "onClick: closing dialog");
                 getDialog().dismiss();
             }
         });
@@ -78,10 +73,9 @@ public class RelationshipDialogFragment extends DialogFragment {
         binding.actionChat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d(TAG, "onClick: capturing input.");
                 ChatFragment fragment = ChatFragment.newInstance(mParam1, mParam4, mParam2);
                 FragmentTransaction transaction = requireActivity().getSupportFragmentManager().beginTransaction();
-                transaction.hide(requireActivity().getSupportFragmentManager().findFragmentByTag("relationshipsFragment"));
+                transaction.hide(requireActivity().getSupportFragmentManager().findFragmentByTag("statusActionsInsidePeopleFragment"));
                 transaction.add(R.id.topAndMiddleContainer, fragment, "chatFragment");
                 transaction.addToBackStack(null);
                 transaction.commit();

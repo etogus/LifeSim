@@ -94,8 +94,8 @@ public class ChatFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 View view1 = getActivity().findViewById(R.id.bottomContainer);
-                view1.setVisibility(View.VISIBLE);
-                getActivity().onBackPressed();
+                //view1.setVisibility(View.VISIBLE);
+                getFragmentManager().popBackStackImmediate();
             }
         });
 

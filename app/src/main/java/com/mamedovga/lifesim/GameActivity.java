@@ -9,6 +9,7 @@ import android.text.SpannableStringBuilder;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.StyleSpan;
 import android.text.style.UnderlineSpan;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 
@@ -184,6 +185,7 @@ public class GameActivity extends AppCompatActivity {
     public static void buildSchoolStatusActionsInsideList() {
         statusActionsInside.add(new StatusAction(R.drawable.classmates, "Одноклассники", "Собратья по несчастью", "classmates"));
         statusActionsInside.add(new StatusAction(R.drawable.studying, "Учиться", "Ботаем", "study"));
+        Log.e("buildSchoolStatusActionsInsideList", "Size: " + statusActionsInside.size());
     }
 
     public static void buildPeopleSchoolStatusActionsInsideList() {

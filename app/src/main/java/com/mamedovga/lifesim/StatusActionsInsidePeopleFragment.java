@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -64,6 +65,8 @@ public class StatusActionsInsidePeopleFragment extends Fragment implements Relat
 
     @Override
     public void onItemClick(NonPlayableCharacter nonPlayableCharacter) {
-
+        StatusPeopleDialogFragment dialog = StatusPeopleDialogFragment.newInstance(nonPlayableCharacter.getAvatar(), nonPlayableCharacter.getStatusToPlayer(), nonPlayableCharacter.getAffinity(), nonPlayableCharacter.getName());
+        dialog.setTargetFragment(StatusActionsInsidePeopleFragment.this, 1);
+        dialog.show(getActivity().getSupportFragmentManager(), "statusActionsInsidePeopleFragmentDialog");
     }
 }
