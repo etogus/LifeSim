@@ -25,8 +25,10 @@ import com.mamedovga.lifesim.models.Book;
 import com.mamedovga.lifesim.models.Car;
 import com.mamedovga.lifesim.models.MainCharacterViewModel;
 import com.mamedovga.lifesim.models.MainCharacter;
+import com.mamedovga.lifesim.models.NonPlayableCharacter;
 import com.mamedovga.lifesim.models.Sport;
 import com.mamedovga.lifesim.models.StatusAction;
+import com.mamedovga.lifesim.utils.NumberUtils;
 import com.mamedovga.lifesim.utils.PersonUtils;
 
 import java.util.ArrayList;
@@ -50,6 +52,7 @@ public class GameActivity extends AppCompatActivity {
     public static ArrayList<AbstractAsset> assetList = new ArrayList<>();
     public static ArrayList<StatusAction> statusActions = new ArrayList<>();
     public static ArrayList<StatusAction> statusActionsInside = new ArrayList<>();
+    public static ArrayList<NonPlayableCharacter> statusActionsInsidePeople = new ArrayList<>();
 
     private final StatusFragment statusFragment = new StatusFragment();
     private final AssetsFragment assetsFragment = new AssetsFragment();
@@ -158,57 +161,6 @@ public class GameActivity extends AppCompatActivity {
         //getSupportFragmentManager().beginTransaction().replace(binding.topAndMiddleContainer.getId(), actionsFragment).commit();
         getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.slide_in_up, R.anim.slide_out_up).hide(active).show(actionsFragment).commit();
         active = actionsFragment;
-//        if(!activityCheck) {
-//            int n = NumberUtils.getRandomNumber(1, 4);
-//            if(n == 1) {
-//                ProgressBarUtils.updateMoodBar(mainChar, 1, binding.moodBar);
-//                activityLogText.append("Я посмотрел интересный фильм. \n \n");
-//                binding.activityDisplay.setText(activityLogText);
-//                binding.activityLog.post(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        binding.activityLog.fullScroll(View.FOCUS_DOWN);
-//                    }
-//                });
-//            }
-//            else if(n == 2) {
-//                ProgressBarUtils.updateHealthBar(mainChar, 1, binding.healthBar);
-//                ProgressBarUtils.updateMoodBar(mainChar, 1, binding.moodBar);
-//                activityLogText.append("Я сходил на пробежку. Чувствую себя сильнее. \n \n");
-//                binding.activityDisplay.setText(activityLogText);
-//                binding.activityLog.post(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        binding.activityLog.fullScroll(View.FOCUS_DOWN);
-//                    }
-//                });
-//            }
-//            else if(n == 3) {
-//                ProgressBarUtils.updateIntellectBar(mainChar, 2, binding.smartsBar);
-//                ProgressBarUtils.updateMoodBar(mainChar, 2, binding.moodBar);
-//                activityLogText.append("Я прочитал захватывающую книгу. \n \n");
-//                binding.activityDisplay.setText(activityLogText);
-//                binding.activityLog.post(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        binding.activityLog.fullScroll(View.FOCUS_DOWN);
-//                    }
-//                });
-//            }
-//            else if(n == 4) {
-//                ProgressBarUtils.updateLooksBar(mainChar, 2, binding.looksBar);
-//                ProgressBarUtils.updateMoodBar(mainChar, 1, binding.moodBar);
-//                activityLogText.append("Я позанимался в спортзале. \n \n");
-//                binding.activityDisplay.setText(activityLogText);
-//                binding.activityLog.post(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        binding.activityLog.fullScroll(View.FOCUS_DOWN);
-//                    }
-//                });
-//            }
-//            activityCheck = true;
-//        }
     }
 
     public void nextYear() {
@@ -232,5 +184,26 @@ public class GameActivity extends AppCompatActivity {
     public static void buildSchoolStatusActionsInsideList() {
         statusActionsInside.add(new StatusAction(R.drawable.classmates, "Одноклассники", "Собратья по несчастью", "classmates"));
         statusActionsInside.add(new StatusAction(R.drawable.studying, "Учиться", "Ботаем", "study"));
+    }
+
+    public static void buildPeopleSchoolStatusActionsInsideList() {
+        statusActionsInsidePeople.add(new NonPlayableCharacter(PersonUtils.getRandomFirstName("male", "Россия"), PersonUtils.getRandomLastName("male", "Россия"),
+                "male", "Россия", 7, NumberUtils.getRandomNumber(0, 100), "classmate"));
+        statusActionsInsidePeople.add(new NonPlayableCharacter(PersonUtils.getRandomFirstName("male", "Россия"), PersonUtils.getRandomLastName("male", "Россия"),
+                "male", "Россия", 7, NumberUtils.getRandomNumber(0, 100), "classmate"));
+        statusActionsInsidePeople.add(new NonPlayableCharacter(PersonUtils.getRandomFirstName("female", "Россия"), PersonUtils.getRandomLastName("female", "Россия"),
+                "female", "Россия", 7, NumberUtils.getRandomNumber(0, 100), "classmate"));
+        statusActionsInsidePeople.add(new NonPlayableCharacter(PersonUtils.getRandomFirstName("female", "Россия"), PersonUtils.getRandomLastName("female", "Россия"),
+                "female", "Россия", 7, NumberUtils.getRandomNumber(0, 100), "classmate"));
+        statusActionsInsidePeople.add(new NonPlayableCharacter(PersonUtils.getRandomFirstName("male", "Россия"), PersonUtils.getRandomLastName("male", "Россия"),
+                "male", "Россия", 7, NumberUtils.getRandomNumber(0, 100), "classmate"));
+    }
+
+    public static void updatePeopleSchoolAvatar(int age) {
+        if(age == 7) {
+            for(NonPlayableCharacter nonPlayableChar: statusActionsInsidePeople) {
+                nonPlayableChar.setAvatar(PersonUtils.randomizeSchoolPeopleAvatar(nonPlayableChar.getGender())[2]);
+            }
+        }
     }
 }

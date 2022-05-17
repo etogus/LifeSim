@@ -119,6 +119,7 @@ public class StatusFragment extends Fragment {
             ActionsFragment.statusActionsAdapter.notifyDataSetChanged();
             getFragmentManager().findFragmentByTag("actionsFragment").getView().findViewById(R.id.recyclerViewStatusActionsFrameLayout).setVisibility(View.VISIBLE);
             getFragmentManager().findFragmentByTag("actionsFragment").getView().findViewById(R.id.statusActionsHeader).setVisibility(View.VISIBLE);
+            GameActivity.buildPeopleSchoolStatusActionsInsideList();
         } else if(mainCharacterViewModel.getAge().getValue() == 18) {
             GameActivity.statusActions.remove(0);
             ActionsFragment.statusActionsAdapter.notifyDataSetChanged();
@@ -128,6 +129,7 @@ public class StatusFragment extends Fragment {
 
         if(GameActivity.statusActions.size() > 0 && GameActivity.statusActions.get(0).getLabel().equals("school")) {
             GameActivity.buildSchoolStatusActionsInsideList();
+            GameActivity.updatePeopleSchoolAvatar(mainCharacterViewModel.getAge().getValue());
             //StatusActionsInsideFragment.statusActionsInsideAdapter.notifyDataSetChanged();
         }
     }

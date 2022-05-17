@@ -3,6 +3,7 @@ package com.mamedovga.lifesim;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.view.LayoutInflater;
@@ -69,6 +70,18 @@ public class StatusActionsInsideFragment extends Fragment implements StatusActio
 
     @Override
     public void onItemClick(StatusAction statusAction) {
-        Toast.makeText(requireContext(), "Clicked!", Toast.LENGTH_SHORT).show();
+        if(statusAction.getLabel().equals("classmates")) {
+            StatusActionsInsidePeopleFragment statusActionsInsidePeopleFragment = new StatusActionsInsidePeopleFragment();
+            FragmentTransaction transaction = requireActivity().getSupportFragmentManager().beginTransaction();
+            transaction.hide(requireActivity().getSupportFragmentManager().findFragmentByTag("statusActionsInsideFragment"));
+            transaction.add(R.id.topAndMiddleContainer, statusActionsInsidePeopleFragment, "statusActionsInsidePeopleFragment");
+            transaction.addToBackStack(null);
+            transaction.commit();
+            View view = getActivity().findViewById(R.id.bottomContainer);
+            view.setVisibility(View.GONE);
+        } else if(statusAction.getLabel().equals("study")) {
+
+        }
+
     }
 }

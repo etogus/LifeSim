@@ -68,6 +68,18 @@ public class PersonUtils {
         }
     }
 
+    public static int[] randomizeSchoolPeopleAvatar(String gender) {
+        if(gender.equals("male")) {
+            int array = NumberUtils.getRandomNumber(0, maleAvatars.length - 1);
+            //int position = NumberUtils.getRandomNumber(0, maleAvatars[array].length - 1);
+            return maleAvatars[array];
+        } else {
+            int array = NumberUtils.getRandomNumber(0, femaleAvatars.length - 1);
+            //int position = NumberUtils.getRandomNumber(0, femaleAvatars[array].length - 1);
+            return femaleAvatars[array];
+        }
+    }
+
     private static int randomizeKarma() {
         return NumberUtils.getRandomNumber(0, 10);
     }
