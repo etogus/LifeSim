@@ -8,7 +8,6 @@ import android.text.SpannableStringBuilder;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.StyleSpan;
 import android.text.style.UnderlineSpan;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +15,6 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.mamedovga.lifesim.databinding.FragmentStatusBinding;
@@ -125,6 +123,16 @@ public class StatusFragment extends Fragment {
             ActionsFragment.statusActionsAdapter.notifyDataSetChanged();
             getFragmentManager().findFragmentByTag("actionsFragment").getView().findViewById(R.id.recyclerViewStatusActionsFrameLayout).setVisibility(View.GONE);
             getFragmentManager().findFragmentByTag("actionsFragment").getView().findViewById(R.id.statusActionsHeader).setVisibility(View.GONE);
+        }
+
+        if(mainCharacterViewModel.getAge().getValue() >= 18 && mainCharacterViewModel.getJob().getValue() == null && GameActivity.statusActions.size() == 0) {
+            GameActivity.statusActions.add(new StatusAction(R.drawable.job, "Найти работу", "Работа не волк - в лес не убежит.", "job"));
+            ActionsFragment.statusActionsAdapter.notifyDataSetChanged();
+            getFragmentManager().findFragmentByTag("actionsFragment").getView().findViewById(R.id.recyclerViewStatusActionsFrameLayout).setVisibility(View.VISIBLE);
+            View view = getFragmentManager().findFragmentByTag("actionsFragment").getView().findViewById(R.id.statusActionsHeader);
+            view.setVisibility(View.VISIBLE);
+            TextView textView = getFragmentManager().findFragmentByTag("actionsFragment").getView().findViewById(R.id.statusActionsHeaderText);
+            textView.setText("Работа");
         }
 
         if(GameActivity.statusActions.size() > 0 && GameActivity.statusActions.get(0).getLabel().equals("school")) {

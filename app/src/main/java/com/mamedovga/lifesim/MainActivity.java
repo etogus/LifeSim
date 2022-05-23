@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class MainActivity extends AppCompatActivity {
 
     private Button startButton;
-    private Button loadButton;
+    //private Button loadButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         startButton = findViewById(R.id.start_game_button);
-        loadButton = findViewById(R.id.load_game_button);
+        //loadButton = findViewById(R.id.load_game_button);
 
         startButton.setOnClickListener(unused -> launchNewGameActivity());
     }

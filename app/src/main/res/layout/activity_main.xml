@@ -4,42 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/back"
     tools:context=".MainActivity">
 
     <Button
         android:id="@+id/start_game_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="150dp"
         android:background="@drawable/button_shape"
         android:text="@string/start_game_button"
-        app:layout_constraintBottom_toTopOf="@+id/textView2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/load_game_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="200dp"
-        android:background="@drawable/button_shape"
-        android:text="@string/load_game_button"
         app:layout_constraintBottom_toTopOf="@+id/version"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <ImageView
-        android:id="@+id/logo"
-        android:layout_width="409dp"
-        android:layout_height="299dp"
-        android:contentDescription="@string/app_logo"
-        app:layout_constraintBottom_toTopOf="@+id/start_game_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.549"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        android:src="@drawable/splash" />
 
     <TextView
         android:id="@+id/version"
@@ -47,17 +25,8 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         android:text="@string/version"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:text="@string/or"
-        app:layout_constraintBottom_toTopOf="@+id/load_game_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
