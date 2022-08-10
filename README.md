@@ -1,4 +1,4 @@
-# LifeSim (in development)
+# LifeSim
 Текстовый игровой симулятор жизни для Android OS.
 
 Модели персонажей созданы в среде Daz 3D.
